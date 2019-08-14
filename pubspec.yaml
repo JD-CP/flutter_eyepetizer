@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -44,6 +44,16 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+
+  assets:
+    - images/ic_home_normal.png
+    - images/ic_home_selected.png
+    - images/ic_discovery_normal.png
+    - images/ic_discovery_selected.png
+    - images/ic_hot_normal.png
+    - images/ic_hot_selected.png
+    - images/ic_mine_normal.png
+    - images/ic_mine_selected.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
