@@ -11,7 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  bool isLoadingMore = false;
   List<Item> _dataList = [];
+
+  ScrollController scrollController = ScrollController();
 
   Future onRefresh() {
     return Future(() {
@@ -36,9 +39,22 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+  void loadMore() async {}
+
   @override
   void initState() {
     super.initState();
+    this.scrollController.addListener(() => {
+          if (!this.isLoadingMore &&
+              this.scrollController.position.pixels >=
+                  this.scrollController.position.maxScrollExtent)
+            {
+              this.setState(() {
+                this.isLoadingMore = true;
+                this.loadMore();
+              })
+            }
+        });
     httpGet();
   }
 
@@ -46,13 +62,62 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
         child: ListView.separated(
+            controller: this.scrollController,
             itemBuilder: (context, index) {
-              return HomePageItem(item: _dataList[index]);
+              if (index < _dataList.length) {
+                return HomePageItem(item: _dataList[index]);
+              }
+              return renderLoadMoreView();
             },
             separatorBuilder: (context, index) {
-              return Divider(height: .5, color: Color(0xFFDDDDDD), indent: 15,);
+              return Divider(
+                height: .5,
+                color: Color(0xFFDDDDDD),
+                indent: 15,
+              );
             },
-            itemCount: _dataList.length),
+            itemCount: _dataList.length + 1),
         onRefresh: this.onRefresh);
+  }
+
+  /// 上拉加载 Widget
+  Widget renderLoadMoreView() {
+    if (this.isLoadingMore) {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '努力加载中...',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black54,
+              ),
+            ),
+            SizedBox(
+              width: 18,
+              height: 18,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.5,
+                backgroundColor: Colors.deepPurple[600],
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 15),
+        alignment: Alignment.center,
+        child: Text(
+          '上拉加载更多',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black54,
+          ),
+        ),
+      );
+    }
   }
 }
