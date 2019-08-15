@@ -15,8 +15,11 @@ class HomePageItem extends StatelessWidget {
     return Column(
       children: <Widget>[
         CachedNetworkImage(
+          height: 200,
+          fit: BoxFit.contain,
           imageUrl: item.data.cover.feed,
-          placeholder: (context, url) => CircularProgressIndicator(),
+          errorWidget: (context, url, error) =>
+              Image.asset('images/img_load_fail'),
         ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
@@ -29,7 +32,10 @@ class HomePageItem extends StatelessWidget {
                   imageUrl: item.data.author.icon,
                   width: 40,
                   height: 40,
-                  placeholder: (context, url) => CircularProgressIndicator(),
+                  placeholder: (context, url) => CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    backgroundColor: Colors.deepPurple[600],
+                  ),
                 ),
               ),
               Expanded(

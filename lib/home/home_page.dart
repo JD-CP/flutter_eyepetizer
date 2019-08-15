@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import '../entity/issue_entity.dart';
 import 'home_page_item.dart';
+import '../util/constant.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  String nextPageUrl = Constant.homePageUrl;
+
+  /// 表示是否正在上拉加载
   bool isLoadingMore = false;
   List<Item> _dataList = [];
 
@@ -18,28 +22,36 @@ class HomePageState extends State<HomePage> {
 
   Future onRefresh() {
     return Future(() {
-      httpGet();
+      getHomePageData();
     });
   }
 
-  void httpGet() async {
+  void getHomePageData() async {
+    if (!this.isLoadingMore) {
+      nextPageUrl = Constant.homePageUrl;
+    }
     var dio = Dio();
     dio.interceptors.add(LogInterceptor());
-    var response = await dio.get(
-        'http://baobab.kaiyanapp.com/api/v2/feed?num=1',
-        options: Options(headers: httpHeaders));
+    var response =
+        await dio.get(nextPageUrl, options: Options(headers: httpHeaders));
     Map map = json.decode(response.toString());
-    var issueEntity = new IssueEntity.fromJson(map);
+    var issueEntity = IssueEntity.fromJson(map);
+    this.nextPageUrl = issueEntity.nextPageUrl;
     var list = issueEntity.issueList[0].itemList;
     list.removeWhere((item) {
-      return item.type == 'banner2';
+      return item.type == 'banner2' || item.type == 'textHeader';
     });
+
+    /// 上拉加载，下拉刷新逻辑处理
     setState(() {
-      _dataList = list;
+      if (this.isLoadingMore) {
+        this.isLoadingMore = false;
+        _dataList.addAll(list);
+      } else {
+        _dataList = list;
+      }
     });
   }
-
-  void loadMore() async {}
 
   @override
   void initState() {
@@ -51,11 +63,11 @@ class HomePageState extends State<HomePage> {
             {
               this.setState(() {
                 this.isLoadingMore = true;
-                this.loadMore();
+                this.getHomePageData();
               })
             }
         });
-    httpGet();
+    getHomePageData();
   }
 
   @override
