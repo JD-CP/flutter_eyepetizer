@@ -28,6 +28,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # 网络请求
+  dio: 2.1.13
+  # 图片加载
+  cached_network_image: 1.1.1
+  # 吐司
+  fluttertoast: 3.1.0
+  # 工具类
+  flustars: 0.2.6+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -54,6 +62,7 @@ flutter:
     - images/ic_hot_selected.png
     - images/ic_mine_normal.png
     - images/ic_mine_selected.png
+    - images/icon_share.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

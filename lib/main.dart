@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './home/HomePage.dart';
+import './home/home_page.dart';
+import './http/http.dart';
+import 'package:dio/dio.dart';
 
 // 主入口
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -11,7 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyApp> {
-
   // 记录当前 tab 选择位置
   int tabIndex = 0;
   var tabImages;
@@ -47,8 +52,7 @@ class _MyHomePageState extends State<MyApp> {
     tabPages ??= [HomePage(), HomePage(), HomePage(), HomePage()];
   }
 
-  Image getTabImage(imagePath) =>
-      Image.asset(imagePath, width: 22, height: 22);
+  Image getTabImage(imagePath) => Image.asset(imagePath, width: 22, height: 22);
 
   Image getTabIcon(int index) {
     if (tabIndex == index) {
@@ -76,7 +80,7 @@ class _MyHomePageState extends State<MyApp> {
       index: tabIndex,
     );
     return MaterialApp(
-      theme: ThemeData(primaryColor: Color(0xFFF4F4F4)),
+      theme: ThemeData(primaryColor: Color(0xFFFFFFFF)),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Eyepetizer', style: TextStyle(color: Colors.black)),
@@ -85,6 +89,7 @@ class _MyHomePageState extends State<MyApp> {
         ),
         body: body,
         bottomNavigationBar: CupertinoTabBar(
+          backgroundColor: Color(0xFFFFFFFF),
           items: [
             BottomNavigationBarItem(icon: getTabIcon(0), title: getTabTitle(0)),
             BottomNavigationBarItem(icon: getTabIcon(1), title: getTabTitle(1)),
