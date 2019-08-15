@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import '../entity/issue_entity.dart';
 import 'home_page_item.dart';
+import 'time_title_item.dart';
 import '../util/constant.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,9 +38,10 @@ class HomePageState extends State<HomePage> {
     Map map = json.decode(response.toString());
     var issueEntity = IssueEntity.fromJson(map);
     this.nextPageUrl = issueEntity.nextPageUrl;
+    print(nextPageUrl);
     var list = issueEntity.issueList[0].itemList;
     list.removeWhere((item) {
-      return item.type == 'banner2' || item.type == 'textHeader';
+      return item.type == 'banner2';
     });
 
     /// 上拉加载，下拉刷新逻辑处理
@@ -77,6 +79,9 @@ class HomePageState extends State<HomePage> {
             controller: this.scrollController,
             itemBuilder: (context, index) {
               if (index < _dataList.length) {
+                if (_dataList[index].type == 'textHeader') {
+                  return TimeTitleItem(item: _dataList[index]);
+                }
                 return HomePageItem(item: _dataList[index]);
               }
               return renderLoadMoreView();

@@ -135,6 +135,7 @@ class Data {
   String category;
   int idx;
   String resourceType;
+  String text;
 
   Data(
       {this.date,
@@ -165,7 +166,8 @@ class Data {
       this.webUrl,
       this.category,
       this.idx,
-      this.resourceType});
+      this.resourceType,
+      this.text});
 
   Data.fromJson(Map<String, dynamic> json) {
     date = json['date'];
@@ -217,6 +219,7 @@ class Data {
     category = json['category'];
     idx = json['idx'];
     resourceType = json['resourceType'];
+    text = json['text'];
   }
 
   Map<String, dynamic> toJson() {
@@ -268,6 +271,7 @@ class Data {
     data['category'] = this.category;
     data['idx'] = this.idx;
     data['resourceType'] = this.resourceType;
+    data['text'] = this.text;
     return data;
   }
 }
