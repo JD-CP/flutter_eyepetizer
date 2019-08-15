@@ -14,12 +14,36 @@ class HomePageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        CachedNetworkImage(
-          height: 200,
-          fit: BoxFit.contain,
-          imageUrl: item.data.cover.feed,
-          errorWidget: (context, url, error) =>
-              Image.asset('images/img_load_fail'),
+        Stack(
+          alignment: FractionalOffset(0.95, 0.05),
+          children: <Widget>[
+            CachedNetworkImage(
+              height: 200,
+              fit: BoxFit.contain,
+              imageUrl: item.data.cover.feed,
+              errorWidget: (context, url, error) =>
+                  Image.asset('images/img_load_fail'),
+            ),
+            Positioned(
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Text(
+                    item.data.category,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white30,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+            )
+          ],
         ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),
