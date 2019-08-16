@@ -9,7 +9,7 @@ class TimeTitleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
       padding: EdgeInsets.all(15),
       child: Text(
         item.data.text,

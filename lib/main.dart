@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './home/home_page.dart';
+import './discovery/discovery_page.dart';
 import './http/http.dart';
 import 'package:dio/dio.dart';
 
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyApp> {
         getTabImage('images/ic_mine_selected.png')
       ],
     ];
-    tabPages ??= [HomePage(), HomePage(), HomePage(), HomePage()];
+    tabPages ??= [HomePage(), DiscoveryPage(), HomePage(), HomePage()];
   }
 
   Image getTabImage(imagePath) => Image.asset(imagePath, width: 22, height: 22);

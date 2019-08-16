@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
@@ -38,7 +39,6 @@ class HomePageState extends State<HomePage> {
     Map map = json.decode(response.toString());
     var issueEntity = IssueEntity.fromJson(map);
     this.nextPageUrl = issueEntity.nextPageUrl;
-    print(nextPageUrl);
     var list = issueEntity.issueList[0].itemList;
     list.removeWhere((item) {
       return item.type == 'banner2';
@@ -106,7 +106,7 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '努力加载中...',
+              '努力加载中...  ',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.black54,

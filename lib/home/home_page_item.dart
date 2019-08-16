@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flustars/flustars.dart';
 
-// StatelessWidget 不需要可变状态，故变量应为不可变
+/// StatelessWidget 不需要可变状态，故变量应为不可变
 class HomePageItem extends StatelessWidget {
   final Item item;
 
