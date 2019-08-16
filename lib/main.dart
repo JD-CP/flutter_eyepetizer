@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './home/home_page.dart';
-import './discovery/discovery_page.dart';
+import 'pages/home/home_page.dart';
 import './http/http.dart';
 import 'package:dio/dio.dart';
+
+import 'pages/discovery/discovery_page.dart';
+import 'pages/hot/hot_page.dart';
 
 // 主入口
 void main() {
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyApp> {
         getTabImage('images/ic_mine_selected.png')
       ],
     ];
-    tabPages ??= [HomePage(), DiscoveryPage(), HomePage(), HomePage()];
+    tabPages ??= [HomePage(), DiscoveryPage(), HotPage(), HomePage()];
   }
 
   Image getTabImage(imagePath) => Image.asset(imagePath, width: 22, height: 22);
@@ -83,11 +85,11 @@ class _MyHomePageState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(primaryColor: Color(0xFFFFFFFF)),
       home: Scaffold(
-        appBar: AppBar(
+        /*appBar: AppBar(
           title: Text('Eyepetizer', style: TextStyle(color: Colors.black)),
           centerTitle: true,
           elevation: 0,
-        ),
+        ),*/
         body: body,
         bottomNavigationBar: CupertinoTabBar(
           backgroundColor: Color(0xFFFFFFFF),
