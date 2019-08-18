@@ -102,28 +102,6 @@ class HomePageState extends State<HomePage> {
               itemCount: _dataList.length + 1),
           onRefresh: this.onRefresh),
     );
-    /*return RefreshIndicator(
-        child: ListView.separated(
-            controller: this.scrollController,
-            itemBuilder: (context, index) {
-              if (index < _dataList.length) {
-                if (_dataList[index].type == 'textHeader') {
-                  return TimeTitleItem(item: _dataList[index]);
-                }
-                return HomePageItem(item: _dataList[index]);
-              }
-              return renderLoadMoreView();
-            },
-            separatorBuilder: (context, index) {
-              return Divider(
-                height: .5,
-                color: Color(0xFFDDDDDD),
-                indent: 15,
-              );
-            },
-            itemCount: _dataList.length + 1),
-        onRefresh: this.onRefresh
-    );*/
   }
 
   /// 上拉加载 Widget
