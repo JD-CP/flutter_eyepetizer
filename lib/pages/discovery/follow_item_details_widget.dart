@@ -82,7 +82,7 @@ class FollowItemDetailsWidget extends StatelessWidget {
             ],
           ),
           Container(
-              height: 200,
+              height: 245,
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return FollowItemListWidget(
