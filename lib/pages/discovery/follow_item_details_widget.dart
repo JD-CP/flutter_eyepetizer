@@ -87,6 +87,7 @@ class FollowItemDetailsWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return FollowItemListWidget(
                     item: item.data.itemList[index],
+                    index: index,
                   );
                 },
                 shrinkWrap: true,

@@ -12,14 +12,25 @@ import 'follow_item_widget.dart';
 
 class FollowItemListWidget extends StatelessWidget {
   final FollowItemlistDataItemlist item;
+  final int index;
 
-  FollowItemListWidget({Key key, this.item}) : super(key: key);
+  FollowItemListWidget({Key key, this.item, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      item.data.cover.feed,
-      width: 300,
-    );
+    if ((this.index + 1) % 2 == 0) {
+      return Padding(
+        padding: EdgeInsets.only(left: 10, right: 10),
+        child: Image.network(
+          item.data.cover.feed,
+          width: 300,
+        ),
+      );
+    } else {
+      return Image.network(
+        item.data.cover.feed,
+        width: 300,
+      );
+    }
   }
 }
