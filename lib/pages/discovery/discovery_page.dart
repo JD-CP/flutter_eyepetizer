@@ -124,7 +124,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   var i = index;
                   i -= 1;
                   if (i.isOdd) {

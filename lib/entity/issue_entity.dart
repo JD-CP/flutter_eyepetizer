@@ -41,6 +41,7 @@ class Issue {
   int count;
   List<Item> itemList;
   String type;
+  String nextPageUrl;
 
   Issue(
       {this.date,
@@ -48,7 +49,8 @@ class Issue {
       this.releaseTime,
       this.count,
       this.itemList,
-      this.type});
+      this.type,
+      this.nextPageUrl});
 
   Issue.fromJson(Map<String, dynamic> json) {
     date = json['date'];
@@ -62,6 +64,7 @@ class Issue {
       });
     }
     type = json['type'];
+    nextPageUrl = json['nextPageUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -74,6 +77,7 @@ class Issue {
       data['itemList'] = this.itemList.map((v) => v.toJson()).toList();
     }
     data['type'] = this.type;
+    data['nextPageUrl'] = this.nextPageUrl;
     return data;
   }
 }

@@ -8,4 +8,6 @@ class Constant {
   static final followUrl = '${baseUrl}api/v4/tabs/follow';
 
   static final rankListUrl = '${baseUrl}api/v4/rankList';
+
+  static final categoryDetailsUrl = '${baseUrl}api/v4/categories/videoList?';
 }
