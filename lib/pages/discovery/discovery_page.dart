@@ -8,6 +8,7 @@ import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'category_item_widget.dart';
 import 'follow_item_widget.dart';
+import 'follow_list_page.dart';
 
 class DiscoveryPage extends StatefulWidget {
   @override
@@ -94,7 +95,10 @@ class DiscoveryPageState extends State<DiscoveryPage> {
                     ),
                   ),
                   onTap: () {
-                    print('查看更多');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FollowListPage()));
                   },
                 ),
               ],
