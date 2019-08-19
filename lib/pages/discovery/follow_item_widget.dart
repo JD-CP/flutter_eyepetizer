@@ -39,7 +39,7 @@ class FollowItemWidget extends StatelessWidget {
                     item.data.header.title,
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.black54,
+                      color: Colors.black,
                     ),
                   ),
                   Padding(

@@ -22,16 +22,25 @@ class CategoryDetailsPage extends StatefulWidget {
 
 class CategoryDetailsPageState extends State<CategoryDetailsPage> {
   List<Item> _dataList = [];
-  String nextPageUrl;
+  String nextPageUrl = Constant.categoryDetailsUrl;
+
+  /// 表示是否正在上拉加载
+  bool isLoadingMore = false;
+
+  ScrollController scrollController = ScrollController();
 
   void getPageData() async {
+    if (!this.isLoadingMore) {
+      nextPageUrl = Constant.categoryDetailsUrl;
+    }
+
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
 
     var dio = Dio();
     dio.interceptors.add(LogInterceptor());
     var response = await dio.get(
-      Constant.categoryDetailsUrl,
+      nextPageUrl,
       queryParameters: {
         "id": widget.item.id,
         "udid": 'd2807c895f0348a180148c9dfa6f2feeac0781b5',
@@ -42,7 +51,12 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
     Map map = json.decode(response.toString());
     var issueEntity = Issue.fromJson(map);
     setState(() {
-      this._dataList = issueEntity.itemList;
+      if (this.isLoadingMore) {
+        isLoadingMore = false;
+        this._dataList.addAll(issueEntity.itemList);
+      } else {
+        this._dataList = issueEntity.itemList;
+      }
       this.nextPageUrl = issueEntity.nextPageUrl;
     });
   }
@@ -50,6 +64,17 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
   @override
   void initState() {
     super.initState();
+    this.scrollController.addListener(() => {
+          if (!this.isLoadingMore &&
+              this.scrollController.position.pixels >=
+                  this.scrollController.position.maxScrollExtent)
+            {
+              this.setState(() {
+                this.isLoadingMore = true;
+                this.getPageData();
+              })
+            }
+        });
     getPageData();
   }
 
@@ -57,6 +82,7 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        controller: this.scrollController,
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
@@ -72,13 +98,57 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
-              return CategoryItem(
-                item: _dataList[index],
-              );
-            }, childCount: _dataList.length),
+              if (index < this._dataList.length) {
+                return CategoryItem(
+                  item: _dataList[index],
+                );
+              }
+              return renderLoadMoreView();
+            }, childCount: _dataList.length + 1),
           ),
         ],
       ),
     );
+  }
+
+  /// 上拉加载 Widget
+  Widget renderLoadMoreView() {
+    if (this.isLoadingMore) {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '努力加载中...  ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black54,
+              ),
+            ),
+            SizedBox(
+              width: 18,
+              height: 18,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.5,
+                backgroundColor: Colors.deepPurple[600],
+              ),
+            )
+          ],
+        ),
+      );
+    } else {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 15),
+        alignment: Alignment.center,
+        child: Text(
+          '上拉加载更多',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black54,
+          ),
+        ),
+      );
+    }
   }
 }
