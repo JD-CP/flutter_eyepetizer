@@ -21,7 +21,7 @@ class CategoryDetailsPage extends StatefulWidget {
 }
 
 class CategoryDetailsPageState extends State<CategoryDetailsPage> {
-  List<Item> _dataList = [];
+  List<Item> _dataList;
   String nextPageUrl = Constant.categoryDetailsUrl;
 
   /// 表示是否正在上拉加载
@@ -78,36 +78,49 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
     getPageData();
   }
 
+  Widget renderLoadingWidget() {
+    return Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 2.5,
+        backgroundColor: Colors.deepPurple[600],
+      ),
+    );
+  }
+
+  Widget renderScrollWidget() {
+    return CustomScrollView(
+      controller: this.scrollController,
+      slivers: <Widget>[
+        SliverAppBar(
+          pinned: true,
+          elevation: 0,
+          expandedHeight: 225,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text(widget.item.name),
+            background: Image.network(
+              widget.item.bgPicture,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            if (index < this._dataList.length) {
+              return CategoryItem(
+                item: _dataList[index],
+              );
+            }
+            return renderLoadMoreView();
+          }, childCount: _dataList.length + 1),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        controller: this.scrollController,
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            elevation: 0,
-            expandedHeight: 225,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(widget.item.name),
-              background: Image.network(
-                widget.item.bgPicture,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              if (index < this._dataList.length) {
-                return CategoryItem(
-                  item: _dataList[index],
-                );
-              }
-              return renderLoadMoreView();
-            }, childCount: _dataList.length + 1),
-          ),
-        ],
-      ),
+      body: _dataList == null ? renderLoadingWidget() : renderScrollWidget(),
     );
   }
 

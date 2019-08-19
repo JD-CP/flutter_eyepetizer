@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
 
   /// 表示是否正在上拉加载
   bool isLoadingMore = false;
-  List<Item> _dataList = [];
+  List<Item> _dataList;
 
   ScrollController scrollController = ScrollController();
 
@@ -72,6 +72,39 @@ class HomePageState extends State<HomePage> {
     getHomePageData();
   }
 
+  Widget renderLoadingWidget() {
+    return Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 2.5,
+        backgroundColor: Colors.deepPurple[600],
+      ),
+    );
+  }
+
+  Widget renderRefreshWidget() {
+    return RefreshIndicator(
+        child: ListView.separated(
+            controller: this.scrollController,
+            itemBuilder: (context, index) {
+              if (index < _dataList.length) {
+                if (_dataList[index].type == 'textHeader') {
+                  return TimeTitleItem(item: _dataList[index]);
+                }
+                return HomePageItem(item: _dataList[index]);
+              }
+              return renderLoadMoreView();
+            },
+            separatorBuilder: (context, index) {
+              return Divider(
+                height: .5,
+                color: Color(0xFFDDDDDD),
+                indent: 15,
+              );
+            },
+            itemCount: _dataList.length + 1),
+        onRefresh: this.onRefresh);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,27 +113,7 @@ class HomePageState extends State<HomePage> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: RefreshIndicator(
-          child: ListView.separated(
-              controller: this.scrollController,
-              itemBuilder: (context, index) {
-                if (index < _dataList.length) {
-                  if (_dataList[index].type == 'textHeader') {
-                    return TimeTitleItem(item: _dataList[index]);
-                  }
-                  return HomePageItem(item: _dataList[index]);
-                }
-                return renderLoadMoreView();
-              },
-              separatorBuilder: (context, index) {
-                return Divider(
-                  height: .5,
-                  color: Color(0xFFDDDDDD),
-                  indent: 15,
-                );
-              },
-              itemCount: _dataList.length + 1),
-          onRefresh: this.onRefresh),
+      body: _dataList == null ? renderLoadingWidget() : renderRefreshWidget(),
     );
   }
 

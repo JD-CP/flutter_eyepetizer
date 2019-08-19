@@ -16,8 +16,8 @@ class DiscoveryPage extends StatefulWidget {
 }
 
 class DiscoveryPageState extends State<DiscoveryPage> {
-  List<CategoryEntity> _dataList = [];
-  List<FollowItem> _followItemList = [];
+  List<CategoryEntity> _dataList;
+  List<FollowItem> _followItemList;
 
   void getPageData() async {
     var dio = Dio();
@@ -109,6 +109,67 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
+  Widget renderBodyWidget() {
+    return Container(
+      color: Colors.white,
+      child: CustomScrollView(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: renderFollowTitleWidget(),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                var i = index;
+                i -= 1;
+                if (i.isOdd) {
+                  i = (i + 1) ~/ 2;
+                  return FollowItemWidget(
+                    item: _followItemList[i],
+                  );
+                }
+                i = i ~/ 2;
+                return Divider(
+                  height: .5,
+                  indent: 65,
+                  color: Color(0xFFDDDDDD),
+                );
+              },
+              childCount: _followItemList.length * 2,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: renderCategoryTitleWidget(),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.all(10),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return CategoryItemWidget(item: this._dataList[index]);
+              }, childCount: this._dataList.length),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget renderLoadingWidget() {
+    return Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 2.5,
+        backgroundColor: Colors.deepPurple[600],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,55 +178,9 @@ class DiscoveryPageState extends State<DiscoveryPage> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Container(
-        color: Colors.white,
-        child: CustomScrollView(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: renderFollowTitleWidget(),
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  var i = index;
-                  i -= 1;
-                  if (i.isOdd) {
-                    i = (i + 1) ~/ 2;
-                    return FollowItemWidget(
-                      item: _followItemList[i],
-                    );
-                  }
-                  i = i ~/ 2;
-                  return Divider(
-                    height: .5,
-                    indent: 65,
-                    color: Color(0xFFDDDDDD),
-                  );
-                },
-                childCount: _followItemList.length * 2,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: renderCategoryTitleWidget(),
-            ),
-            SliverPadding(
-              padding: EdgeInsets.all(10),
-              sliver: SliverGrid(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return CategoryItemWidget(item: this._dataList[index]);
-                }, childCount: this._dataList.length),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: (_dataList == null || _followItemList == null)
+          ? renderLoadingWidget()
+          : renderBodyWidget(),
     );
   }
 }

@@ -27,7 +27,7 @@ class RankPageWidget extends StatefulWidget {
 
 class RankPageState extends State<RankPageWidget>
     with AutomaticKeepAliveClientMixin {
-  List<Item> _dataList = [];
+  List<Item> _dataList;
 
   void getRankPageData() async {
     var dio = Dio();
@@ -53,9 +53,16 @@ class RankPageState extends State<RankPageWidget>
     getRankPageData();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
+  Widget renderLoadingWidget() {
+    return Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 2.5,
+        backgroundColor: Colors.deepPurple[600],
+      ),
+    );
+  }
+
+  Widget renderRefreshWidget() {
     return RefreshIndicator(
       child: ListView.separated(
           itemBuilder: (context, index) {
@@ -71,6 +78,12 @@ class RankPageState extends State<RankPageWidget>
           itemCount: _dataList.length),
       onRefresh: this._onRefresh,
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return _dataList == null ? renderLoadingWidget() : renderRefreshWidget();
   }
 
   @override

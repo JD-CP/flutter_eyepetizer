@@ -37,6 +37,8 @@ dev_dependencies:
   # 工具类
   flustars: 0.2.6+1
   device_info: 0.4.0+2
+  # 视频播放
+  flutter_ijkplayer: 0.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -17,7 +17,7 @@ class FollowListPageState extends State<FollowListPage> {
 
   /// 表示是否正在上拉加载
   bool isLoadingMore = false;
-  List<FollowItem> _followItemList = [];
+  List<FollowItem> _followItemList;
 
   ScrollController scrollController = ScrollController();
 
@@ -28,7 +28,7 @@ class FollowListPageState extends State<FollowListPage> {
     var dio = Dio();
     dio.interceptors.add(LogInterceptor());
     var responseFollow =
-        await dio.get(this.nextPageUrl, options: Options(headers: httpHeaders));
+    await dio.get(this.nextPageUrl, options: Options(headers: httpHeaders));
 
     Map map = json.decode(responseFollow.toString());
     var followEntity = FollowEntity.fromJson(map);
@@ -66,6 +66,37 @@ class FollowListPageState extends State<FollowListPage> {
     });
   }
 
+  Widget renderLoadingWidget() {
+    return Center(
+      child: CircularProgressIndicator(
+        strokeWidth: 2.5,
+        backgroundColor: Colors.deepPurple[600],
+      ),
+    );
+  }
+
+  Widget renderRefreshWidget() {
+    return Container(
+        child: RefreshIndicator(
+          child: ListView.separated(
+            controller: this.scrollController,
+            itemBuilder: (context, index) {
+              if (index < this._followItemList.length) {
+                return FollowItemDetailsWidget(item: _followItemList[index]);
+              }
+              return renderLoadMoreView();
+            },
+            separatorBuilder: (context, index) {
+              return Divider(
+                height: .5,
+              );
+            },
+            itemCount: _followItemList.length + 1,
+          ),
+          onRefresh: _onRefresh,
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,25 +105,7 @@ class FollowListPageState extends State<FollowListPage> {
         title: Text('热门关注'),
         elevation: 0,
       ),
-      body: Container(
-          child: RefreshIndicator(
-        child: ListView.separated(
-          controller: this.scrollController,
-          itemBuilder: (context, index) {
-            if (index < this._followItemList.length) {
-              return FollowItemDetailsWidget(item: _followItemList[index]);
-            }
-            return renderLoadMoreView();
-          },
-          separatorBuilder: (context, index) {
-            return Divider(
-              height: .5,
-            );
-          },
-          itemCount: _followItemList.length + 1,
-        ),
-        onRefresh: _onRefresh,
-      )),
+      body: _followItemList == null ? renderLoadingWidget() : renderRefreshWidget(),
     );
   }
 
