@@ -70,6 +70,9 @@ flutter:
     - images/icon_comment.png
     - images/icon_like.png
     - images/icon_share_white.png
+    - images/icon_avatar.png
+    - images/icon_like_grey.png
+    - images/icon_comment_grey.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

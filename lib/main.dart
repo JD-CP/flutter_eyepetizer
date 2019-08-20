@@ -1,14 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'pages/home/home_page.dart';
-import './http/http.dart';
-import 'package:dio/dio.dart';
-
 import 'pages/discovery/discovery_page.dart';
 import 'pages/hot/hot_page.dart';
+import 'pages/mine/mine_page.dart';
 
 // 主入口
 void main() {
@@ -53,7 +48,7 @@ class _MyHomePageState extends State<MyApp> {
         getTabImage('images/ic_mine_selected.png')
       ],
     ];
-    tabPages ??= [HomePage(), DiscoveryPage(), HotPage(), HomePage()];
+    tabPages ??= [HomePage(), DiscoveryPage(), HotPage(), MinePage()];
   }
 
   Image getTabImage(imagePath) => Image.asset(imagePath, width: 22, height: 22);
