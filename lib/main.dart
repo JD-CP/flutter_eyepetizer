@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'pages/home/home_page.dart';
 import './http/http.dart';
 import 'package:dio/dio.dart';
@@ -83,7 +84,9 @@ class _MyHomePageState extends State<MyApp> {
       index: tabIndex,
     );
     return MaterialApp(
-      theme: ThemeData(primaryColor: Color(0xFFFFFFFF)),
+      theme: ThemeData(
+        primaryColor: Color(0xFFFFFFFF),
+      ),
       home: Scaffold(
         /*appBar: AppBar(
           title: Text('Eyepetizer', style: TextStyle(color: Colors.black)),

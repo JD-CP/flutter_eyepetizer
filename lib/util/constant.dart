@@ -10,4 +10,6 @@ class Constant {
   static final rankListUrl = '${baseUrl}api/v4/rankList';
 
   static final categoryDetailsUrl = '${baseUrl}api/v4/categories/videoList?';
+
+  static final videoRelatedUrl = '${baseUrl}api/v4/video/related?';
 }

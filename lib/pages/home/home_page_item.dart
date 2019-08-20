@@ -20,8 +20,7 @@ class HomePageItem extends StatelessWidget {
             alignment: FractionalOffset(0.95, 0.05),
             children: <Widget>[
               CachedNetworkImage(
-                height: 200,
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 imageUrl: item.data.cover.feed,
                 errorWidget: (context, url, error) =>
                     Image.asset('images/img_load_fail'),
@@ -124,7 +123,9 @@ class HomePageItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => VideoDetailsPage()));
+                builder: (context) => VideoDetailsPage(
+                      item: this.item,
+                    )));
       },
     );
   }
