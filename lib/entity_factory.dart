@@ -1,5 +1,4 @@
 import 'package:flutter_eyepetizer/entity/category_entity.dart';
-import 'package:flutter_eyepetizer/entity/follow_entity.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/entity/tab_info_entity.dart';
 
@@ -9,8 +8,6 @@ class EntityFactory {
       return null;
     } else if (T.toString() == "CategoryEntity") {
       return CategoryEntity.fromJson(json) as T;
-    } else if (T.toString() == "FollowEntity") {
-      return FollowEntity.fromJson(json) as T;
     } else if (T.toString() == "IssueEntity") {
       return IssueEntity.fromJson(json) as T;
     } else if (T.toString() == "TabInfoEntity") {

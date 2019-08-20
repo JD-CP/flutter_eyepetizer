@@ -109,7 +109,76 @@ class Item {
   }
 }
 
-class Data {
+//{
+//                    "actionUrl": "eyepetizer://pgc/detail/4058/?title=%E6%91%84%E5%BD%B1%E9%A3%8E%E6%9A%B4&userType=PGC&tabIndex=1",
+//                    "description": "摄影没有捷径，一起多看、多学、多拍！",
+//                    "expert": false,
+//                    "follow": {
+//                        "followed": false,
+//                        "itemId": 4058,
+//                        "itemType": "author"
+//                    },
+//                    "icon": "http://img.kaiyanapp.com/3674ba7a61f8d21fd1a675a35e6daffa.jpeg?imageMogr2/quality/60/format/jpg",
+//                    "iconType": "round",
+//                    "id": 4058,
+//                    "ifPgc": true,
+//                    "ifShowNotificationIcon": false,
+//                    "title": "摄影风暴",
+//                    "uid": 0
+//                }
+class Header {
+  String actionUrl;
+  String description;
+  bool expert;
+  String icon;
+  String iconType;
+  int id;
+  bool ifPgc;
+  bool ifShowNotificationIcon;
+  String title;
+  int uid;
+
+  Header(
+      {this.actionUrl,
+      this.description,
+      this.expert,
+      this.icon,
+      this.iconType,
+      this.id,
+      this.ifPgc,
+      this.ifShowNotificationIcon,
+      this.title,
+      this.uid});
+
+  Header.fromJson(Map<String, dynamic> json) {
+    actionUrl = json['actionUrl'];
+    description = json['description'];
+    expert = json['expert'];
+    icon = json['icon'];
+    iconType = json['iconType'];
+    id = json['id'];
+    ifPgc = json['ifPgc'];
+    ifShowNotificationIcon = json['ifShowNotificationIcon'];
+    title = json['title'];
+    uid = json['uid'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['actionUrl'] = this.actionUrl;
+    data['description'] = this.description;
+    data['expert'] = this.expert;
+    data['icon'] = this.icon;
+    data['iconType'] = this.iconType;
+    data['id'] = this.id;
+    data['ifPgc'] = this.ifPgc;
+    data['ifShowNotificationIcon'] = this.ifShowNotificationIcon;
+    data['title'] = this.title;
+    data['uid'] = this.uid;
+  }
+}
+
+class FollowItemData {
   int date;
   int releaseTime;
   String description;
@@ -141,39 +210,38 @@ class Data {
   String resourceType;
   String text;
 
-  Data(
+  FollowItemData(
       {this.date,
-      this.releaseTime,
-      this.description,
-      this.collected,
-      this.remark,
-      this.title,
-      this.type,
-      this.playUrl,
-      this.cover,
-      this.duration,
-      this.descriptionEditor,
-      this.xLibrary,
-      this.provider,
-      this.id,
-      this.subtitles,
-      this.ad,
-      this.author,
-      this.dataType,
-      this.searchWeight,
-      this.consumption,
-      this.played,
-      this.tags,
-      this.labelList,
-      this.playInfo,
-      this.ifLimitVideo,
-      this.webUrl,
-      this.category,
-      this.idx,
-      this.resourceType,
-      this.text});
-
-  Data.fromJson(Map<String, dynamic> json) {
+        this.releaseTime,
+        this.description,
+        this.collected,
+        this.remark,
+        this.title,
+        this.type,
+        this.playUrl,
+        this.cover,
+        this.duration,
+        this.descriptionEditor,
+        this.xLibrary,
+        this.provider,
+        this.id,
+        this.subtitles,
+        this.ad,
+        this.author,
+        this.dataType,
+        this.searchWeight,
+        this.consumption,
+        this.played,
+        this.tags,
+        this.labelList,
+        this.playInfo,
+        this.ifLimitVideo,
+        this.webUrl,
+        this.category,
+        this.idx,
+        this.resourceType,
+        this.text,});
+  FollowItemData.fromJson(Map<String, dynamic> json) {
     date = json['date'];
     releaseTime = json['releaseTime'];
     description = json['description'];
@@ -195,7 +263,7 @@ class Data {
     }
     ad = json['ad'];
     author =
-        json['author'] != null ? new Author.fromJson(json['author']) : null;
+    json['author'] != null ? new Author.fromJson(json['author']) : null;
     dataType = json['dataType'];
     searchWeight = json['searchWeight'];
     consumption = json['consumption'] != null
@@ -219,7 +287,7 @@ class Data {
     }
     ifLimitVideo = json['ifLimitVideo'];
     webUrl =
-        json['webUrl'] != null ? new WebUrl.fromJson(json['webUrl']) : null;
+    json['webUrl'] != null ? new WebUrl.fromJson(json['webUrl']) : null;
     category = json['category'];
     idx = json['idx'];
     resourceType = json['resourceType'];
@@ -276,6 +344,223 @@ class Data {
     data['idx'] = this.idx;
     data['resourceType'] = this.resourceType;
     data['text'] = this.text;
+    return data;
+  }
+}
+
+class FollowItem {
+  FollowItemData data;
+  int adIndex;
+  int id;
+  String type;
+
+  FollowItem({this.data, this.adIndex, this.id, this.type});
+
+  FollowItem.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? new FollowItemData.fromJson(json['data']) : null;
+    adIndex = json['adIndex'];
+    id = json['id'];
+    type = json['type'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    data['adIndex'] = this.adIndex;
+    data['id'] = this.id;
+    data['type'] = this.type;
+    return data;
+  }
+}
+
+class Data {
+  int date;
+  int releaseTime;
+  String description;
+  bool collected;
+  String remark;
+  String title;
+  String type;
+  String playUrl;
+  Cover cover;
+  int duration;
+  String descriptionEditor;
+  String xLibrary;
+  Provider provider;
+  int id;
+  List<Null> subtitles;
+  bool ad;
+  Author author;
+  String dataType;
+  int searchWeight;
+  Consumption consumption;
+  bool played;
+  List<Tag> tags;
+  List<Null> labelList;
+  List<PlayInfo> playInfo;
+  bool ifLimitVideo;
+  WebUrl webUrl;
+  String category;
+  int idx;
+  String resourceType;
+  String text;
+  Header header;
+  List<Item> itemList;
+
+  Data(
+      {this.date,
+      this.releaseTime,
+      this.description,
+      this.collected,
+      this.remark,
+      this.title,
+      this.type,
+      this.playUrl,
+      this.cover,
+      this.duration,
+      this.descriptionEditor,
+      this.xLibrary,
+      this.provider,
+      this.id,
+      this.subtitles,
+      this.ad,
+      this.author,
+      this.dataType,
+      this.searchWeight,
+      this.consumption,
+      this.played,
+      this.tags,
+      this.labelList,
+      this.playInfo,
+      this.ifLimitVideo,
+      this.webUrl,
+      this.category,
+      this.idx,
+      this.resourceType,
+      this.text,
+      this.header,
+      this.itemList,});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    date = json['date'];
+    releaseTime = json['releaseTime'];
+    description = json['description'];
+    collected = json['collected'];
+    remark = json['remark'];
+    title = json['title'];
+    type = json['type'];
+    playUrl = json['playUrl'];
+    cover = json['cover'] != null ? new Cover.fromJson(json['cover']) : null;
+    duration = json['duration'];
+    descriptionEditor = json['descriptionEditor'];
+    xLibrary = json['library'];
+    provider = json['provider'] != null
+        ? new Provider.fromJson(json['provider'])
+        : null;
+    id = json['id'];
+    if (json['subtitles'] != null) {
+      subtitles = new List<Null>();
+    }
+    ad = json['ad'];
+    author =
+        json['author'] != null ? new Author.fromJson(json['author']) : null;
+    dataType = json['dataType'];
+    searchWeight = json['searchWeight'];
+    consumption = json['consumption'] != null
+        ? new Consumption.fromJson(json['consumption'])
+        : null;
+    played = json['played'];
+    if (json['tags'] != null) {
+      tags = new List<Tag>();
+      (json['tags'] as List).forEach((v) {
+        tags.add(new Tag.fromJson(v));
+      });
+    }
+    if (json['labelList'] != null) {
+      labelList = new List<Null>();
+    }
+    if (json['playInfo'] != null) {
+      playInfo = new List<PlayInfo>();
+      (json['playInfo'] as List).forEach((v) {
+        playInfo.add(new PlayInfo.fromJson(v));
+      });
+    }
+    ifLimitVideo = json['ifLimitVideo'];
+    webUrl =
+        json['webUrl'] != null ? new WebUrl.fromJson(json['webUrl']) : null;
+    category = json['category'];
+    idx = json['idx'];
+    resourceType = json['resourceType'];
+    text = json['text'];
+    header = json['header'] != null
+        ? new Header.fromJson(json['header'])
+        : null;
+    if (json['itemList'] != null) {
+      itemList = new List<Item>();
+      (json['itemList'] as List).forEach((v) {
+        itemList.add(new Item.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['date'] = this.date;
+    data['releaseTime'] = this.releaseTime;
+    data['description'] = this.description;
+    data['collected'] = this.collected;
+    data['remark'] = this.remark;
+    data['title'] = this.title;
+    data['type'] = this.type;
+    data['playUrl'] = this.playUrl;
+    if (this.cover != null) {
+      data['cover'] = this.cover.toJson();
+    }
+    data['duration'] = this.duration;
+    data['descriptionEditor'] = this.descriptionEditor;
+    data['library'] = this.xLibrary;
+    if (this.provider != null) {
+      data['provider'] = this.provider.toJson();
+    }
+    data['id'] = this.id;
+    if (this.subtitles != null) {
+      data['subtitles'] = [];
+    }
+    data['ad'] = this.ad;
+    if (this.author != null) {
+      data['author'] = this.author.toJson();
+    }
+    data['dataType'] = this.dataType;
+    data['searchWeight'] = this.searchWeight;
+    if (this.consumption != null) {
+      data['consumption'] = this.consumption.toJson();
+    }
+    data['played'] = this.played;
+    if (this.tags != null) {
+      data['tags'] = this.tags.map((v) => v.toJson()).toList();
+    }
+    if (this.labelList != null) {
+      data['labelList'] = [];
+    }
+    if (this.playInfo != null) {
+      data['playInfo'] = this.playInfo.map((v) => v.toJson()).toList();
+    }
+    data['ifLimitVideo'] = this.ifLimitVideo;
+    if (this.webUrl != null) {
+      data['webUrl'] = this.webUrl.toJson();
+    }
+    data['category'] = this.category;
+    data['idx'] = this.idx;
+    data['resourceType'] = this.resourceType;
+    data['text'] = this.text;
+    if (this.header != null) {
+      data['header'] = this.header.toJson();
+    }
+    if (this.itemList != null) {
+      data['itemList'] = this.itemList.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

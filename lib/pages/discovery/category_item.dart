@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flustars/flustars.dart';
 
@@ -14,11 +15,21 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        CachedNetworkImage(
-          fit: BoxFit.contain,
-          imageUrl: item.data.cover.feed,
-          errorWidget: (context, url, error) =>
-              Image.asset('images/img_load_fail'),
+        GestureDetector(
+          child: CachedNetworkImage(
+            fit: BoxFit.contain,
+            imageUrl: item.data.cover.feed,
+            errorWidget: (context, url, error) =>
+                Image.asset('images/img_load_fail'),
+          ),
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => VideoDetailsPage(
+                          item: this.item,
+                        )));
+          },
         ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),

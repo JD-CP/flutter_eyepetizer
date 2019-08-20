@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/entity/category_entity.dart';
-import 'package:flutter_eyepetizer/entity/follow_entity.dart';
+import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'category_item_widget.dart';
@@ -17,7 +17,7 @@ class DiscoveryPage extends StatefulWidget {
 
 class DiscoveryPageState extends State<DiscoveryPage> {
   List<CategoryEntity> _dataList;
-  List<FollowItem> _followItemList;
+  List<Item> _followItemList;
 
   void getPageData() async {
     var dio = Dio();
@@ -32,7 +32,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     var responseFollow = await dio.get(Constant.followUrl,
         options: Options(headers: httpHeaders));
     Map map = json.decode(responseFollow.toString());
-    var followEntity = FollowEntity.fromJson(map);
+    var followEntity = Issue.fromJson(map);
     var followItemList = followEntity.itemList;
 
     this.setState(() {

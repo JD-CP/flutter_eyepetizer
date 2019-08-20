@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_eyepetizer/entity/follow_entity.dart';
+import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'follow_item_details_widget.dart';
@@ -17,7 +17,7 @@ class FollowListPageState extends State<FollowListPage> {
 
   /// 表示是否正在上拉加载
   bool isLoadingMore = false;
-  List<FollowItem> _followItemList;
+  List<Item> _followItemList;
 
   ScrollController scrollController = ScrollController();
 
@@ -28,10 +28,10 @@ class FollowListPageState extends State<FollowListPage> {
     var dio = Dio();
     dio.interceptors.add(LogInterceptor());
     var responseFollow =
-    await dio.get(this.nextPageUrl, options: Options(headers: httpHeaders));
+        await dio.get(this.nextPageUrl, options: Options(headers: httpHeaders));
 
     Map map = json.decode(responseFollow.toString());
-    var followEntity = FollowEntity.fromJson(map);
+    var followEntity = Issue.fromJson(map);
     this.nextPageUrl = followEntity.nextPageUrl;
 
     this.setState(() {
@@ -78,23 +78,23 @@ class FollowListPageState extends State<FollowListPage> {
   Widget renderRefreshWidget() {
     return Container(
         child: RefreshIndicator(
-          child: ListView.separated(
-            controller: this.scrollController,
-            itemBuilder: (context, index) {
-              if (index < this._followItemList.length) {
-                return FollowItemDetailsWidget(item: _followItemList[index]);
-              }
-              return renderLoadMoreView();
-            },
-            separatorBuilder: (context, index) {
-              return Divider(
-                height: .5,
-              );
-            },
-            itemCount: _followItemList.length + 1,
-          ),
-          onRefresh: _onRefresh,
-        ));
+      child: ListView.separated(
+        controller: this.scrollController,
+        itemBuilder: (context, index) {
+          if (index < this._followItemList.length) {
+            return FollowItemDetailsWidget(item: _followItemList[index]);
+          }
+          return renderLoadMoreView();
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: .5,
+          );
+        },
+        itemCount: _followItemList.length + 1,
+      ),
+      onRefresh: _onRefresh,
+    ));
   }
 
   @override
@@ -105,7 +105,9 @@ class FollowListPageState extends State<FollowListPage> {
         title: Text('热门关注'),
         elevation: 0,
       ),
-      body: _followItemList == null ? renderLoadingWidget() : renderRefreshWidget(),
+      body: _followItemList == null
+          ? renderLoadingWidget()
+          : renderRefreshWidget(),
     );
   }
 

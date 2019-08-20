@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/entity/follow_entity.dart';
+import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 
 import 'follow_item_list_widget.dart';
 
 class FollowItemDetailsWidget extends StatelessWidget {
-  final FollowItem item;
+  final Item item;
 
   FollowItemDetailsWidget({Key key, this.item}) : super(key: key);
 
@@ -34,7 +34,7 @@ class FollowItemDetailsWidget extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,

@@ -5,15 +5,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/entity/category_entity.dart';
-import 'package:flutter_eyepetizer/entity/follow_entity.dart';
+import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
+import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'category_item_widget.dart';
 import 'follow_item_details_widget.dart';
 import 'follow_item_widget.dart';
 
 class FollowItemListWidget extends StatelessWidget {
-  final FollowItemlistDataItemlist item;
+  final Item item;
   final int index;
 
   FollowItemListWidget({Key key, this.item, this.index}) : super(key: key);
@@ -23,14 +24,14 @@ class FollowItemListWidget extends StatelessWidget {
     if ((this.index + 1) % 2 == 0) {
       return Padding(
         padding: EdgeInsets.only(left: 6, right: 6),
-        child: renderItemWidget(),
+        child: renderItemWidget(context),
       );
     } else {
-      return renderItemWidget();
+      return renderItemWidget(context);
     }
   }
 
-  Widget renderItemWidget() {
+  Widget renderItemWidget(context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,13 +41,23 @@ class FollowItemListWidget extends StatelessWidget {
           child: Stack(
             alignment: FractionalOffset(0.97, 0.05),
             children: <Widget>[
-              CachedNetworkImage(
-                width: 300,
-                height: 180,
-                fit: BoxFit.cover,
-                imageUrl: item.data.cover.feed,
-                errorWidget: (context, url, error) =>
-                    Image.asset('images/img_load_fail'),
+              GestureDetector(
+                child: CachedNetworkImage(
+                  width: 300,
+                  height: 180,
+                  fit: BoxFit.cover,
+                  imageUrl: item.data.cover.feed,
+                  errorWidget: (context, url, error) =>
+                      Image.asset('images/img_load_fail'),
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VideoDetailsPage(
+                                item: item,
+                              )));
+                },
               ),
               Positioned(
                 child: Container(
