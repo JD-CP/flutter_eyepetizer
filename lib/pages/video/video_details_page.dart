@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:dio/dio.dart';
@@ -9,11 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
-
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
-
 import 'video_related_page.dart';
 
+/// 视频详情
 class VideoDetailsPage extends StatefulWidget {
   final Item item;
 
@@ -35,38 +33,6 @@ class VideoDetailsState extends State<VideoDetailsPage> {
     getRelatedVideo();
   }
 
-  void getRelatedVideo() async {
-    var dio = Dio();
-    dio.interceptors.add(LogInterceptor());
-    var response = await dio.get(
-      Constant.videoRelatedUrl,
-      queryParameters: {
-        "id": widget.item.data.id,
-      },
-      options: Options(headers: httpHeaders),
-    );
-    Map map = json.decode(response.toString());
-    var issue = Issue.fromJson(map);
-    this.setState(() {
-      this._dataList = issue.itemList;
-    });
-  }
-
-  /// 获取视频播放地址，并播放
-  void playVideo() {
-    List<PlayInfo> playInfoList = widget.item.data.playInfo;
-    if (playInfoList.length > 1) {
-      for (var playInfo in playInfoList) {
-        if (playInfo.type == 'high') {
-          setState(() {
-            print(playInfo.url);
-            _controller.setNetworkDataSource(playInfo.url, autoPlay: false);
-          });
-        }
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     /// 修改状态栏字体颜色
@@ -74,12 +40,14 @@ class VideoDetailsState extends State<VideoDetailsPage> {
         .copyWith(statusBarBrightness: Brightness.light));
     return Scaffold(
       body: Container(
-        //margin: EdgeInsets.only(top: ScreenUtil.getStatusBarH(context)),
+        /// margin: EdgeInsets.only(top: ScreenUtil.getStatusBarH(context)),
+        /// 设置背景图片
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(
-                '${widget.item.data.cover.blurred}/thumbnail/${ScreenUtil.getScreenH(context)}x${ScreenUtil.getScreenW(context)}'),
+              '${widget.item.data.cover.blurred}/thumbnail/${ScreenUtil.getScreenH(context)}x${ScreenUtil.getScreenW(context)}',
+            ),
           ),
         ),
         child: CustomScrollView(
@@ -108,6 +76,8 @@ class VideoDetailsState extends State<VideoDetailsPage> {
                         ),
                       ),
                     ),
+
+                    /// 标签/时间栏
                     Padding(
                       padding: EdgeInsets.only(left: 15),
                       child: Text(
@@ -116,6 +86,7 @@ class VideoDetailsState extends State<VideoDetailsPage> {
                       ),
                     ),
 
+                    /// 视频描述
                     Padding(
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 10, bottom: 10),
@@ -125,6 +96,7 @@ class VideoDetailsState extends State<VideoDetailsPage> {
                       ),
                     ),
 
+                    /// 点赞、分享、评论栏
                     Padding(
                       padding: EdgeInsets.only(left: 15, right: 15),
                       child: Row(
@@ -201,9 +173,14 @@ class VideoDetailsState extends State<VideoDetailsPage> {
                       ),
                     ),
 
+                    /// 作者信息
                     Container(
                       padding: EdgeInsets.only(
-                          left: 15, top: 10, right: 15, bottom: 10),
+                        left: 15,
+                        top: 10,
+                        right: 15,
+                        bottom: 10,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -283,6 +260,8 @@ class VideoDetailsState extends State<VideoDetailsPage> {
                 ),
               ),
             ),
+
+            /// 相关视频列表
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
@@ -312,6 +291,43 @@ class VideoDetailsState extends State<VideoDetailsPage> {
     );
   }
 
+  /// 根据 id 获取相关视频
+  void getRelatedVideo() async {
+    HttpUtil.doGet(
+      Constant.videoRelatedUrl,
+      queryParameters: {
+        "id": widget.item.data.id,
+      },
+      success: (response) {
+        Map map = json.decode(response.toString());
+        var issue = Issue.fromJson(map);
+        this.setState(() {
+          this._dataList = issue.itemList;
+        });
+      },
+      fail: (exception) {},
+    );
+  }
+
+  /// 获取视频播放地址，并播放，默认播放高清视频
+  void playVideo() {
+    List<PlayInfo> playInfoList = widget.item.data.playInfo;
+    if (playInfoList.length > 1) {
+      for (var playInfo in playInfoList) {
+        if (playInfo.type == 'high') {
+          setState(() {
+            print(playInfo.url);
+            _controller.setNetworkDataSource(
+              playInfo.url,
+              autoPlay: false,
+            );
+          });
+        }
+      }
+    }
+  }
+
+  /// 释放资源
   @override
   void dispose() {
     _controller.dispose();

@@ -34,10 +34,15 @@ class HttpUtil {
   }
 
   /// 执行 get 请求
-  static doGet(String url, {options, Function success, Function fail}) async {
+  static doGet(String url,
+      {queryParameters, options, Function success, Function fail}) async {
     print('http request url: $url');
     try {
-      Response response = await buildDio().get(url, options: _options);
+      Response response = await buildDio().get(
+        url,
+        queryParameters: queryParameters,
+        options: _options,
+      );
       success(response);
       print('http response: $response');
     } catch (exception) {

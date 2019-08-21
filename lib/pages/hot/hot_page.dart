@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/entity/tab_info_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
-
 import 'rank_page.dart';
 
+/// 热门
 class HotPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HotPageState();
@@ -18,25 +17,28 @@ class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin {
 
   List<Widget> tabPages = [];
 
-  void getRankList() async {
-    var dio = Dio();
-    dio.interceptors.add(LogInterceptor());
-    var response = await dio.get(Constant.rankListUrl,
-        options: Options(headers: httpHeaders));
-    Map map = json.decode(response.toString());
-    var tabInfoEntity = TabInfoEntity.fromJson(map);
-    setState(() {
-      this.tabItems = tabInfoEntity.tabInfo.tabList;
-      this.tabPages = tabInfoEntity.tabInfo.tabList
-          .map((tabInfoItem) => RankPage(pageUrl: tabInfoItem.apiUrl))
-          .toList();
-    });
-  }
-
   @override
   void initState() {
     super.initState();
     getRankList();
+  }
+
+  void getRankList() async {
+    HttpUtil.doGet(
+      Constant.rankListUrl,
+      success: (response) {
+        Map map = json.decode(response.toString());
+        var tabInfoEntity = TabInfoEntity.fromJson(map);
+        setState(() {
+          this.tabItems = tabInfoEntity.tabInfo.tabList;
+          this.tabPages = this
+              .tabItems
+              .map((tabInfoItem) => RankPage(pageUrl: tabInfoItem.apiUrl))
+              .toList();
+        });
+      },
+      fail: (exception) {},
+    );
   }
 
   @override
