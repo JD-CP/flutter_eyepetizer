@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
+import 'package:flutter_eyepetizer/pages/search/search_page.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:flutter_eyepetizer/widget/load_more_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
@@ -30,18 +31,20 @@ class HomePageState extends State<HomePage> {
     super.initState();
 
     /// 判断是否需要上拉加载
-    this.scrollController.addListener(() => {
-          if (!this.isLoadingMore &&
-              this.scrollController.position.pixels >=
-                  this.scrollController.position.maxScrollExtent)
-            {this.loadMoreData()}
-        });
+    this.scrollController.addListener(() =>
+    {
+      if (!this.isLoadingMore &&
+          this.scrollController.position.pixels >=
+              this.scrollController.position.maxScrollExtent)
+        {this.loadMoreData()}
+    });
     getPageData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       /// TODO 自己封装实现 AppBar
       appBar: AppBar(
         title: Text('每日精选', style: TextStyle(color: Colors.black)),
@@ -49,6 +52,17 @@ class HomePageState extends State<HomePage> {
 
         /// 去除阴影
         elevation: 0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.black87,
+            ),
+            onPressed: () {
+              showSearch(context: context, delegate: SearchBarDelegate());
+            },
+          ),
+        ],
       ),
       body: _dataList == null ? LoadingWidget() : renderRefreshWidget(),
     );

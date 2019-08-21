@@ -23,7 +23,7 @@ class HttpUtil {
   static Dio buildDio() {
     _dio ??= Dio();
 
-    ///_dio.interceptors.add(LogInterceptor());
+    /// _dio.interceptors.add(LogInterceptor());
     return _dio;
   }
 

@@ -35,6 +35,7 @@ class IssueEntity {
 }
 
 class Issue {
+  int total;
   int date;
   int publishTime;
   int releaseTime;
@@ -44,7 +45,8 @@ class Issue {
   String nextPageUrl;
 
   Issue(
-      {this.date,
+      {this.total,
+      this.date,
       this.publishTime,
       this.releaseTime,
       this.count,
@@ -53,6 +55,7 @@ class Issue {
       this.nextPageUrl});
 
   Issue.fromJson(Map<String, dynamic> json) {
+    total = json['total'];
     date = json['date'];
     publishTime = json['publishTime'];
     releaseTime = json['releaseTime'];
@@ -69,6 +72,7 @@ class Issue {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['total'] = this.total;
     data['date'] = this.date;
     data['publishTime'] = this.publishTime;
     data['releaseTime'] = this.releaseTime;
@@ -210,37 +214,39 @@ class FollowItemData {
   String resourceType;
   String text;
 
-  FollowItemData(
-      {this.date,
-        this.releaseTime,
-        this.description,
-        this.collected,
-        this.remark,
-        this.title,
-        this.type,
-        this.playUrl,
-        this.cover,
-        this.duration,
-        this.descriptionEditor,
-        this.xLibrary,
-        this.provider,
-        this.id,
-        this.subtitles,
-        this.ad,
-        this.author,
-        this.dataType,
-        this.searchWeight,
-        this.consumption,
-        this.played,
-        this.tags,
-        this.labelList,
-        this.playInfo,
-        this.ifLimitVideo,
-        this.webUrl,
-        this.category,
-        this.idx,
-        this.resourceType,
-        this.text,});
+  FollowItemData({
+    this.date,
+    this.releaseTime,
+    this.description,
+    this.collected,
+    this.remark,
+    this.title,
+    this.type,
+    this.playUrl,
+    this.cover,
+    this.duration,
+    this.descriptionEditor,
+    this.xLibrary,
+    this.provider,
+    this.id,
+    this.subtitles,
+    this.ad,
+    this.author,
+    this.dataType,
+    this.searchWeight,
+    this.consumption,
+    this.played,
+    this.tags,
+    this.labelList,
+    this.playInfo,
+    this.ifLimitVideo,
+    this.webUrl,
+    this.category,
+    this.idx,
+    this.resourceType,
+    this.text,
+  });
+
   FollowItemData.fromJson(Map<String, dynamic> json) {
     date = json['date'];
     releaseTime = json['releaseTime'];
@@ -263,7 +269,7 @@ class FollowItemData {
     }
     ad = json['ad'];
     author =
-    json['author'] != null ? new Author.fromJson(json['author']) : null;
+        json['author'] != null ? new Author.fromJson(json['author']) : null;
     dataType = json['dataType'];
     searchWeight = json['searchWeight'];
     consumption = json['consumption'] != null
@@ -287,7 +293,7 @@ class FollowItemData {
     }
     ifLimitVideo = json['ifLimitVideo'];
     webUrl =
-    json['webUrl'] != null ? new WebUrl.fromJson(json['webUrl']) : null;
+        json['webUrl'] != null ? new WebUrl.fromJson(json['webUrl']) : null;
     category = json['category'];
     idx = json['idx'];
     resourceType = json['resourceType'];
@@ -357,7 +363,8 @@ class FollowItem {
   FollowItem({this.data, this.adIndex, this.id, this.type});
 
   FollowItem.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new FollowItemData.fromJson(json['data']) : null;
+    data =
+        json['data'] != null ? new FollowItemData.fromJson(json['data']) : null;
     adIndex = json['adIndex'];
     id = json['id'];
     type = json['type'];
@@ -409,39 +416,40 @@ class Data {
   Header header;
   List<Item> itemList;
 
-  Data(
-      {this.date,
-      this.releaseTime,
-      this.description,
-      this.collected,
-      this.remark,
-      this.title,
-      this.type,
-      this.playUrl,
-      this.cover,
-      this.duration,
-      this.descriptionEditor,
-      this.xLibrary,
-      this.provider,
-      this.id,
-      this.subtitles,
-      this.ad,
-      this.author,
-      this.dataType,
-      this.searchWeight,
-      this.consumption,
-      this.played,
-      this.tags,
-      this.labelList,
-      this.playInfo,
-      this.ifLimitVideo,
-      this.webUrl,
-      this.category,
-      this.idx,
-      this.resourceType,
-      this.text,
-      this.header,
-      this.itemList,});
+  Data({
+    this.date,
+    this.releaseTime,
+    this.description,
+    this.collected,
+    this.remark,
+    this.title,
+    this.type,
+    this.playUrl,
+    this.cover,
+    this.duration,
+    this.descriptionEditor,
+    this.xLibrary,
+    this.provider,
+    this.id,
+    this.subtitles,
+    this.ad,
+    this.author,
+    this.dataType,
+    this.searchWeight,
+    this.consumption,
+    this.played,
+    this.tags,
+    this.labelList,
+    this.playInfo,
+    this.ifLimitVideo,
+    this.webUrl,
+    this.category,
+    this.idx,
+    this.resourceType,
+    this.text,
+    this.header,
+    this.itemList,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     date = json['date'];
@@ -494,9 +502,8 @@ class Data {
     idx = json['idx'];
     resourceType = json['resourceType'];
     text = json['text'];
-    header = json['header'] != null
-        ? new Header.fromJson(json['header'])
-        : null;
+    header =
+        json['header'] != null ? new Header.fromJson(json['header']) : null;
     if (json['itemList'] != null) {
       itemList = new List<Item>();
       (json['itemList'] as List).forEach((v) {

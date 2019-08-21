@@ -46,12 +46,16 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     /// 发起并发请求
     var response = await Future.wait([
       /// 热门分类
-      HttpUtil.buildDio().get(Constant.categoryUrl,
-          options:
-              Options(headers: httpHeaders, responseType: ResponseType.plain)),
+      HttpUtil.buildDio().get(
+        Constant.categoryUrl,
+        options:
+            Options(headers: httpHeaders, responseType: ResponseType.plain),
+      ),
       // 推荐关注
-      HttpUtil.buildDio()
-          .get(Constant.followUrl, options: Options(headers: httpHeaders)),
+      HttpUtil.buildDio().get(
+        Constant.followUrl,
+        options: Options(headers: httpHeaders),
+      ),
     ]);
     var resJson = json.decode(response[0].toString());
     var dataList = List<CategoryEntity>.from(
