@@ -5,7 +5,6 @@ import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flustars/flustars.dart';
 
-/// StatelessWidget 不需要可变状态，故变量应为不可变
 class HomePageItem extends StatelessWidget {
   final Item item;
 
@@ -20,12 +19,14 @@ class HomePageItem extends StatelessWidget {
           children: <Widget>[
             GestureDetector(
               child: CachedNetworkImage(
+                height: 220,
                 fit: BoxFit.cover,
                 imageUrl: item.data.cover.feed,
                 errorWidget: (context, url, error) =>
                     Image.asset('images/img_load_fail'),
               ),
               onTap: () {
+                /// 点击图片跳转至视频详情页
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -86,14 +87,15 @@ class HomePageItem extends StatelessWidget {
                               TextStyle(color: Colors.black87, fontSize: 15)),
                       Padding(padding: EdgeInsets.only(top: 2, bottom: 2)),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(item.data.author.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Colors.black54, fontSize: 13)),
-                          Expanded(
+                          /*Expanded(
                             child: Text(''),
                             flex: 1,
                           ),
@@ -103,7 +105,7 @@ class HomePageItem extends StatelessWidget {
                                 format: 'yyyy/MM/dd'),
                             style:
                                 TextStyle(color: Colors.black54, fontSize: 12),
-                          ),
+                          ),*/
                         ],
                       )
                     ],

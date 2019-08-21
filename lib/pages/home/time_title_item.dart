@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 
+/// 时间标题 item
 class TimeTitleItem extends StatelessWidget {
-  final Item item;
+  final String timeTitle;
 
-  TimeTitleItem({Key key, this.item}) : super(key: key);
+  TimeTitleItem({Key key, this.timeTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class TimeTitleItem extends StatelessWidget {
       alignment: Alignment.center,
       padding: EdgeInsets.all(15),
       child: Text(
-        item.data.text,
+        timeTitle,
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,

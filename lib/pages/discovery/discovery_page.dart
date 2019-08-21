@@ -6,10 +6,12 @@ import 'package:flutter_eyepetizer/entity/category_entity.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'category_item_widget.dart';
 import 'follow_item_widget.dart';
 import 'follow_list_page.dart';
 
+/// 发现
 class DiscoveryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => DiscoveryPageState();
@@ -19,19 +21,43 @@ class DiscoveryPageState extends State<DiscoveryPage> {
   List<CategoryEntity> _dataList;
   List<Item> _followItemList;
 
+  @override
+  void initState() {
+    super.initState();
+    getPageData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('发现', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: (this._dataList == null || this._followItemList == null)
+          ? LoadingWidget()
+          : renderBodyWidget(),
+    );
+  }
+
+  /// 获取数据
   void getPageData() async {
-    var dio = Dio();
-    dio.interceptors.add(LogInterceptor());
-    var response = await dio.get(Constant.categoryUrl,
-        options:
-            Options(headers: httpHeaders, responseType: ResponseType.plain));
-    var resJson = json.decode(response.toString());
+    /// 发起并发请求
+    var response = await Future.wait([
+      /// 热门分类
+      HttpUtil.buildDio().get(Constant.categoryUrl,
+          options:
+              Options(headers: httpHeaders, responseType: ResponseType.plain)),
+      // 推荐关注
+      HttpUtil.buildDio()
+          .get(Constant.followUrl, options: Options(headers: httpHeaders)),
+    ]);
+    var resJson = json.decode(response[0].toString());
     var dataList = List<CategoryEntity>.from(
         resJson.map((i) => CategoryEntity.fromJson(i)));
 
-    var responseFollow = await dio.get(Constant.followUrl,
-        options: Options(headers: httpHeaders));
-    Map map = json.decode(responseFollow.toString());
+    Map map = json.decode(response[1].toString());
     var followEntity = Issue.fromJson(map);
     var followItemList = followEntity.itemList;
 
@@ -41,13 +67,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    getPageData();
-  }
-
-  /// 热门分类标题 Widget
+  /// 热门分类标题
   Widget renderCategoryTitleWidget() {
     return Container(
       color: Color(0xFFF4F4F4),
@@ -65,7 +85,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
-  /// 推荐关注标题 Widget renderFollowTitleWidget
+  /// 推荐关注标题
   Widget renderFollowTitleWidget() {
     return Container(
       padding: EdgeInsets.all(15),
@@ -109,6 +129,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
+  /// 此处可以学习 CustomScrollView 的用法
   Widget renderBodyWidget() {
     return Container(
       color: Colors.white,
@@ -122,6 +143,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
+                /// 实现了每个 item 下面加一条分割线
                 var i = index;
                 i -= 1;
                 if (i.isOdd) {
@@ -146,41 +168,21 @@ class DiscoveryPageState extends State<DiscoveryPage> {
           SliverPadding(
             padding: EdgeInsets.all(10),
             sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                return CategoryItemWidget(item: this._dataList[index]);
-              }, childCount: this._dataList.length),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return CategoryItemWidget(item: this._dataList[index]);
+                },
+                childCount: this._dataList.length,
+              ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                /// 设置横纵轴间距
                 crossAxisCount: 4,
                 mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget renderLoadingWidget() {
-    return Center(
-      child: CircularProgressIndicator(
-        strokeWidth: 2.5,
-        backgroundColor: Colors.deepPurple[600],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('发现', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: (_dataList == null || _followItemList == null)
-          ? renderLoadingWidget()
-          : renderBodyWidget(),
     );
   }
 }
