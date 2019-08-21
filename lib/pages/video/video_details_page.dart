@@ -20,16 +20,46 @@ class VideoDetailsPage extends StatefulWidget {
   State<StatefulWidget> createState() => VideoDetailsState();
 }
 
-class VideoDetailsState extends State<VideoDetailsPage> {
+class VideoDetailsState extends State<VideoDetailsPage>
+    with WidgetsBindingObserver {
   IjkMediaController _controller = IjkMediaController();
 
+  String videoUrl;
+  bool isPaused = true;
   List<Item> _dataList = [];
 
   @override
   void initState() {
     super.initState();
-    playVideo();
+    WidgetsBinding.instance.addObserver(this);
+    getVideoUrl();
     getRelatedVideo();
+  }
+
+  /// 获取视频播放地址，并播放，默认播放高清视频
+  void getVideoUrl() {
+    List<PlayInfo> playInfoList = widget.item.data.playInfo;
+    if (playInfoList.length > 1) {
+      for (var playInfo in playInfoList) {
+        if (playInfo.type == 'high') {
+          videoUrl = playInfo.url;
+          _controller.setNetworkDataSource(
+            playInfo.url,
+            autoPlay: false,
+          );
+        }
+      }
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    print("pageState: $state");
+    if (state == AppLifecycleState.paused) {
+      if (_controller.isPlaying) {
+        _controller.pause();
+      }
+    }
   }
 
   @override
@@ -330,6 +360,7 @@ class VideoDetailsState extends State<VideoDetailsPage> {
   @override
   void dispose() {
     _controller.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 }
