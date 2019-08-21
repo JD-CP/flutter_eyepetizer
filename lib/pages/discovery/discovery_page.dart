@@ -115,6 +115,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
                     ),
                   ),
                   onTap: () {
+                    /// 跳转热门关注列表页
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -178,6 +179,7 @@ class DiscoveryPageState extends State<DiscoveryPage> {
                 /// 设置横纵轴间距
                 crossAxisCount: 4,
                 mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
               ),
             ),
           ),

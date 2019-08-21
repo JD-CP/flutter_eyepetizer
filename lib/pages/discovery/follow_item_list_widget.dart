@@ -1,17 +1,9 @@
-import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_eyepetizer/entity/category_entity.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
-import 'package:flutter_eyepetizer/util/constant.dart';
-import 'category_item_widget.dart';
-import 'follow_item_details_widget.dart';
-import 'follow_item_widget.dart';
 
 class FollowItemListWidget extends StatelessWidget {
   final Item item;

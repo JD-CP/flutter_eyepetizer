@@ -8,9 +8,12 @@ import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page_item.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/widget/load_more_widget.dart';
+import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 
 import 'category_item.dart';
 
+/// 热门分类详情
 class CategoryDetailsPage extends StatefulWidget {
   final CategoryEntity item;
 
@@ -29,6 +32,32 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
 
   ScrollController scrollController = ScrollController();
 
+  @override
+  void initState() {
+    super.initState();
+    this.scrollController.addListener(() => {
+          if (!this.isLoadingMore &&
+              this.scrollController.position.pixels >=
+                  this.scrollController.position.maxScrollExtent)
+            {this.loadMoreData()}
+        });
+    getPageData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _dataList == null ? LoadingWidget() : renderScrollWidget(),
+    );
+  }
+
+  void loadMoreData() {
+    this.setState(() {
+      this.isLoadingMore = true;
+      this.getPageData();
+    });
+  }
+
   void getPageData() async {
     if (!this.isLoadingMore) {
       nextPageUrl = Constant.categoryDetailsUrl;
@@ -37,53 +66,27 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
 
-    var dio = Dio();
-    dio.interceptors.add(LogInterceptor());
-    var response = await dio.get(
-      nextPageUrl,
+    HttpUtil.doGet(
+      this.nextPageUrl,
       queryParameters: {
         "id": widget.item.id,
         "udid": 'd2807c895f0348a180148c9dfa6f2feeac0781b5',
-        "deviceModel": 'PIC-AL00'
+        "deviceModel": androidInfo.device,
       },
-      options: Options(headers: httpHeaders),
-    );
-    Map map = json.decode(response.toString());
-    var issueEntity = Issue.fromJson(map);
-    setState(() {
-      if (this.isLoadingMore) {
-        isLoadingMore = false;
-        this._dataList.addAll(issueEntity.itemList);
-      } else {
-        this._dataList = issueEntity.itemList;
-      }
-      this.nextPageUrl = issueEntity.nextPageUrl;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    this.scrollController.addListener(() => {
-          if (!this.isLoadingMore &&
-              this.scrollController.position.pixels >=
-                  this.scrollController.position.maxScrollExtent)
-            {
-              this.setState(() {
-                this.isLoadingMore = true;
-                this.getPageData();
-              })
-            }
+      success: (response) {
+        Map map = json.decode(response.toString());
+        var issueEntity = Issue.fromJson(map);
+        this.nextPageUrl = issueEntity.nextPageUrl;
+        setState(() {
+          if (this.isLoadingMore) {
+            isLoadingMore = false;
+            this._dataList.addAll(issueEntity.itemList);
+          } else {
+            this._dataList = issueEntity.itemList;
+          }
         });
-    getPageData();
-  }
-
-  Widget renderLoadingWidget() {
-    return Center(
-      child: CircularProgressIndicator(
-        strokeWidth: 2.5,
-        backgroundColor: Colors.deepPurple[600],
-      ),
+      },
+      fail: (exception) {},
     );
   }
 
@@ -104,64 +107,21 @@ class CategoryDetailsPageState extends State<CategoryDetailsPage> {
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            if (index < this._dataList.length) {
-              return CategoryItem(
-                item: _dataList[index],
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              if (index < this._dataList.length) {
+                return CategoryItem(
+                  item: _dataList[index],
+                );
+              }
+              return LoadMoreWidget(
+                isLoadMore: this.isLoadingMore,
               );
-            }
-            return renderLoadMoreView();
-          }, childCount: _dataList.length + 1),
+            },
+            childCount: _dataList.length + 1,
+          ),
         ),
       ],
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _dataList == null ? renderLoadingWidget() : renderScrollWidget(),
-    );
-  }
-
-  /// 上拉加载 Widget
-  Widget renderLoadMoreView() {
-    if (this.isLoadingMore) {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '努力加载中...  ',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black54,
-              ),
-            ),
-            SizedBox(
-              width: 18,
-              height: 18,
-              child: CircularProgressIndicator(
-                strokeWidth: 2.5,
-                backgroundColor: Colors.deepPurple[600],
-              ),
-            )
-          ],
-        ),
-      );
-    } else {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
-        alignment: Alignment.center,
-        child: Text(
-          '上拉加载更多',
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black54,
-          ),
-        ),
-      );
-    }
   }
 }

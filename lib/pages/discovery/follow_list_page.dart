@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/widget/load_more_widget.dart';
+import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'follow_item_details_widget.dart';
 
 class FollowListPage extends StatefulWidget {
@@ -21,29 +23,6 @@ class FollowListPageState extends State<FollowListPage> {
 
   ScrollController scrollController = ScrollController();
 
-  void getPageData() async {
-    if (!isLoadingMore) {
-      nextPageUrl = Constant.followUrl;
-    }
-    var dio = Dio();
-    dio.interceptors.add(LogInterceptor());
-    var responseFollow =
-        await dio.get(this.nextPageUrl, options: Options(headers: httpHeaders));
-
-    Map map = json.decode(responseFollow.toString());
-    var followEntity = Issue.fromJson(map);
-    this.nextPageUrl = followEntity.nextPageUrl;
-
-    this.setState(() {
-      if (this.isLoadingMore) {
-        this.isLoadingMore = false;
-        _followItemList.addAll(followEntity.itemList);
-      } else {
-        _followItemList = followEntity.itemList;
-      }
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -51,50 +30,10 @@ class FollowListPageState extends State<FollowListPage> {
       if (!isLoadingMore &&
           scrollController.position.pixels >=
               scrollController.position.maxScrollExtent) {
-        this.setState(() {
-          this.isLoadingMore = true;
-          this.getPageData();
-        });
+        _loadMoreData();
       }
     });
     getPageData();
-  }
-
-  Future _onRefresh() {
-    return Future(() {
-      getPageData();
-    });
-  }
-
-  Widget renderLoadingWidget() {
-    return Center(
-      child: CircularProgressIndicator(
-        strokeWidth: 2.5,
-        backgroundColor: Colors.deepPurple[600],
-      ),
-    );
-  }
-
-  Widget renderRefreshWidget() {
-    return Container(
-        child: RefreshIndicator(
-      child: ListView.separated(
-        controller: this.scrollController,
-        itemBuilder: (context, index) {
-          if (index < this._followItemList.length) {
-            return FollowItemDetailsWidget(item: _followItemList[index]);
-          }
-          return renderLoadMoreView();
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            height: .5,
-          );
-        },
-        itemCount: _followItemList.length + 1,
-      ),
-      onRefresh: _onRefresh,
-    ));
   }
 
   @override
@@ -105,50 +44,69 @@ class FollowListPageState extends State<FollowListPage> {
         title: Text('热门关注'),
         elevation: 0,
       ),
-      body: _followItemList == null
-          ? renderLoadingWidget()
-          : renderRefreshWidget(),
+      body: _followItemList == null ? LoadingWidget() : renderRefreshWidget(),
     );
   }
 
-  /// 上拉加载 Widget
-  Widget renderLoadMoreView() {
-    if (this.isLoadingMore) {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '努力加载中...  ',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black54,
-              ),
-            ),
-            SizedBox(
-              width: 18,
-              height: 18,
-              child: CircularProgressIndicator(
-                strokeWidth: 2.5,
-                backgroundColor: Colors.deepPurple[600],
-              ),
-            )
-          ],
-        ),
-      );
-    } else {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
-        alignment: Alignment.center,
-        child: Text(
-          '上拉加载更多',
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black54,
-          ),
-        ),
-      );
+  /// 下拉刷新
+  Future _onRefresh() {
+    return Future(() {
+      getPageData();
+    });
+  }
+
+  /// 上拉加载
+  void _loadMoreData() {
+    this.setState(() {
+      this.isLoadingMore = true;
+      this.getPageData();
+    });
+  }
+
+  /// 获取列表数据
+  void getPageData() async {
+    if (!isLoadingMore) {
+      nextPageUrl = Constant.followUrl;
     }
+
+    HttpUtil.doGet(
+      this.nextPageUrl,
+      success: (response) {
+        Map map = json.decode(response.toString());
+        var followEntity = Issue.fromJson(map);
+        this.nextPageUrl = followEntity.nextPageUrl;
+
+        this.setState(() {
+          if (this.isLoadingMore) {
+            this.isLoadingMore = false;
+            _followItemList.addAll(followEntity.itemList);
+          } else {
+            _followItemList = followEntity.itemList;
+          }
+        });
+      },
+      fail: (exception) {},
+    );
+  }
+
+  Widget renderRefreshWidget() {
+    return RefreshIndicator(
+      child: ListView.separated(
+        controller: this.scrollController,
+        itemBuilder: (context, index) {
+          if (index < this._followItemList.length) {
+            return FollowItemDetailsWidget(item: _followItemList[index]);
+          }
+          return LoadMoreWidget(isLoadMore: this.isLoadingMore);
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: .5,
+          );
+        },
+        itemCount: _followItemList.length + 1,
+      ),
+      onRefresh: _onRefresh,
+    );
   }
 }

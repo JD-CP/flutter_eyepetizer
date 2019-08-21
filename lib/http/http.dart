@@ -1,10 +1,4 @@
 import 'package:dio/dio.dart';
-import 'dart:io';
-
-var http = Dio();
-
-// get 请求
-Future<Response> sendGetHttp(httpPath) async => await http.get(httpPath);
 
 const httpHeaders = {
   'Accept': 'application/json, text/plain, */*',
