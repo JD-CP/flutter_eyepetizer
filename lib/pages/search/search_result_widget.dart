@@ -41,6 +41,9 @@ class SearchResultState extends State<SearchResultWidget> {
   }
 
   void loadMoreData() {
+    if (_dataList.length == widget.issue.total - 10) {
+      return;
+    }
     this.setState(() {
       this.isLoadingMore = true;
       this.getPageData();
@@ -49,12 +52,12 @@ class SearchResultState extends State<SearchResultWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return renderScrollWidget();
-    /*return Column(
+//    return renderScrollWidget();
+    return Column(
       children: <Widget>[
         Container(
           color: Colors.white,
-          padding: EdgeInsets.only(top: 35, bottom: 15),
+          padding: EdgeInsets.only(top: 20, bottom: 20),
           alignment: Alignment.center,
           child: Text(
             '— 「${widget.query}」搜索结果共${widget.issue.total}个 —',
@@ -65,30 +68,48 @@ class SearchResultState extends State<SearchResultWidget> {
             ),
           ),
         ),
-        CustomScrollView(
-          shrinkWrap: true,
-          controller: scrollController,
-          physics: BouncingScrollPhysics(),
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  if (index < _dataList.length) {
-                    return HomePageItem(
-                      item: _dataList[index],
+        Flexible(
+          flex: 1,
+          child: CustomScrollView(
+            shrinkWrap: true,
+            controller: scrollController,
+            physics: BouncingScrollPhysics(),
+            slivers: <Widget>[
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    if (index < _dataList.length) {
+                      return HomePageItem(
+                        item: _dataList[index],
+                      );
+                    }
+                    print(index);
+                    if (index == widget.issue.total - 10) {
+                      // 滑动到最底部了，没有更多数据了
+                      return Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          '— 到底了哇 —',
+                          style: TextStyle(
+                            color: Colors.black45,
+                            fontSize: 14,
+                          ),
+                        ),
+                      );
+                    }
+                    return LoadMoreWidget(
+                      isLoadMore: this.isLoadingMore,
                     );
-                  }
-                  return LoadMoreWidget(
-                    isLoadMore: this.isLoadingMore,
-                  );
-                },
-                childCount: _dataList.length + 1,
-              ),
-            )
-          ],
-        )
+                  },
+                  childCount: _dataList.length + 1,
+                ),
+              )
+            ],
+          ),
+        ),
       ],
-    );*/
+    );
   }
 
   Widget renderScrollWidget() {

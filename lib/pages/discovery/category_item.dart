@@ -10,26 +10,70 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem({Key key, this.item}) : super(key: key);
 
+  String formatDuration(duration) {
+    var minute = duration ~/ 60;
+    var second = duration % 60;
+    var str;
+    if (minute <= 9) {
+      if (second <= 9) {
+        str = "0$minute:0$second";
+      } else {
+        str = "0$minute:$second";
+      }
+    } else {
+      if (second <= 9) {
+        str = "$minute:0$second";
+      } else {
+        str = "$minute:$second";
+      }
+    }
+    return str;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        GestureDetector(
-          child: CachedNetworkImage(
-            height: 220,
-            fit: BoxFit.cover,
-            imageUrl: item.data.cover.feed,
-            errorWidget: (context, url, error) =>
-                Image.asset('images/img_load_fail'),
-          ),
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => VideoDetailsPage(
-                          item: this.item,
-                        )));
-          },
+        Stack(
+          alignment: FractionalOffset(0.95, 0.95),
+          children: <Widget>[
+            GestureDetector(
+              child: CachedNetworkImage(
+                height: 220,
+                fit: BoxFit.cover,
+                imageUrl: item.data.cover.feed,
+                errorWidget: (context, url, error) =>
+                    Image.asset('images/img_load_fail'),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => VideoDetailsPage(
+                              item: this.item,
+                            )));
+              },
+            ),
+            Positioned(
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Text(
+                    formatDuration(item.data.duration),
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+            ),
+          ],
         ),
         Padding(
           padding: EdgeInsets.only(left: 15, right: 15),

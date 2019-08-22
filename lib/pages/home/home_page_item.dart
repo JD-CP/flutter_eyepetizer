@@ -10,12 +10,32 @@ class HomePageItem extends StatelessWidget {
 
   HomePageItem({Key key, this.item}) : super(key: key);
 
+  String formatDuration(duration) {
+    var minute = duration ~/ 60;
+    var second = duration % 60;
+    var str;
+    if (minute <= 9) {
+      if (second <= 9) {
+        str = "0$minute:0$second";
+      } else {
+        str = "0$minute:$second";
+      }
+    } else {
+      if (second <= 9) {
+        str = "$minute:0$second";
+      } else {
+        str = "$minute:$second";
+      }
+    }
+    return str;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Stack(
-          alignment: FractionalOffset(0.95, 0.05),
+          // alignment: FractionalOffset(0.95, 0.5),
           children: <Widget>[
             GestureDetector(
               child: CachedNetworkImage(
@@ -37,20 +57,57 @@ class HomePageItem extends StatelessWidget {
             ),
             Positioned(
               child: Container(
-                child: Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    item.data.category,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black54,
+                padding:
+                    EdgeInsets.only(left: 15, top: 10, bottom: 10, right: 15),
+                height: 220,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              item.data.category,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white30,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white30,
-                  borderRadius: BorderRadius.circular(5),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              formatDuration(item.data.duration),
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
             )

@@ -17,7 +17,10 @@ class SearchBarDelegate extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: Icon(
+          Icons.clear,
+          color: Colors.black87,
+        ),
         onPressed: () => query = "",
       )
     ];
@@ -28,7 +31,10 @@ class SearchBarDelegate extends SearchDelegate {
   Widget buildLeading(BuildContext context) {
     return IconButton(
         icon: AnimatedIcon(
-            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+          color: Colors.black87,
+        ),
         onPressed: () => close(context, null));
   }
 
@@ -62,10 +68,28 @@ class SearchBarDelegate extends SearchDelegate {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            if(snapshot.data.itemList.length == 0){
-              return Center(
-                child: Text(
-                  '暂无数据'
+            if (snapshot.data.itemList.length == 0) {
+              return Container(
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      'images/icon_no_data.png',
+                      width: 40,
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text(
+                        '暂无搜索数据哇',
+                        style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               );
             }
