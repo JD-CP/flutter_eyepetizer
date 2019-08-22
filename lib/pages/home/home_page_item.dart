@@ -76,13 +76,15 @@ class HomePageItem extends StatelessWidget {
                               item.data.category,
                               style: TextStyle(
                                 fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Color(0x4DFAEBD7),
+                            // color: Color(0x4DFAEBD7),
+                            gradient: LinearGradient(
+                              colors: [Color(0x4DCD8C95), Color(0x4DF0FFFF)],
+                            ),
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),

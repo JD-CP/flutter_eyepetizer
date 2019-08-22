@@ -106,7 +106,7 @@ class VideoRelatedPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 8),
+                    padding: EdgeInsets.only(top: 15),
                     child: Text(
                       '#${item.data.category} / ${item.data.author.name}',
                       style: TextStyle(

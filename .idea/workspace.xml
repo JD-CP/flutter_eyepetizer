@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dfb87f-a8fc-4cd0-b3dd-54e56cf02c89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/icon_default_avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search_result_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/search_result_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -37,20 +30,29 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="RJC5T17608008771" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page.dart">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="797">
+              <caret line="310" column="77" selection-start-line="310" selection-start-column="77" selection-end-line="310" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="281">
-              <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
+              <caret line="85" column="74" selection-start-line="85" selection-start-column="74" selection-end-line="85" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
+        <entry file="file://F:/flutter/flutter_sdk/flutter/packages/flutter/lib/src/painting/gradient.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="101" column="52" selection-start-line="101" selection-start-column="52" selection-end-line="101" selection-end-column="52" />
+            <state relative-caret-position="205">
+              <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -58,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pages/video/video_related_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="304">
+              <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -162,9 +164,9 @@
         <option value="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart" />
         <option value="$PROJECT_DIR$/lib/http/http.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" />
       </list>
     </option>
   </component>
@@ -305,7 +307,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24932976" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -322,8 +323,8 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.49865952" weight="0.4173913" />
       <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.49865952" weight="0.34057972" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.863941" visible="true" weight="0.04360465" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.13605899" side_tool="true" visible="true" weight="0.04360465" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.863941" visible="true" weight="0.3255814" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.13605899" side_tool="true" visible="true" weight="0.3255814" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.4710145" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.45507246" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="10" />
@@ -369,9 +370,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/images/icon_like.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow_item_video_details.dart" />
     <entry file="file://$PROJECT_DIR$/lib/pages/video/follow_item_video_details_page.dart" />
     <entry file="file://F:/flutter/flutter_sdk/flutter/packages/flutter/lib/src/rendering/object.dart">
@@ -684,24 +682,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
+    <entry file="file://F:/flutter/flutter_sdk/flutter/packages/flutter/lib/src/painting/gradient.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="101" column="52" selection-start-line="101" selection-start-column="52" selection-end-line="101" selection-end-column="52" />
+        <state relative-caret-position="205">
+          <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/video/video_related_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="304">
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page.dart">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="310" column="77" selection-start-line="310" selection-start-column="77" selection-end-line="310" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="305" column="51" lean-forward="true" selection-start-line="305" selection-start-column="51" selection-end-line="305" selection-end-column="51" />
+          <caret line="85" column="74" selection-start-line="85" selection-start-column="74" selection-end-line="85" selection-end-column="74" />
         </state>
       </provider>
     </entry>
