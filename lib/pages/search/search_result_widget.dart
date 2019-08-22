@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page_item.dart';
+import 'package:flutter_eyepetizer/pages/search/search_page_item.dart';
 import 'package:flutter_eyepetizer/widget/load_more_widget.dart';
 
 class SearchResultWidget extends StatefulWidget {
@@ -79,7 +80,7 @@ class SearchResultState extends State<SearchResultWidget> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     if (index < _dataList.length) {
-                      return HomePageItem(
+                      return SearchPageItem(
                         item: _dataList[index],
                       );
                     }

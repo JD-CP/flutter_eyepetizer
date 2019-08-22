@@ -10,6 +10,26 @@ class VideoRelatedPage extends StatelessWidget {
 
   VideoRelatedPage({Key key, this.item}) : super(key: key);
 
+  String formatDuration(duration) {
+    var minute = duration ~/ 60;
+    var second = duration % 60;
+    var str;
+    if (minute <= 9) {
+      if (second <= 9) {
+        str = "0$minute:0$second";
+      } else {
+        str = "0$minute:$second";
+      }
+    } else {
+      if (second <= 9) {
+        str = "$minute:0$second";
+      } else {
+        str = "$minute:$second";
+      }
+    }
+    return str;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -44,10 +64,9 @@ class VideoRelatedPage extends StatelessWidget {
                   Positioned(
                     child: Container(
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 6, right: 6, top: 3, bottom: 3),
+                        padding: EdgeInsets.all(3),
                         child: Text(
-                          item.data.category,
+                          formatDuration(item.data.duration),
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
@@ -56,8 +75,8 @@ class VideoRelatedPage extends StatelessWidget {
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white30,
-                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.black45,
+                        borderRadius: BorderRadius.circular(3),
                       ),
                     ),
                   )
@@ -83,15 +102,16 @@ class VideoRelatedPage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.only(top: 8),
                     child: Text(
-                      '${DateUtil.formatDateMs(item.data.releaseTime, format: 'yyyy/MM/dd HH:mm')}',
+                      '#${item.data.category} / ${item.data.author.name}',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 13,
+                        fontSize: 12,
                       ),
                     ),
                   )

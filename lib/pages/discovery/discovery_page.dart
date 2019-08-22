@@ -134,7 +134,6 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
-  /// 此处可以学习 CustomScrollView 的用法
   Widget renderBodyWidget() {
     return Container(
       color: Colors.white,

@@ -67,6 +67,9 @@ class HomePageItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
+                          width: 40,
+                          height: 40,
+                          alignment: Alignment.center,
                           child: Padding(
                             padding: EdgeInsets.all(5),
                             child: Text(
@@ -79,8 +82,8 @@ class HomePageItem extends StatelessWidget {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white30,
-                            borderRadius: BorderRadius.circular(5),
+                            color: Color(0x4DFAEBD7),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ],
@@ -90,11 +93,11 @@ class HomePageItem extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           child: Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(3),
                             child: Text(
                               formatDuration(item.data.duration),
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 11,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -102,7 +105,7 @@ class HomePageItem extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: Colors.black45,
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(3),
                           ),
                         ),
                       ],
@@ -147,11 +150,15 @@ class HomePageItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text(item.data.author.name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.black54, fontSize: 13)),
+                          Text(
+                            item.data.author.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 13,
+                            ),
+                          ),
                           /*Expanded(
                             child: Text(''),
                             flex: 1,

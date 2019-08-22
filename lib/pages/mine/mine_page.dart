@@ -15,7 +15,7 @@ class MinePage extends StatelessWidget {
           children: <Widget>[
             ClipOval(
               child: Image.asset(
-                'images/icon_avatar.png',
+                'images/icon_default_avatar.png',
                 width: 50,
                 height: 50,
               ),
