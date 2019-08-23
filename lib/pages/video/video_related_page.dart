@@ -7,8 +7,9 @@ import 'video_details_page.dart';
 
 class VideoRelatedPage extends StatelessWidget {
   final Item item;
+  final callback;
 
-  VideoRelatedPage({Key key, this.item}) : super(key: key);
+  VideoRelatedPage({Key key, this.item, this.callback}) : super(key: key);
 
   String formatDuration(duration) {
     var minute = duration ~/ 60;
@@ -34,6 +35,7 @@ class VideoRelatedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        this.callback();
         Navigator.push(
           context,
           MaterialPageRoute(

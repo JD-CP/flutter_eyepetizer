@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flustars/flustars.dart';
@@ -43,7 +44,7 @@ class HomePageItem extends StatelessWidget {
                 fit: BoxFit.cover,
                 imageUrl: item.data.cover.feed,
                 errorWidget: (context, url, error) =>
-                    Image.asset('images/img_load_fail'),
+                    Image.asset('images/img_load_fail.png'),
               ),
               onTap: () {
                 /// 点击图片跳转至视频详情页
@@ -125,13 +126,23 @@ class HomePageItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: item.data.author.icon,
-                  width: 40,
-                  height: 40,
-                  placeholder: (context, url) => CircularProgressIndicator(
-                    strokeWidth: 2.5,
-                    backgroundColor: Colors.deepPurple[600],
+                child: GestureDetector(
+                  onTap: () {
+                    /*Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AuthorDetailsPage(
+                                  item: this.item,
+                                )));*/
+                  },
+                  child: CachedNetworkImage(
+                    imageUrl: item.data.author.icon,
+                    width: 40,
+                    height: 40,
+                    placeholder: (context, url) => CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      backgroundColor: Colors.deepPurple[600],
+                    ),
                   ),
                 ),
               ),

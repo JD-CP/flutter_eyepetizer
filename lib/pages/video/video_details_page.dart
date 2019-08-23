@@ -45,7 +45,7 @@ class VideoDetailsState extends State<VideoDetailsPage>
           videoUrl = playInfo.url;
           _controller.setNetworkDataSource(
             playInfo.url,
-            autoPlay: false,
+            autoPlay: true,
           );
         }
       }
@@ -304,6 +304,11 @@ class VideoDetailsState extends State<VideoDetailsPage>
                         if (_dataList[index].type == 'videoSmallCard') {
                           return VideoRelatedPage(
                             item: _dataList[index],
+                            callback: () {
+                              if (_controller.isPlaying) {
+                                _controller.pause();
+                              }
+                            },
                           );
                         }
                         return Padding(

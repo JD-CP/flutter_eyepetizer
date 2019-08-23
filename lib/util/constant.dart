@@ -16,4 +16,6 @@ class Constant {
   static final keywordUrl = '${baseUrl}api/v3/queries/hot';
 
   static final searchUrl = '${baseUrl}api/v1/search?&num=10&start=10';
+
+  static final authorUrl = '${baseUrl}api/v4/pgcs/detail/tab';
 }

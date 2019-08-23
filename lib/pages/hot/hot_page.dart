@@ -65,6 +65,7 @@ class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin {
                             text: tabItem.name,
                           ))
                       .toList(),
+                  indicatorColor: Colors.black87,
                   indicatorSize: TabBarIndicatorSize.label,
                 ),
               ),
