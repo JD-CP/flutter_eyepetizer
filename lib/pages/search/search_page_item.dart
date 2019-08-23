@@ -37,10 +37,11 @@ class SearchPageItem extends StatelessWidget {
           GestureDetector(
             child: CachedNetworkImage(
               height: 220,
+              width: double.infinity,
               fit: BoxFit.cover,
               imageUrl: item.data.cover.feed,
               errorWidget: (context, url, error) =>
-                  Image.asset('images/img_load_fail'),
+                  Image.asset('images/img_load_fail.png'),
             ),
             onTap: () {
               /// 点击图片跳转至视频详情页

@@ -41,6 +41,7 @@ class HomePageItem extends StatelessWidget {
             GestureDetector(
               child: CachedNetworkImage(
                 height: 220,
+                width: double.infinity,
                 fit: BoxFit.cover,
                 imageUrl: item.data.cover.feed,
                 errorWidget: (context, url, error) =>
