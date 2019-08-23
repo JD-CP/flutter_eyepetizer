@@ -35,8 +35,7 @@
 
 - gif
 
-
-![项目gif动态图](https://user-gold-cdn.xitu.io/2019/8/23/16cbced5f06de719?w=444&h=715&f=gif&s=4682656)
+![image](https://github.com/JD-CP/flutter_eyepetizer/blob/master/gif/gif_eyepetizer.gif)
 
 ### 运行方式
 
