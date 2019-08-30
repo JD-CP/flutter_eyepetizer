@@ -104,18 +104,28 @@ flutter run
 - [device_info](https://github.com/flutter/plugins) Flutter 插件。
 - [flutter_ijkplayer](https://github.com/CaiJingLong/flutter_ijkplayer) 视频播放。
 
+### 版本更新
+
+- 1.0.1 - 2019.08.30
+
+```
+作者信息详情页完善
+```
+
+- 1.0.0 - 2019.08.23
+
+```
+基础功能完成
+```
+
 ### 后续计划
 
 会有新功能的添加，更多的是针对现在项目的缺点，所进行的优化。
 
-- 作者详情信息页展示。
-- 封装一个更好用的 AppBar。
 - 下拉刷新、上拉加载封装。
 - 屏幕适配，非常有必要！。
-- 事件总线引入。
-- Bloc模式的引入，不了解Bloc？更多详情请点击 [Bloc](https://github.com/felangel/bloc)。
-- rxdart，都知道在 Android 中，RxJava 的地位举足轻重，那么，在 Flutter 开发中，要不要尝试一下 [rxdart](https://github.com/ReactiveX/rxdart) 呢？
-- 会考虑和Native混合开发，只能说有可能。
+- 状态管理，计划用 Provider，放弃了 Bloc。
+- 和 native 混合开发提上日程。
 
 ### 最后
 
