@@ -46,6 +46,7 @@ class AuthorIssuePageState extends State<AuthorIssuePage>
 
                       /// indent: 前间距, endIndent: 后间距
                       indent: 15,
+                      endIndent: 15,
                     );
                   },
                   itemCount: itemList.length,
