@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/author/work_item_widget.dart';
-import 'package:flutter_eyepetizer/pages/home/home_page_item.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
+import 'package:flutter_eyepetizer/widget/no_data_widget.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 
 class AuthorWorksPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class AuthorWorksPage extends StatefulWidget {
 
 class AuthorWorksPageState extends State<AuthorWorksPage>
     with AutomaticKeepAliveClientMixin {
-  List<Item> itemList = [];
+  List<Item> itemList;
   List<DataSource> _list = [];
 
 //  var map = <DataSource, IjkMediaController>{};
@@ -40,28 +40,30 @@ class AuthorWorksPageState extends State<AuthorWorksPage>
 
   @override
   Widget build(BuildContext context) {
-    return itemList.length == 0
+    return null == itemList
         ? LoadingWidget()
-        : Container(
-            child: ListView.separated(
-              itemBuilder: (context, index) {
-                return WorkItemWidget(
-                  item: this.itemList[index],
-                  dataSource: _list[index],
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Divider(
-                  height: .5,
-                  color: Color(0xFFDDDDDD),
+        : (itemList.length == 0
+            ? NoDataWidget()
+            : Container(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return WorkItemWidget(
+                      item: this.itemList[index],
+                      dataSource: _list[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      height: .5,
+                      color: Color(0xFFDDDDDD),
 
-                  /// indent: 前间距, endIndent: 后间距
-                  indent: 15,
-                );
-              },
-              itemCount: this.itemList.length,
-            ),
-          );
+                      /// indent: 前间距, endIndent: 后间距
+                      indent: 15,
+                    );
+                  },
+                  itemCount: this.itemList.length,
+                ),
+              ));
   }
 
   void _getPageData() async {
