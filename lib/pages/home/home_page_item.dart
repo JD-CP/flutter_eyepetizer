@@ -4,7 +4,6 @@ import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flustars/flustars.dart';
 
 class HomePageItem extends StatelessWidget {
   final Item item;
@@ -129,12 +128,13 @@ class HomePageItem extends StatelessWidget {
               ClipOval(
                 child: GestureDetector(
                   onTap: () {
-                    /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AuthorDetailsPage(
-                                  item: this.item,
-                                )));*/
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AuthorDetailsPage(
+                                item: this.item,
+                              )),
+                    );
                   },
                   child: CachedNetworkImage(
                     imageUrl: item.data.author.icon,
@@ -154,11 +154,12 @@ class HomePageItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(item.data.title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style:
-                              TextStyle(color: Colors.black87, fontSize: 15)),
+                      Text(
+                        item.data.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.black87, fontSize: 15),
+                      ),
                       Padding(padding: EdgeInsets.only(top: 2, bottom: 2)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,

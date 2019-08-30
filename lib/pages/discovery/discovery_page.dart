@@ -48,8 +48,10 @@ class DiscoveryPageState extends State<DiscoveryPage> {
       /// 热门分类
       HttpUtil.buildDio().get(
         Constant.categoryUrl,
-        options:
-            Options(headers: httpHeaders, responseType: ResponseType.plain),
+        options: Options(
+          headers: httpHeaders,
+          responseType: ResponseType.plain,
+        ),
       ),
       // 推荐关注
       HttpUtil.buildDio().get(

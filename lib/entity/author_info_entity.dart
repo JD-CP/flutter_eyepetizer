@@ -22,14 +22,14 @@ class AuthorInfoEntity {
 }
 
 class AuthorInfoTabinfo {
-	List<AuthorInfoTabinfoTablist> tabList;
+	List<TabItem> tabList;
 	int defaultIdx;
 
 	AuthorInfoTabinfo({this.tabList, this.defaultIdx});
 
 	AuthorInfoTabinfo.fromJson(Map<String, dynamic> json) {
 		if (json['tabList'] != null) {
-			tabList = new List<AuthorInfoTabinfoTablist>();(json['tabList'] as List).forEach((v) { tabList.add(new AuthorInfoTabinfoTablist.fromJson(v)); });
+			tabList = new List<TabItem>();(json['tabList'] as List).forEach((v) { tabList.add(new TabItem.fromJson(v)); });
 		}
 		defaultIdx = json['defaultIdx'];
 	}
@@ -44,16 +44,16 @@ class AuthorInfoTabinfo {
 	}
 }
 
-class AuthorInfoTabinfoTablist {
+class TabItem {
 	int nameType;
 	String apiUrl;
 	String name;
 	int tabType;
 	int id;
 
-	AuthorInfoTabinfoTablist({this.nameType, this.apiUrl, this.name, this.tabType, this.id});
+	TabItem({this.nameType, this.apiUrl, this.name, this.tabType, this.id});
 
-	AuthorInfoTabinfoTablist.fromJson(Map<String, dynamic> json) {
+	TabItem.fromJson(Map<String, dynamic> json) {
 		nameType = json['nameType'];
 		apiUrl = json['apiUrl'];
 		name = json['name'];

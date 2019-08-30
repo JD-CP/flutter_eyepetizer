@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 
 class FollowItemWidget extends StatelessWidget {
   final Item item;
@@ -11,12 +12,14 @@ class FollowItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        /*Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => FollowAuthorDetailsPage(
-                  item: this.item,
-                )));*/
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AuthorDetailsPage(
+              item: this.item,
+            ),
+          ),
+        );
       },
       child: Container(
         color: Colors.white,

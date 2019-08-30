@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/author_info_entity.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
+import 'package:flutter_eyepetizer/pages/author/author_works_page.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_eyepetizer/widget/loading_widget.dart';
+
+import 'author_issue_page.dart';
+import 'author_main_page.dart';
 
 class AuthorDetailsPage extends StatelessWidget {
   final Item item;
@@ -13,9 +18,7 @@ class AuthorDetailsPage extends StatelessWidget {
   AuthorDetailsPage({Key key, this.item});
 
   @override
-  Widget build(BuildContext context) => AuthorInfoPage(
-        item: item,
-      );
+  Widget build(BuildContext context) => AuthorInfoPage(item: item);
 }
 
 class AuthorInfoPage extends StatefulWidget {
@@ -29,89 +32,98 @@ class AuthorInfoPage extends StatefulWidget {
 
 class AuthorInfoState extends State<AuthorInfoPage>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  List<TabItem> tabItems = [];
+  List<Widget> pages = [];
 
   @override
   void initState() {
     super.initState();
-    this.tabController = TabController(length: 2, vsync: this);
-    this.tabController.addListener(() {
-      print(tabController.offset);
-    });
     _getPageData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /*appBar: AppBar(
-        title: Text('作者信息'),
-      ),*/
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            elevation: 0,
-            expandedHeight: 200,
-            title: Text('作者信息'),
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                widget.item.data.cover.feed,
-                fit: BoxFit.cover,
+    return tabItems.length == 0
+        ? LoadingWidget()
+        : Scaffold(
+            appBar: AppBar(
+              title: Text(
+                widget.item.data.author == null
+                    ? widget.item.data.header.title
+                    : widget.item.data.author.name,
               ),
+              elevation: 0,
             ),
-            /*bottom: PreferredSize(
-              child: Container(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    CachedNetworkImage(
-                      imageUrl: widget.item.data.author.icon,
-                      width: 50,
-                      height: 50,
+            body: DefaultTabController(
+              length: this.tabItems.length,
+              child: Column(
+                children: <Widget>[
+                  Material(
+                    color: Colors.white,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: TabBar(
+                        tabs: this
+                            .tabItems
+                            .map((tabItem) => Tab(
+                                  text: tabItem.name,
+                                ))
+                            .toList(),
+                        indicatorColor: Colors.black87,
+                        indicatorSize: TabBarIndicatorSize.label,
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              preferredSize: Size.fromHeight(0),
-            ),*/
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: StickyTabBarDelegate(
-              child: TabBar(
-                labelColor: Colors.black,
-                controller: this.tabController,
-                tabs: <Widget>[
-                  Tab(text: 'Home'),
-                  Tab(text: 'Profile'),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: pages,
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-          SliverFillRemaining(
-            child: TabBarView(
-              controller: this.tabController,
-              children: <Widget>[
-                Center(child: Text('Content of Home')),
-                Center(child: Text('Content of Profile')),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 
   void _getPageData() async {
     HttpUtil.doGet(
       Constant.authorUrl,
-      queryParameters: {'id': widget.item.data.author.id},
+      queryParameters: {
+        'id': widget.item.data.author == null
+            ? widget.item.data.header.id
+            : widget.item.data.author.id,
+        "udid": 'd2807c895f0348a180148c9dfa6f2feeac0781b5',
+      },
       success: (response) {
         Map map = json.decode(response.toString());
         var authorInfoEntity = AuthorInfoEntity.fromJson(map);
+        var tabItemList = authorInfoEntity.tabInfo.tabList;
+        this.setState(() {
+          this.tabItems = tabItemList;
+          if (tabItemList.length == 2) {
+            pages = [
+              AuthorMainPage(
+                apiUrl: tabItemList[0].apiUrl,
+              ),
+              AuthorWorksPage(
+                apiUrl: tabItemList[1].apiUrl,
+              )
+            ];
+          } else if (tabItemList.length == 3) {
+            pages = [
+              AuthorMainPage(
+                apiUrl: tabItemList[0].apiUrl,
+              ),
+              AuthorWorksPage(
+                apiUrl: tabItemList[1].apiUrl,
+              ),
+              AuthorIssuePage(
+                apiUrl: tabItemList[2].apiUrl,
+              )
+            ];
+          }
+        });
       },
       fail: (exception) {},
     );

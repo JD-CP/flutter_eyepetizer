@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'follow_item_list_widget.dart';
 
 class FollowItemDetailsWidget extends StatelessWidget {
@@ -19,14 +20,26 @@ class FollowItemDetailsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              ClipOval(
-                child: CachedNetworkImage(
-                  width: 40,
-                  height: 40,
-                  imageUrl: item.data.header.icon,
-                  placeholder: (context, url) => CircularProgressIndicator(
-                    strokeWidth: 2.5,
-                    backgroundColor: Colors.deepPurple[600],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AuthorDetailsPage(
+                        item: this.item,
+                      ),
+                    ),
+                  );
+                },
+                child: ClipOval(
+                  child: CachedNetworkImage(
+                    width: 40,
+                    height: 40,
+                    imageUrl: item.data.header.icon,
+                    placeholder: (context, url) => CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      backgroundColor: Colors.deepPurple[600],
+                    ),
                   ),
                 ),
               ),
@@ -81,18 +94,19 @@ class FollowItemDetailsWidget extends StatelessWidget {
             ],
           ),
           Container(
-              height: 245,
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return FollowItemListWidget(
-                    item: item.data.itemList[index],
-                    index: index,
-                  );
-                },
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: item.data.itemList.length,
-              )),
+            height: 245,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return FollowItemListWidget(
+                  item: item.data.itemList[index],
+                  index: index,
+                );
+              },
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: item.data.itemList.length,
+            ),
+          ),
         ],
       ),
     );
