@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page_item.dart';
-import 'package:flutter_eyepetizer/pages/hot/rank_page_model.dart';
+import 'package:flutter_eyepetizer/provider/rank_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
 import 'package:provider/provider.dart';
 
+/// 热门排行
 class RankPage extends StatefulWidget {
   final String pageUrl;
 
@@ -19,6 +20,7 @@ class RankPage extends StatefulWidget {
 class RankPageState extends State<RankPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ProviderWidget<RankPageModel>(
       model: RankPageModel(),
       onModelInitial: (model) {

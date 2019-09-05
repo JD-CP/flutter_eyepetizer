@@ -5,7 +5,7 @@ import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/author/collection_card.dart';
 import 'package:flutter_eyepetizer/pages/author/video_welcom_page.dart';
-import 'package:flutter_eyepetizer/pages/discovery/follow_item_details_widget.dart';
+import 'package:flutter_eyepetizer/pages/discovery/follow/follow_item_details_widget.dart';
 import 'package:flutter_eyepetizer/pages/video/video_related_page.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:flutter_eyepetizer/widget/no_data_widget.dart';

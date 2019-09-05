@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/pages/hot/hot_page_model.dart';
+import 'package:flutter_eyepetizer/provider/hot_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:provider/provider.dart';

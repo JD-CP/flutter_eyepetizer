@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_eyepetizer/pages/discovery/follow/follow_list_page.dart';
 import 'package:flutter_eyepetizer/provider/discovery_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
@@ -7,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import 'category_item_widget.dart';
 import 'follow_item_widget.dart';
-import 'follow_list_page.dart';
 
 /// 发现页
 class DiscoveryPage extends StatefulWidget {
