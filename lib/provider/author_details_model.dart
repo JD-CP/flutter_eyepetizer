@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/entity/author_info_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
-import 'package:flutter_eyepetizer/pages/author/author_issue_page.dart';
+import 'package:flutter_eyepetizer/pages/author/issue/author_issue_page.dart';
 import 'package:flutter_eyepetizer/pages/author/main/author_main_page.dart';
 import 'package:flutter_eyepetizer/pages/author/works/author_works_page.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';

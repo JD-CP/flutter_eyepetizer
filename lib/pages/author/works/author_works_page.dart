@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_eyepetizer/pages/author/works/author_works_page_model.dart';
+import 'package:flutter_eyepetizer/provider/author_works_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:provider/provider.dart';
-import '../work_item_widget.dart';
+import 'works_item_widget.dart';
 
 /// 作者作品
 class AuthorWorksPage extends StatefulWidget {
@@ -55,7 +55,7 @@ class AuthorWorksPageWidget extends StatelessWidget {
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        return WorkItemWidget(
+        return WorksItemWidget(
           item: model.itemList[index],
           dataSource: model.list[index],
         );

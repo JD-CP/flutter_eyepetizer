@@ -48,14 +48,7 @@ class AuthorDetailsPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthorDetailsModel model = Provider.of(context);
     if (model.isInit) {
-      return Container(
-        child: Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 2.5,
-            backgroundColor: Colors.deepPurple[600],
-          ),
-        ),
-      );
+      return LoadingWidget();
     }
     return Column(
       children: <Widget>[
