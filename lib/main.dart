@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'pages/home/home_page.dart';
+import 'package:flutter_eyepetizer/pages/home/home_page.dart';
 import 'pages/discovery/discovery_page.dart';
 import 'pages/hot/hot_page.dart';
 import 'pages/mine/mine_page.dart';
 
 // 主入口
 void main() {
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -83,11 +85,6 @@ class _MyHomePageState extends State<MyApp> {
         primaryColor: Color(0xFFFFFFFF),
       ),
       home: Scaffold(
-        /*appBar: AppBar(
-          title: Text('Eyepetizer', style: TextStyle(color: Colors.black)),
-          centerTitle: true,
-          elevation: 0,
-        ),*/
         body: body,
         bottomNavigationBar: CupertinoTabBar(
           backgroundColor: Color(0xFFFFFFFF),

@@ -114,6 +114,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_easyrefresh">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.0.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_ijkplayer">
           <value>
             <list>
@@ -184,6 +191,13 @@
             </list>
           </value>
         </entry>
+        <entry key="provider">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/provider-3.1.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="quiver">
           <value>
             <list>
@@ -202,6 +216,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="shimmer">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/shimmer-1.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -307,6 +328,7 @@
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/dio-2.1.13/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flustars-0.2.6+1/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_cache_manager-1.1.1/lib" />
+      <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.0.4/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_ijkplayer-0.3.3/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/fluttertoast-3.1.0/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/http-0.12.0+2/lib" />
@@ -316,9 +338,11 @@
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/path-1.6.2/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/path_provider-1.2.0/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/pedantic-1.8.0+1/lib" />
+      <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/provider-3.1.0/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/quiver-2.0.3/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/rational-0.3.5/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.3+4/lib" />
+      <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/shimmer-1.0.0/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/source_span-1.5.5/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/sqflite-1.1.6+3/lib" />
       <root url="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/stack_trace-1.9.3/lib" />

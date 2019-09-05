@@ -39,6 +39,12 @@ dev_dependencies:
   device_info: 0.4.0+2
   # 视频播放
   flutter_ijkplayer: 0.3.3
+  # 下拉刷新、上拉加载
+  flutter_easyrefresh: ^2.0.4
+  shimmer: 1.0.0
+
+  # 状态管理
+  provider: ^3.0.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
