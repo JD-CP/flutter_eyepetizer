@@ -12,7 +12,7 @@ class HotPage extends StatefulWidget {
   State<StatefulWidget> createState() => HotPageState();
 }
 
-class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin {
+class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   List<TabInfoItem> tabItems = [];
 
   List<Widget> tabPages = [];
@@ -43,6 +43,7 @@ class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('每日精选', style: TextStyle(color: Colors.black)),
@@ -80,4 +81,7 @@ class HotPageState extends State<HotPage> with SingleTickerProviderStateMixin {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

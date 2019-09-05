@@ -17,9 +17,10 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ProviderWidget(
       model: HomePageModel(),
       onModelInitial: (model) {
@@ -70,6 +71,9 @@ class HomePageState extends State<HomePage> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class HomePageListWidget extends StatelessWidget {
