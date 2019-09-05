@@ -1,76 +1,64 @@
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_eyepetizer/entity/category_entity.dart';
-import 'package:flutter_eyepetizer/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/http/http.dart';
-import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_eyepetizer/provider/discovery_page_model.dart';
+import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
+import 'package:provider/provider.dart';
+
 import 'category_item_widget.dart';
 import 'follow_item_widget.dart';
 import 'follow_list_page.dart';
 
-/// 发现
+/// 发现页
 class DiscoveryPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => DiscoveryPageState();
 }
 
-class DiscoveryPageState extends State<DiscoveryPage> {
-  List<CategoryEntity> _dataList;
-  List<Item> _followItemList;
-
-  @override
-  void initState() {
-    super.initState();
-    getPageData();
-  }
-
+class DiscoveryPageState extends State<DiscoveryPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('发现', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: (this._dataList == null || this._followItemList == null)
-          ? LoadingWidget()
-          : renderBodyWidget(),
+    super.build(context);
+    return ProviderWidget(
+      model: DiscoveryPageModel(),
+      onModelInitial: (model) {
+        model.init();
+      },
+      builder: (context, model, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('发现', style: TextStyle(color: Colors.black)),
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Colors.white,
+          ),
+          body: EasyRefresh.custom(
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Container(
+                  child: DiscoveryPageWidget(),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
-  /// 获取数据
-  void getPageData() async {
-    /// 发起并发请求
-    var response = await Future.wait([
-      /// 热门分类
-      HttpUtil.buildDio().get(
-        Constant.categoryUrl,
-        options: Options(
-          headers: httpHeaders,
-          responseType: ResponseType.plain,
-        ),
-      ),
-      // 推荐关注
-      HttpUtil.buildDio().get(
-        Constant.followUrl,
-        options: Options(headers: httpHeaders),
-      ),
-    ]);
-    var resJson = json.decode(response[0].toString());
-    var dataList = List<CategoryEntity>.from(
-        resJson.map((i) => CategoryEntity.fromJson(i)));
+  @override
+  bool get wantKeepAlive => true;
+}
 
-    Map map = json.decode(response[1].toString());
-    var followEntity = Issue.fromJson(map);
-    var followItemList = followEntity.itemList;
-
-    this.setState(() {
-      this._dataList = dataList;
-      this._followItemList = followItemList;
-    });
+class DiscoveryPageWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    DiscoveryPageModel model = Provider.of(context);
+    if (model.isInit) {
+      return LoadingWidget();
+    }
+    return renderBodyWidget(context, model);
   }
 
   /// 热门分类标题
@@ -91,8 +79,65 @@ class DiscoveryPageState extends State<DiscoveryPage> {
     );
   }
 
+  Widget renderBodyWidget(context, DiscoveryPageModel model) {
+    return Container(
+      color: Colors.white,
+      child: CustomScrollView(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: renderFollowTitleWidget(context),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                /// 实现了每个 item 下面加一条分割线
+                var i = index;
+                i -= 1;
+                if (i.isOdd) {
+                  i = (i + 1) ~/ 2;
+                  return FollowItemWidget(
+                    item: model.followItemList[i],
+                  );
+                }
+                i = i ~/ 2;
+                return Divider(
+                  height: .5,
+                  indent: 65,
+                  color: Color(0xFFDDDDDD),
+                );
+              },
+              childCount: model.followItemList.length * 2,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: renderCategoryTitleWidget(),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.all(10),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return CategoryItemWidget(item: model.categoryList[index]);
+                },
+                childCount: model.categoryList.length,
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                /// 设置横纵轴间距
+                crossAxisCount: 4,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   /// 推荐关注标题
-  Widget renderFollowTitleWidget() {
+  Widget renderFollowTitleWidget(context) {
     return Container(
       padding: EdgeInsets.all(15),
       color: Color(0xFFF4F4F4),
@@ -123,69 +168,14 @@ class DiscoveryPageState extends State<DiscoveryPage> {
                   onTap: () {
                     /// 跳转热门关注列表页
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FollowListPage()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FollowListPage(),
+                      ),
+                    );
                   },
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget renderBodyWidget() {
-    return Container(
-      color: Colors.white,
-      child: CustomScrollView(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: renderFollowTitleWidget(),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                /// 实现了每个 item 下面加一条分割线
-                var i = index;
-                i -= 1;
-                if (i.isOdd) {
-                  i = (i + 1) ~/ 2;
-                  return FollowItemWidget(
-                    item: _followItemList[i],
-                  );
-                }
-                i = i ~/ 2;
-                return Divider(
-                  height: .5,
-                  indent: 65,
-                  color: Color(0xFFDDDDDD),
-                );
-              },
-              childCount: _followItemList.length * 2,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: renderCategoryTitleWidget(),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.all(10),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return CategoryItemWidget(item: this._dataList[index]);
-                },
-                childCount: this._dataList.length,
-              ),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                /// 设置横纵轴间距
-                crossAxisCount: 4,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-              ),
             ),
           ),
         ],

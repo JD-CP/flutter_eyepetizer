@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/pages/discovery/discovery_page_provider.dart';
+import 'package:flutter_eyepetizer/pages/discovery/discovery_page.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page.dart';
-import 'pages/hot/hot_page.dart';
+import 'package:flutter_eyepetizer/pages/hot/hot_page.dart';
 import 'pages/mine/mine_page.dart';
 
 // 主入口
