@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/entity/category_entity.dart';
-import 'category_details_page.dart';
+import 'package:flutter_eyepetizer/pages/discovery/category/category_list_page.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   final CategoryEntity item;
@@ -32,9 +32,11 @@ class CategoryItemWidget extends StatelessWidget {
       ),
       onTap: () => {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CategoryDetailsPage(item: this.item)))
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryListPage(item: this.item),
+          ),
+        ),
       },
     );
   }
