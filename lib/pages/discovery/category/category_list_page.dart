@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_eyepetizer/entity/category_entity.dart';
+import 'package:flutter_eyepetizer/data/entity/category_entity.dart';
 import 'package:flutter_eyepetizer/pages/discovery/category/category_list_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';

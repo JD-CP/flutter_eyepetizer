@@ -4,10 +4,10 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
-import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 import 'video_related_page.dart';
 
 /// 视频详情

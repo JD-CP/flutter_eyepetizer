@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/search/keyword_widget.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';

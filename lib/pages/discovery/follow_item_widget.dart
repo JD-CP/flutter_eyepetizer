@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 
 class FollowItemWidget extends StatelessWidget {

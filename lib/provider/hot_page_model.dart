@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/entity/tab_info_entity.dart';
+import 'package:flutter_eyepetizer/data/entity/tab_info_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import '../pages/hot/rank_page_provider.dart';

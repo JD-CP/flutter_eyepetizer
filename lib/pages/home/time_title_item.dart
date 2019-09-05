@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_eyepetizer/entity/issue_entity.dart';
 
 /// 时间标题 item
 class TimeTitleItem extends StatelessWidget {

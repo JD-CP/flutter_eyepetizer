@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_eyepetizer/entity/category_entity.dart';
+import 'package:flutter_eyepetizer/data/entity/category_entity.dart';
 import 'package:flutter_eyepetizer/pages/discovery/category/category_list_page.dart';
 
 class CategoryItemWidget extends StatelessWidget {
