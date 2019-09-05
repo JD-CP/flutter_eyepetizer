@@ -195,7 +195,7 @@ class FollowItemData {
   int duration;
   String descriptionEditor;
   String xLibrary;
-  Provider provider;
+  ProviderData provider;
   int id;
   List<Null> subtitles;
   bool ad;
@@ -261,7 +261,7 @@ class FollowItemData {
     descriptionEditor = json['descriptionEditor'];
     xLibrary = json['library'];
     provider = json['provider'] != null
-        ? new Provider.fromJson(json['provider'])
+        ? new ProviderData.fromJson(json['provider'])
         : null;
     id = json['id'];
     if (json['subtitles'] != null) {
@@ -395,7 +395,7 @@ class Data {
   int duration;
   String descriptionEditor;
   String xLibrary;
-  Provider provider;
+  ProviderData provider;
   int id;
   List<Null> subtitles;
   bool ad;
@@ -465,7 +465,7 @@ class Data {
     descriptionEditor = json['descriptionEditor'];
     xLibrary = json['library'];
     provider = json['provider'] != null
-        ? new Provider.fromJson(json['provider'])
+        ? new ProviderData.fromJson(json['provider'])
         : null;
     id = json['id'];
     if (json['subtitles'] != null) {
@@ -622,14 +622,14 @@ class Label {
   }
 }
 
-class Provider {
+class ProviderData {
   String icon;
   String name;
   String alias;
 
-  Provider({this.icon, this.name, this.alias});
+  ProviderData({this.icon, this.name, this.alias});
 
-  Provider.fromJson(Map<String, dynamic> json) {
+  ProviderData.fromJson(Map<String, dynamic> json) {
     icon = json['icon'];
     name = json['name'];
     alias = json['alias'];
