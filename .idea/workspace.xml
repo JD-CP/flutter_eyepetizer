@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dfb87f-a8fc-4cd0-b3dd-54e56cf02c89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -24,13 +31,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/provider/author_details_model.dart">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="171">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -87,7 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/pages/discovery/category_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/search/keyword_widget.dart" />
         <option value="$PROJECT_DIR$/lib/provider/AuthorDetailsModel.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/author_details_page_provider.dart" />
@@ -138,6 +141,7 @@
         <option value="$PROJECT_DIR$/lib/pages/video/video_details_page_provider.dart" />
         <option value="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
       </list>
     </option>
   </component>
@@ -160,17 +164,6 @@
             <path>
               <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="provider" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,9 +222,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22050938" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22050938" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -246,8 +238,8 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.49865952" weight="0.4173913" />
       <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.7593834" weight="0.51594204" />
-      <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.905496" visible="true" weight="0.04360465" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09450402" side_tool="true" visible="true" weight="0.04360465" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.905496" visible="true" weight="0.36482558" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09450402" side_tool="true" visible="true" weight="0.36482558" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.4710145" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49932975" weight="0.62354654" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="10" />
@@ -281,16 +273,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/data/eyepetizer_repository.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/discovery/category_details_page.dart" />
     <entry file="file://$PROJECT_DIR$/lib/pages/search/keyword_widget.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -697,11 +679,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/provider/author_details_model.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="-695">
           <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
         </state>
       </provider>
     </entry>
