@@ -20,9 +20,6 @@ class HotPageState extends State<HotPage> with AutomaticKeepAliveClientMixin {
         model.init();
       },
       builder: (context, model, child) {
-        if (model.isInit) {
-          return LoadingWidget();
-        }
         return DefaultTabController(
           length: model.tabItems.length,
           child: Scaffold(
@@ -46,6 +43,9 @@ class HotPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HotPageModel model = Provider.of(context);
+    if (model.isInit) {
+      return LoadingWidget();
+    }
     return Column(
       children: <Widget>[
         Material(

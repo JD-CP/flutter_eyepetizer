@@ -12,6 +12,7 @@ import 'package:shimmer/shimmer.dart';
 import 'home_page_item.dart';
 import 'time_title_item.dart';
 
+/// 首页
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomePageState();
@@ -27,45 +28,43 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
         model.init();
       },
       builder: (context, model, child) {
-        return MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text('每日精选', style: TextStyle(color: Colors.black)),
-              centerTitle: true,
-              backgroundColor: Colors.white,
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('每日精选', style: TextStyle(color: Colors.black)),
+            centerTitle: true,
+            backgroundColor: Colors.white,
 
-              /// 去除阴影
-              elevation: 0,
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.black87,
-                  ),
-                  onPressed: () {
-                    showSearch(context: context, delegate: SearchBarDelegate());
-                  },
+            /// 去除阴影
+            elevation: 0,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.black87,
                 ),
-              ],
-            ),
-            body: EasyRefresh.custom(
-              enableControlFinishRefresh: true,
-              enableControlFinishLoad: true,
-              taskIndependence: true,
-              header: MyClassicalHeader(enableInfiniteRefresh: false),
-              footer: MyClassicalFooter(enableInfiniteLoad: false),
-              controller: model.controller,
-              scrollController: model.scrollController,
-              onRefresh: model.onRefresh,
-              onLoad: model.onLoadMore,
-              slivers: <Widget>[
-                SliverToBoxAdapter(
-                  child: Container(
-                    child: HomePageListWidget(),
-                  ),
+                onPressed: () {
+                  showSearch(context: context, delegate: SearchBarDelegate());
+                },
+              ),
+            ],
+          ),
+          body: EasyRefresh.custom(
+            enableControlFinishRefresh: true,
+            enableControlFinishLoad: true,
+            taskIndependence: true,
+            header: MyClassicalHeader(enableInfiniteRefresh: false),
+            footer: MyClassicalFooter(enableInfiniteLoad: false),
+            controller: model.controller,
+            scrollController: model.scrollController,
+            onRefresh: model.onRefresh,
+            onLoad: model.onLoadMore,
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Container(
+                  child: HomePageListWidget(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
