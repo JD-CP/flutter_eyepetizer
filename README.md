@@ -103,8 +103,18 @@ flutter run
 - [flustars](https://github.com/Sky24n/flustars)  常用工具类。
 - [device_info](https://github.com/flutter/plugins) Flutter 插件。
 - [flutter_ijkplayer](https://github.com/CaiJingLong/flutter_ijkplayer) 视频播放。
+- [flutter_easyrefresh](https://github.com/xuelongqy/flutter_easyrefresh) 下拉刷新、上拉加载。
+- [shimmer](https://github.com/hnvn/flutter_shimmer) 闪亮亮哈哈哈。
+- [provider](https://github.com/rrousselGit/provider) 非常好用的状态管理框架，会让你的代码清爽很多。
 
 ### 版本更新
+
+- 1.0.2 - 2019.09.06
+```
+1. 代码优化，Provider 应用及简单封装。
+2. 下拉刷新、上拉加载风格改变。
+3. 加载中视图状态优化。
+```
 
 - 1.0.1 - 2019.08.30
 
@@ -122,9 +132,10 @@ flutter run
 
 会有新功能的添加，更多的是针对现在项目的缺点，所进行的优化。
 
-- 下拉刷新、上拉加载封装。
+- Provider 封装优化。
+- 搜索标题栏样式更改。
+- 部分页面 UI 呈现效果优化。
 - 屏幕适配，非常有必要！。
-- 状态管理，计划用 Provider，放弃了 Bloc。
 - 和 native 混合开发提上日程。
 
 ### 最后
