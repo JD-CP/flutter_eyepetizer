@@ -8,20 +8,37 @@ import 'package:flutter_eyepetizer/pages/search/keyword_widget.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:flutter_eyepetizer/widget/empty_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
+import 'package:flutter_eyepetizer/widget/search/search_bar.dart';
 import 'search_result_widget.dart';
 
 /// 搜索页
-class SearchBarDelegate extends SearchDelegate {
+class SearchBarDelegate extends MySearchDelegate {
   List<String> keywords = [];
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    var theme = Theme.of(context);
+    return super.appBarTheme(context).copyWith(
+          primaryColor: theme.scaffoldBackgroundColor,
+          primaryColorBrightness: theme.brightness,
+        );
+  }
+
+  SearchBarDelegate({String hintText})
+      : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
 
   /// 清空按钮
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
+        iconSize: 20,
         icon: Icon(
           Icons.clear,
-          color: Colors.black87,
         ),
         onPressed: () => query = "",
       )
@@ -32,12 +49,12 @@ class SearchBarDelegate extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_arrow,
-          progress: transitionAnimation,
-          color: Colors.black87,
-        ),
-        onPressed: () => close(context, null));
+      iconSize: 20,
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, null);
+      },
+    );
   }
 
   /// 搜到到内容后的展现

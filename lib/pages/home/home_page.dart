@@ -6,6 +6,7 @@ import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
 import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
+import 'package:flutter_eyepetizer/widget/search/search_bar.dart' as search_bar;
 import 'package:provider/provider.dart';
 
 import 'home_page_item.dart';
@@ -42,7 +43,8 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   color: Colors.black87,
                 ),
                 onPressed: () {
-                  showSearch(context: context, delegate: SearchBarDelegate());
+                  // showSearch(context: context, delegate: SearchBarDelegate());
+                  search_bar.showSearch(context: context, delegate: SearchBarDelegate(hintText: "请输入关键词"));
                 },
               ),
             ],
