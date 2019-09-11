@@ -23,6 +23,26 @@ class CollectionCard extends StatelessWidget {
     }
   }
 
+  String formatDuration(duration) {
+    var minute = duration ~/ 60;
+    var second = duration % 60;
+    var str;
+    if (minute <= 9) {
+      if (second <= 9) {
+        str = "0$minute:0$second";
+      } else {
+        str = "0$minute:$second";
+      }
+    } else {
+      if (second <= 9) {
+        str = "$minute:0$second";
+      } else {
+        str = "$minute:$second";
+      }
+    }
+    return str;
+  }
+
   Widget _renderItemWidget(context, index) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -35,6 +55,7 @@ class CollectionCard extends StatelessWidget {
               GestureDetector(
                 child: CachedNetworkImage(
                   width: 300,
+                  height: 180,
                   fit: BoxFit.cover,
                   imageUrl: item.data.itemList[index].data.cover.feed,
                   errorWidget: (context, url, error) =>
@@ -42,29 +63,71 @@ class CollectionCard extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VideoDetailsPage(
-                                item: item.data.itemList[index],
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VideoDetailsPage(
+                        item: item.data.itemList[index],
+                      ),
+                    ),
+                  );
                 },
               ),
               Positioned(
                 child: Container(
-                  child: Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      item.data.itemList[index].data.category,
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
+                  width: 300,
+                  padding: EdgeInsets.only(top: 10, bottom: 10, right: 10),
+                  height: 180,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            width: 40,
+                            height: 24,
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                item.data.itemList[index].data.category,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.black26,
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(12),
+                                    bottomRight: Radius.circular(12))),
+                          )
+                        ],
                       ),
-                    ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                formatDuration(
+                                    item.data.itemList[index].data.duration),
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.black26,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.white30,
-                      borderRadius: BorderRadius.circular(5)),
                 ),
               ),
             ],
@@ -77,16 +140,20 @@ class CollectionCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.black87,
+              color: Colors.black,
               fontSize: 14,
             ),
           ),
         ),
         Text(
           DateUtil.formatDateMs(
-              item.data.itemList[index].data.author.latestReleaseTime,
-              format: 'yyyy/MM/dd HH:mm'),
-          style: TextStyle(color: Colors.black26, fontSize: 12),
+            item.data.itemList[index].data.author.latestReleaseTime,
+            format: 'yyyy/MM/dd HH:mm',
+          ),
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 12,
+          ),
         ),
       ],
     );
@@ -94,25 +161,23 @@ class CollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Colors.white,
       padding: EdgeInsets.only(
-        left: 10,
-        top: 10,
-        right: 10,
         bottom: 10,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(
-              top: 10,
-            ),
+          Container(
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+            width: double.infinity,
+            color: Color(0xFFF4F4F4),
             child: Text(
               item.data.header.title,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 color: Colors.black54,
                 fontWeight: FontWeight.bold,
               ),
@@ -120,6 +185,7 @@ class CollectionCard extends StatelessWidget {
           ),
           Container(
             height: 245,
+            padding: EdgeInsets.only(left: 10),
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return _renderWidget(index);

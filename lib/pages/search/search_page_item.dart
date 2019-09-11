@@ -46,11 +46,13 @@ class SearchPageItem extends StatelessWidget {
             onTap: () {
               /// 点击图片跳转至视频详情页
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => VideoDetailsPage(
-                            item: this.item,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VideoDetailsPage(
+                    item: this.item,
+                  ),
+                ),
+              );
             },
           ),
           Positioned(

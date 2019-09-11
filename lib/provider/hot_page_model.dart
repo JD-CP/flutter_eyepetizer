@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/data/entity/tab_info_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
-import '../pages/hot/rank_page_provider.dart';
+import '../pages/hot/rank_page.dart';
 
 class HotPageModel extends ChangeNotifier {
   List<Widget> tabPages = [];

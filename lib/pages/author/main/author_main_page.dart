@@ -23,6 +23,7 @@ class AuthorMainPageState extends State<AuthorMainPage>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ProviderWidget<AuthorMainPageModel>(
       model: AuthorMainPageModel(),
       onModelInitial: (model) {
@@ -66,13 +67,14 @@ class AuthorMainPageWidget extends StatelessWidget {
         } else if (item.type == 'textHeader') {
           return Padding(
             padding: EdgeInsets.only(
+              top: 10,
               left: 10,
               bottom: 10,
             ),
             child: Text(
               item.data.text,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 color: Colors.black54,
                 fontWeight: FontWeight.bold,
               ),
@@ -80,14 +82,14 @@ class AuthorMainPageWidget extends StatelessWidget {
           );
         } else if (item.type == 'textFooter') {
           return Container(
+            color: Colors.white,
             alignment: Alignment.centerRight,
             padding: EdgeInsets.all(10),
             child: Text(
-              '${item.data.text}>',
+              '${item.data.text} >',
               style: TextStyle(
                 fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple[500],
+                color: Colors.black,
               ),
             ),
           );

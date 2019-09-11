@@ -42,11 +42,12 @@ class VideoWelcomePage extends StatelessWidget {
         );
       },
       child: Container(
+        color: Colors.white,
         padding: EdgeInsets.only(left: 10, right: 10),
         child: Row(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(right: 15, top: 5, bottom: 5),
+              padding: EdgeInsets.only(right: 15, top: 10, bottom: 5),
               child: Stack(
                 alignment: FractionalOffset(0.95, 0.90),
                 children: <Widget>[
@@ -67,28 +68,18 @@ class VideoWelcomePage extends StatelessWidget {
                           formatDuration(item.data.duration),
                           style: TextStyle(
                             fontSize: 10,
-                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(3),
+                        color: Colors.black26,
+                        borderRadius: BorderRadius.circular(2),
                       ),
                     ),
                   )
                 ],
               ),
-
-              /*ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: CachedNetworkImage(
-                width: 135,
-                height: 80,
-                imageUrl: item.data.cover.detail,
-              ),
-            )*/
             ),
 
             Expanded(
@@ -99,9 +90,8 @@ class VideoWelcomePage extends StatelessWidget {
                   Text(
                     item.data.title,
                     style: TextStyle(
-                      color: Colors.black54,
+                      color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Padding(
@@ -109,7 +99,7 @@ class VideoWelcomePage extends StatelessWidget {
                     child: Text(
                       '#${item.data.category} / ${item.data.author.name}',
                       style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.grey,
                         fontSize: 12,
                       ),
                     ),

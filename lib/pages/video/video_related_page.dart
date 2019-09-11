@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-
-import 'video_details_page.dart';
+import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 
 class VideoRelatedPage extends StatelessWidget {
   final Item item;
@@ -70,14 +69,13 @@ class VideoRelatedPage extends StatelessWidget {
                           formatDuration(item.data.duration),
                           style: TextStyle(
                             fontSize: 10,
-                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
                         color: Colors.black45,
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.circular(2),
                       ),
                     ),
                   )
@@ -103,7 +101,6 @@ class VideoRelatedPage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Padding(

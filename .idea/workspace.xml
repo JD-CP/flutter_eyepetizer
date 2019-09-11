@@ -11,11 +11,19 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/collection_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/main/collection_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/hot/rank_page_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/hot/rank_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_details_page_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/hot_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/hot_page_model.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -33,37 +41,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="RJC5T17608008771" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
+        <entry file="file://$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="101" column="43" selection-start-line="101" selection-start-column="43" selection-end-line="101" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-725">
-              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state relative-caret-position="162">
+              <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isLoadingMore</find>
-      <find>hasBoundedHeight</find>
       <find>_dataList</find>
       <find>relea</find>
       <find>color</find>
@@ -110,10 +113,15 @@
       <find>infoColor</find>
       <find>Provider</find>
       <find>_list</find>
+      <find>关注</find>
+      <find>最近更新</find>
     </findStrings>
     <replaceStrings>
       <replace>Issue</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>D:\flutter-project\A-Flutter-Github\flutter_eyepetizer\lib\pages</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,29 +129,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/entity/issue_entity.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/work_item_widget.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/author_main_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/main/author_main_page_model.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/main/author_main_page_provider.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/works/author_works_model.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/works/author_works_page_model.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/works/author_works_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/issue_item_widget.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/issue/author_issue_model.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/author_issue_page.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/main/collection_card.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" />
         <option value="$PROJECT_DIR$/lib/pages/author/author_details_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/category/category_list_model.dart" />
         <option value="$PROJECT_DIR$/lib/pages/search/search_page.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/search/search_result_widget.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" />
         <option value="$PROJECT_DIR$/lib/provider/author_details_model.dart" />
         <option value="$PROJECT_DIR$/lib/provider/author_issue_model.dart" />
         <option value="$PROJECT_DIR$/lib/provider/author_main_page_model.dart" />
@@ -154,8 +153,6 @@
         <option value="$PROJECT_DIR$/lib/entity_factory.dart" />
         <option value="$PROJECT_DIR$/lib/pages/hot/hot_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/video/video_details_model.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/video/video_details_page_provider.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" />
         <option value="$PROJECT_DIR$/lib/provider/home_page_model.dart" />
         <option value="$PROJECT_DIR$/lib/pages/home/swiper_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/category_item_widget.dart" />
@@ -167,11 +164,22 @@
         <option value="$PROJECT_DIR$/lib/pages/home/time_title_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/home/home_page.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/category/category_list_page.dart" />
-        <option value="$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/follow/follow_list_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/hot/rank_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/video/video_details_page_provider.dart" />
         <option value="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/main/collection_card.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart" />
+        <option value="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" />
       </list>
     </option>
   </component>
@@ -209,22 +217,15 @@
               <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="discovery" type="462c0819:PsiDirectoryNode" />
+              <item name="author" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="discovery" type="462c0819:PsiDirectoryNode" />
-              <item name="follow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="author" type="462c0819:PsiDirectoryNode" />
+              <item name="issue" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,6 +286,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21648793" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -295,14 +297,15 @@
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Find" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.4244186" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.91219836" weight="0.35755813" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.86863273" weight="0.7710145" />
       <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.7593834" weight="0.51594204" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.7902145" visible="true" weight="0.26666668" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.20978552" side_tool="true" visible="true" weight="0.26666668" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.7902145" visible="true" weight="0.04347826" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.20978552" side_tool="true" visible="true" weight="0.04347826" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.4710145" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49932975" weight="0.62354654" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="10" />
@@ -336,115 +339,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/category/category_list_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/search/search_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
-          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/search/search_page_item.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/search/search_result_widget.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_related_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/provider/author_main_page_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/provider/author_works_page_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/provider/follow_list_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/provider/hot_page_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/entity_factory.dart" />
     <entry file="file://$PROJECT_DIR$/lib/provider/rank_page_model.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -473,16 +367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/hot/hot_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="46" column="29" lean-forward="true" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/provider/author_issue_model.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -490,33 +374,6 @@
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page_provider.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="338" column="18" selection-start-line="338" selection-start-column="18" selection-end-line="338" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -695,23 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="87" column="23" lean-forward="true" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -749,20 +589,162 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
+    <entry file="file://$PROJECT_DIR$/lib/pages/hot/hot_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="101" column="43" selection-start-line="101" selection-start-column="43" selection-end-line="101" selection-end-column="43" />
+        <state relative-caret-position="205">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/hot/rank_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="72" column="35" lean-forward="true" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="54" column="54" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/search/search_page_item.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_model.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_related_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="110" column="44" lean-forward="true" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/video/video_details_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/home/home_page_item.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-725">
-          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        <state relative-caret-position="206">
+          <caret line="109" column="34" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/main/collection_card.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="101" column="23" lean-forward="true" selection-start-line="101" selection-start-column="23" selection-end-line="101" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/works/author_works_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3021">
+          <caret line="164" column="51" lean-forward="true" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -771,11 +753,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
+        <state relative-caret-position="209">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
         </state>
       </provider>
     </entry>

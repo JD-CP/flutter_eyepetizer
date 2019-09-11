@@ -23,6 +23,26 @@ class FollowItemListWidget extends StatelessWidget {
     }
   }
 
+  String formatDuration(duration) {
+    var minute = duration ~/ 60;
+    var second = duration % 60;
+    var str;
+    if (minute <= 9) {
+      if (second <= 9) {
+        str = "0$minute:0$second";
+      } else {
+        str = "0$minute:$second";
+      }
+    } else {
+      if (second <= 9) {
+        str = "$minute:0$second";
+      } else {
+        str = "$minute:$second";
+      }
+    }
+    return str;
+  }
+
   Widget renderItemWidget(context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +109,7 @@ class FollowItemListWidget extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.all(5),
                               child: Text(
-                                "08:56",
+                                formatDuration(item.data.duration),
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.white,
@@ -104,20 +124,7 @@ class FollowItemListWidget extends StatelessWidget {
                         ],
                       ),
                     ],
-                  ), /*Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      item.data.category,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.white,
-                      ),
-                    ),
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(2),
-                  ),*/
                 ),
               ),
             ],

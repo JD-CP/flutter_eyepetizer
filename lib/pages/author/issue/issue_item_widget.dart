@@ -54,7 +54,7 @@ class IssueItemWidget extends StatelessWidget {
                       Text(
                         item.data.header.title,
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           color: Colors.black,
                         ),
                       ),
@@ -64,7 +64,10 @@ class IssueItemWidget extends StatelessWidget {
                           item.data.header.description,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 13, color: Colors.black26),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
                         ),
                       )
                     ],

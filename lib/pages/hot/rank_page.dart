@@ -27,21 +27,24 @@ class RankPageState extends State<RankPage> with AutomaticKeepAliveClientMixin {
         model.init(widget.pageUrl);
       },
       builder: (context, model, child) {
-        return EasyRefresh.custom(
-          enableControlFinishRefresh: true,
-          header: MyClassicalHeader(
-            enableInfiniteRefresh: false,
-          ),
-          controller: model.controller,
-          scrollController: model.scrollController,
-          onRefresh: model.onRefresh,
-          slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: Container(
-                child: RankPageWidget(),
-              ),
+        return Container(
+          color: Color(0xFFF4F4F4),
+          child: EasyRefresh.custom(
+            enableControlFinishRefresh: true,
+            header: MyClassicalHeader(
+              enableInfiniteRefresh: false,
             ),
-          ],
+            controller: model.controller,
+            scrollController: model.scrollController,
+            onRefresh: model.onRefresh,
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Container(
+                  child: RankPageWidget(),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
@@ -66,9 +69,8 @@ class RankPageWidget extends StatelessWidget {
       },
       separatorBuilder: (context, index) {
         return Divider(
-          height: .5,
-          color: Color(0xFFDDDDDD),
-          indent: 15,
+          height: 10,
+          color: Color(0xFFF4F4F4),
         );
       },
       itemCount: model.itemList.length,

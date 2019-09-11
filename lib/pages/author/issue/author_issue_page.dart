@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'issue_item_widget.dart';
 
+/// 作者专辑页
 class AuthorIssuePage extends StatefulWidget {
   final String apiUrl;
 

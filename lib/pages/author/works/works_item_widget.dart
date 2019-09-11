@@ -80,7 +80,7 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
                       Text(
                         widget.item.data.author.name,
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           color: Colors.black,
                         ),
                       ),
@@ -91,8 +91,8 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.black26,
+                            fontSize: 12,
+                            color: Colors.grey,
                           ),
                         ),
                       )
@@ -116,62 +116,40 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
               dataSource: widget.dataSource,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10),
-            child: Row(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/icon_like_grey.png',
-                      width: 22,
-                      height: 22,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 3),
-                      child: Text(
-                        '${widget.item.data.consumption.collectionCount}',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 30, right: 30),
-                  child: Row(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/icon_share_grey.png',
-                        width: 22,
-                        height: 22,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 3),
-                        child: Text(
-                          '${widget.item.data.consumption.shareCount}',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ],
+          Row(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image.asset(
+                    'images/icon_like_grey.png',
+                    width: 22,
+                    height: 22,
                   ),
-                ),
-                Row(
+                  Padding(
+                    padding: EdgeInsets.only(left: 3),
+                    child: Text(
+                      '${widget.item.data.consumption.collectionCount}',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 30, right: 30),
+                child: Row(
                   children: <Widget>[
                     Image.asset(
-                      'images/icon_comment_grey.png',
+                      'images/icon_share_grey.png',
                       width: 22,
                       height: 22,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 3),
                       child: Text(
-                        '${widget.item.data.consumption.replyCount}',
+                        '${widget.item.data.consumption.shareCount}',
                         style: TextStyle(
                           fontSize: 13,
                           color: Colors.black54,
@@ -180,8 +158,27 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Row(
+                children: <Widget>[
+                  Image.asset(
+                    'images/icon_comment_grey.png',
+                    width: 22,
+                    height: 22,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 3),
+                    child: Text(
+                      '${widget.item.data.consumption.replyCount}',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),
