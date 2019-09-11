@@ -13,6 +13,8 @@ class DiscoveryPageModel extends ChangeNotifier {
   List<Item> followItemList;
   List<CategoryEntity> categoryList;
 
+  String nextPageUrl;
+
   void initPage(bool isInit) {
     this.isInit = isInit;
     notifyListeners();
@@ -50,10 +52,28 @@ class DiscoveryPageModel extends ChangeNotifier {
 
       Map map = json.decode(response[1].toString());
       var followEntity = Issue.fromJson(map);
+      nextPageUrl = followEntity.nextPageUrl;
       var followItemList = followEntity.itemList;
 
       initPage(false);
       this.categoryList = dataList;
+      this.followItemList = followItemList;
+      notifyListeners();
+    } catch (e, s) {
+      print(e.toString());
+    }
+  }
+
+  loadNextPage() async {
+    try {
+      var response = await HttpUtil.buildDio().get(
+        null == nextPageUrl ? Constant.followUrl : nextPageUrl,
+        options: Options(headers: httpHeaders),
+      );
+      Map map = json.decode(response.toString());
+      var followEntity = Issue.fromJson(map);
+      nextPageUrl = followEntity.nextPageUrl;
+      var followItemList = followEntity.itemList;
       this.followItemList = followItemList;
       notifyListeners();
     } catch (e, s) {

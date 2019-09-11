@@ -102,7 +102,7 @@ class MinePage extends StatelessWidget {
                       '我的关注',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black87,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -113,7 +113,7 @@ class MinePage extends StatelessWidget {
                       '观看记录',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black87,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -124,7 +124,7 @@ class MinePage extends StatelessWidget {
                       '我的徽章',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black87,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -135,7 +135,7 @@ class MinePage extends StatelessWidget {
                       '功能设置',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black87,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -146,7 +146,7 @@ class MinePage extends StatelessWidget {
                       '成为作者',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black87,
+                        color: Colors.black,
                       ),
                     ),
                   ),

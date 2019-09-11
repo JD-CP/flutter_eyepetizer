@@ -16,7 +16,7 @@ class CategoryItemWidget extends StatelessWidget {
         children: <Widget>[
           Container(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(0),
               child: CachedNetworkImage(
                 imageUrl: this.item.bgPicture,
                 fit: BoxFit.cover,
@@ -25,8 +25,7 @@ class CategoryItemWidget extends StatelessWidget {
           ),
           Text(
             '#${this.item.name}',
-            style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.white, fontSize: 14),
           ),
         ],
       ),

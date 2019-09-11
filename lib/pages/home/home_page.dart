@@ -7,7 +7,7 @@ import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
 import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'home_page_item.dart';
 import 'time_title_item.dart';
@@ -22,7 +22,7 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ProviderWidget(
+    return ProviderWidget<HomePageModel>(
       model: HomePageModel(),
       onModelInitial: (model) {
         model.init();
@@ -99,6 +99,7 @@ class HomePageListWidget extends StatelessWidget {
 
           /// indent: 前间距, endIndent: 后间距
           indent: 15,
+          endIndent: 15,
         );
       },
       itemCount: model.itemList.length,

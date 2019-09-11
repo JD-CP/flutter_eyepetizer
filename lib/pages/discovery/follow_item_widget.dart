@@ -50,7 +50,7 @@ class FollowItemWidget extends StatelessWidget {
                     Text(
                       item.data.header.title,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         color: Colors.black,
                       ),
                     ),
@@ -60,7 +60,10 @@ class FollowItemWidget extends StatelessWidget {
                         item.data.header.description,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 13, color: Colors.black26),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.grey,
+                        ),
                       ),
                     )
                   ],
@@ -69,18 +72,17 @@ class FollowItemWidget extends StatelessWidget {
             ),
             GestureDetector(
               child: Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(7),
                 child: Text(
                   '+ 关注',
                   style: TextStyle(
                     fontSize: 12,
-                    fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),
                 ),
                 decoration: BoxDecoration(
                   color: Color(0xFFF4F4F4),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(2),
                 ),
               ),
               onTap: (() {

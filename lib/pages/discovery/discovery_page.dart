@@ -58,28 +58,6 @@ class DiscoveryPageWidget extends StatelessWidget {
     if (model.isInit) {
       return LoadingWidget();
     }
-    return renderBodyWidget(context, model);
-  }
-
-  /// 热门分类标题
-  Widget renderCategoryTitleWidget() {
-    return Container(
-      color: Color(0xFFF4F4F4),
-      child: Padding(
-        padding: EdgeInsets.all(15),
-        child: Text(
-          '热门分类',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget renderBodyWidget(context, DiscoveryPageModel model) {
     return Container(
       color: Colors.white,
       child: CustomScrollView(
@@ -87,51 +65,119 @@ class DiscoveryPageWidget extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverToBoxAdapter(
-            child: renderFollowTitleWidget(context),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                /// 实现了每个 item 下面加一条分割线
-                var i = index;
-                i -= 1;
-                if (i.isOdd) {
-                  i = (i + 1) ~/ 2;
-                  return FollowItemWidget(
-                    item: model.followItemList[i],
-                  );
-                }
-                i = i ~/ 2;
-                return Divider(
-                  height: .5,
-                  indent: 65,
-                  color: Color(0xFFDDDDDD),
-                );
-              },
-              childCount: model.followItemList.length * 2,
+            child: Container(
+              width: double.infinity,
+              height: 10,
+              color: Color(0xFFF4F4F4),
             ),
           ),
           SliverToBoxAdapter(
             child: renderCategoryTitleWidget(),
           ),
           SliverPadding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 10),
             sliver: SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return CategoryItemWidget(item: model.categoryList[index]);
+                  return Padding(
+                    padding: EdgeInsets.all(0),
+                    child: CategoryItemWidget(
+                      item: model.categoryList[index],
+                    ),
+                  );
                 },
                 childCount: model.categoryList.length,
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 /// 设置横纵轴间距
-                crossAxisCount: 4,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
+                crossAxisCount: 5,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
               ),
             ),
           ),
+          SliverToBoxAdapter(
+            child: Container(
+              width: double.infinity,
+              height: 10,
+              color: Color(0xFFF4F4F4),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: renderFollowTitleWidget(context),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                /// 实现了每个 item 下面加一条分割线
+//                var i = index;
+//                i -= 1;
+//                if (i.isOdd) {
+//                  i = (i + 1) ~/ 2;
+//                  return FollowItemWidget(
+//                    item: model.followItemList[i],
+//                  );
+//                }
+//                i = i ~/ 2;
+//                return Divider(
+//                  height: .5,
+//                  indent: 65,
+//                  color: Color(0xFFDDDDDD),
+//                );
+                return FollowItemWidget(
+                  item: model.followItemList[index],
+                );
+              },
+              childCount: model.followItemList.length,
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.only(bottom: 20, top: 10),
+            sliver: SliverToBoxAdapter(
+              child: Container(
+                alignment: Alignment.center,
+                child: Container(
+                  width: 70,
+                  height: 35,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF4F4F4),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      model.loadNextPage();
+                    },
+                    child: Text(
+                      '换一换',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          )
         ],
+      ),
+    );
+  }
+
+  /// 热门分类标题
+  Widget renderCategoryTitleWidget() {
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
+        child: Text(
+          '热门分类',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }
@@ -139,15 +185,13 @@ class DiscoveryPageWidget extends StatelessWidget {
   /// 推荐关注标题
   Widget renderFollowTitleWidget(context) {
     return Container(
-      padding: EdgeInsets.all(15),
-      color: Color(0xFFF4F4F4),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 13),
       child: Row(
         children: <Widget>[
           Text(
             '推荐关注',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 14,
               color: Colors.black,
             ),
           ),
@@ -160,8 +204,7 @@ class DiscoveryPageWidget extends StatelessWidget {
                   child: Text(
                     '查看更多 >>',
                     style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
                       color: Colors.grey,
                     ),
                   ),
