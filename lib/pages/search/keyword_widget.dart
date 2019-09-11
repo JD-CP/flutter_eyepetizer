@@ -4,12 +4,59 @@ class KeywordItemWidget extends StatelessWidget {
   final List<String> keywords;
   final callback;
 
-  KeywordItemWidget({Key key, this.keywords, this.callback}) : super(key: key);
+  KeywordItemWidget({Key key, this.keywords, this.callback});
+
+  List<Widget> renderTags() {
+    return List.generate(keywords.length, (index) {
+      return Container(
+        margin: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(left: 15, right: 15, top: 7, bottom: 7),
+        child: InkWell(
+          child: Text(
+            keywords[index],
+            style: TextStyle(fontSize: 11),
+          ),
+          onTap: () {
+            debugPrint('onTap value-> ${keywords[index]}');
+            callback(keywords[index]);
+          },
+        ),
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(15),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CustomScrollView(
+      width: double.infinity,
+      color: Colors.white,
+      padding: EdgeInsets.only(left: 15, right: 15),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 15, top: 15, right: 15),
+            child: Text(
+              '热搜关键词',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15, top: 5, right: 15, bottom: 5),
+            child: Wrap(
+              spacing: 5.0,
+              alignment: WrapAlignment.center,
+              children: renderTags(),
+            ),
+          )
+        ],
+      ), /*CustomScrollView(
         shrinkWrap: true,
         slivers: <Widget>[
           SliverToBoxAdapter(
@@ -18,9 +65,8 @@ class KeywordItemWidget extends StatelessWidget {
               child: Text(
                 '热搜关键词',
                 style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 14,
                 ),
               ),
             ),
@@ -66,7 +112,7 @@ class KeywordItemWidget extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ),*/
     );
   }
 }

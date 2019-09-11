@@ -117,21 +117,6 @@ class SearchResultState extends State<SearchResultWidget> {
     return ListView.separated(
       controller: this.scrollController,
       itemBuilder: (context, index) {
-        /*if (index == 0) {
-          return Container(
-            color: Colors.white,
-            padding: EdgeInsets.only(top: 35, bottom: 15),
-            alignment: Alignment.center,
-            child: Text(
-              '— 「${widget.query}」搜索结果共${widget.issue.total}个 —',
-              style: TextStyle(
-                color: Colors.black54,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-            ),
-          );
-        }*/
         if (index < this._dataList.length) {
           return HomePageItem(
             item: _dataList[index],

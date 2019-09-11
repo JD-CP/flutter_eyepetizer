@@ -6,9 +6,11 @@ import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 import 'package:flutter_eyepetizer/pages/search/keyword_widget.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/widget/empty_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'search_result_widget.dart';
 
+/// 搜索页
 class SearchBarDelegate extends SearchDelegate {
   List<String> keywords = [];
 
@@ -69,29 +71,7 @@ class SearchBarDelegate extends SearchDelegate {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             if (snapshot.data.itemList.length == 0) {
-              return Container(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      'images/icon_no_data.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Text(
-                        '暂无搜索数据哇',
-                        style: TextStyle(
-                          color: Colors.black45,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
+              return EmptyWidget();
             }
             return SearchResultWidget(
               issue: snapshot.data,

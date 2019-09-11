@@ -64,7 +64,7 @@ class SearchPageItem extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 17,
+                    fontSize: 14,
                   ),
                 ),
                 Container(
@@ -81,8 +81,8 @@ class SearchPageItem extends StatelessWidget {
                     ),
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black45,
-                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
               ],
