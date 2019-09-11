@@ -7,6 +7,7 @@ import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
 
 import 'category_list_item.dart';
 
+/// 分类列表
 class CategoryListPage extends StatefulWidget {
   final CategoryEntity item;
 
@@ -40,42 +41,59 @@ class CategoryListPageState extends State<CategoryListPage> {
       },
       builder: (context, model, child) {
         return Scaffold(
-          body: EasyRefresh.custom(
-            header: LinkHeader(
-              _headerNotifier,
-              extent: 70.0,
-              triggerDistance: 70.0,
-              completeDuration: Duration(milliseconds: 500),
-            ),
-            footer: MyClassicalFooter(enableInfiniteLoad: false),
-            onLoad: model.onLoadMore,
-            onRefresh: model.onRefresh,
-            slivers: <Widget>[
-              SliverAppBar(
-                expandedHeight: 180.0,
-                pinned: true,
-                backgroundColor: Colors.white,
-                flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: false,
-                  title: Text(widget.item.name),
-                  background: Image.network(
-                    widget.item.bgPicture,
-                    fit: BoxFit.cover,
+          body: Container(
+            color: Color(0xFFF4F4F4),
+            child: EasyRefresh.custom(
+              header: LinkHeader(
+                _headerNotifier,
+                extent: 70.0,
+                triggerDistance: 70.0,
+                completeDuration: Duration(milliseconds: 500),
+              ),
+              footer: MyClassicalFooter(enableInfiniteLoad: false),
+              onLoad: model.onLoadMore,
+              onRefresh: model.onRefresh,
+              slivers: <Widget>[
+                SliverAppBar(
+                  expandedHeight: 180.0,
+                  pinned: true,
+                  backgroundColor: Colors.white,
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: false,
+                    title: Text(widget.item.name),
+                    background: Image.network(
+                      widget.item.bgPicture,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  actions: <Widget>[
+                    CircleHeader(_headerNotifier),
+                  ],
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                      var i = index;
+                      i -= 1;
+                      if (i.isOdd) {
+                        i = (i + 1) ~/ 2;
+                        return CategoryListItem(
+                          item: model.itemList[i],
+                        );
+                      }
+                      i = i ~/ 2;
+                      return Divider(
+                        height: 10,
+                        color: Color(0xFFF4F4F4),
+                      );
+
+                      // return CategoryListItem(item: model.itemList[index]);
+                    },
+                    childCount: model.itemList.length * 2,
                   ),
                 ),
-                actions: <Widget>[
-                  CircleHeader(_headerNotifier),
-                ],
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return CategoryListItem(item: model.itemList[index]);
-                  },
-                  childCount: model.itemList.length,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

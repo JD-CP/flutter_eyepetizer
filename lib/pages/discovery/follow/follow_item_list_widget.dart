@@ -31,7 +31,6 @@ class FollowItemListWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 10),
           child: Stack(
-            alignment: FractionalOffset(0.97, 0.05),
             children: <Widget>[
               GestureDetector(
                 child: CachedNetworkImage(
@@ -53,20 +52,72 @@ class FollowItemListWidget extends StatelessWidget {
               ),
               Positioned(
                 child: Container(
-                  child: Padding(
+                  width: 300,
+                  padding: EdgeInsets.only(top: 10, bottom: 10, right: 10),
+                  height: 180,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            width: 40,
+                            height: 24,
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                item.data.category,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.black26,
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(12),
+                                    bottomRight: Radius.circular(12))),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                "08:56",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.black26,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ), /*Padding(
                     padding: EdgeInsets.all(5),
                     child: Text(
                       item.data.category,
                       style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
+                        fontSize: 10,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                   decoration: BoxDecoration(
-                      color: Colors.white30,
-                      borderRadius: BorderRadius.circular(5)),
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(2),
+                  ),*/
                 ),
               ),
             ],
@@ -79,15 +130,20 @@ class FollowItemListWidget extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.black87,
+              color: Colors.black,
               fontSize: 14,
             ),
           ),
         ),
         Text(
-          DateUtil.formatDateMs(item.data.author.latestReleaseTime,
-              format: 'yyyy/MM/dd HH:mm'),
-          style: TextStyle(color: Colors.black26, fontSize: 12),
+          DateUtil.formatDateMs(
+            item.data.author.latestReleaseTime,
+            format: 'yyyy/MM/dd HH:mm',
+          ),
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 12,
+          ),
         ),
       ],
     );

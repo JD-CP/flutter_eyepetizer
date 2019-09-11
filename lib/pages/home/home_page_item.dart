@@ -37,7 +37,7 @@ class HomePageItem extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, top: 10),
             child: Stack(
               // alignment: FractionalOffset(0.95, 0.5),
               children: <Widget>[
@@ -129,7 +129,7 @@ class HomePageItem extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: EdgeInsets.only(left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
