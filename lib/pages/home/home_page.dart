@@ -7,7 +7,6 @@ import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
 import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'home_page_item.dart';
 import 'time_title_item.dart';
@@ -48,23 +47,26 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
               ),
             ],
           ),
-          body: EasyRefresh.custom(
-            enableControlFinishRefresh: true,
-            enableControlFinishLoad: true,
-            taskIndependence: true,
-            header: MyClassicalHeader(enableInfiniteRefresh: false),
-            footer: MyClassicalFooter(enableInfiniteLoad: false),
-            controller: model.controller,
-            scrollController: model.scrollController,
-            onRefresh: model.onRefresh,
-            onLoad: model.onLoadMore,
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: Container(
-                  child: HomePageListWidget(),
+          body: Container(
+            color: Color(0xFFF4F4F4),
+            child: EasyRefresh.custom(
+              enableControlFinishRefresh: true,
+              enableControlFinishLoad: true,
+              taskIndependence: true,
+              header: MyClassicalHeader(enableInfiniteRefresh: false),
+              footer: MyClassicalFooter(enableInfiniteLoad: false),
+              controller: model.controller,
+              scrollController: model.scrollController,
+              onRefresh: model.onRefresh,
+              onLoad: model.onLoadMore,
+              slivers: <Widget>[
+                SliverToBoxAdapter(
+                  child: Container(
+                    child: HomePageListWidget(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -93,13 +95,21 @@ class HomePageListWidget extends StatelessWidget {
         return HomePageItem(item: item);
       },
       separatorBuilder: (context, index) {
+        var item = model.itemList[index];
+        var itemNext = model.itemList[index + 1];
+        if (item.type == 'textHeader' || itemNext.type == 'textHeader') {
+          return Divider(
+            height: 0,
+            color: Color(0xFFF4F4F4),
+
+            /// indent: 前间距, endIndent: 后间距
+          );
+        }
         return Divider(
-          height: .5,
-          color: Color(0xFFDDDDDD),
+          height: 10,
+          color: Color(0xFFF4F4F4),
 
           /// indent: 前间距, endIndent: 后间距
-          indent: 15,
-          endIndent: 15,
         );
       },
       itemCount: model.itemList.length,

@@ -10,13 +10,12 @@ class TimeTitleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(13),
       child: Text(
         timeTitle,
         style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.black87,
+          fontSize: 15,
+          color: Colors.black,
         ),
       ),
     );
