@@ -14,7 +14,7 @@ class KeywordItemWidget extends StatelessWidget {
         child: InkWell(
           child: Text(
             keywords[index],
-            style: TextStyle(fontSize: 11),
+            style: TextStyle(fontSize: 11, color: Colors.black54),
           ),
           onTap: () {
             debugPrint('onTap value-> ${keywords[index]}');
@@ -22,7 +22,9 @@ class KeywordItemWidget extends StatelessWidget {
           },
         ),
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Color.fromRGBO(0, 0, 0, 0.87).withOpacity(
+            Color.fromRGBO(0, 0, 0, 0.87).opacity * 0.15,
+          ),
           borderRadius: BorderRadius.circular(15),
         ),
       );
