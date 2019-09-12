@@ -20,7 +20,7 @@ class FollowListModel extends ChangeNotifier {
   /// 初始化
   init() async {
     initPage(true);
-    await loadData(url: Constant.homePageUrl);
+    await loadData(url: Constant.followUrl);
   }
 
   void initPage(bool isInit) {

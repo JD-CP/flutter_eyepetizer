@@ -140,9 +140,10 @@ class HomePageItem extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => AuthorDetailsPage(
-                                  item: this.item,
-                                )),
+                          builder: (context) => AuthorDetailsPage(
+                            item: this.item,
+                          ),
+                        ),
                       );
                     },
                     child: CachedNetworkImage(

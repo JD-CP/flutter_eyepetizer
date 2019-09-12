@@ -3,6 +3,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
@@ -225,85 +226,101 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                               ),
 
                               /// 作者信息
-                              Container(
-                                padding: EdgeInsets.only(
-                                  left: 15,
-                                  top: 10,
-                                  right: 15,
-                                  bottom: 10,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    ClipOval(
-                                      child: CachedNetworkImage(
-                                        width: 40,
-                                        height: 40,
-                                        imageUrl: widget.item.data.author.icon,
-                                        placeholder: (context, url) =>
-                                            CircularProgressIndicator(
-                                          strokeWidth: 2.5,
-                                          backgroundColor:
-                                              Colors.deepPurple[600],
-                                        ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AuthorDetailsPage(
+                                        item: widget.item,
                                       ),
                                     ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 10),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              widget.item.data.author.name,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 3),
-                                              child: Text(
-                                                widget.item.data.author
-                                                    .description,
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    left: 15,
+                                    top: 10,
+                                    right: 15,
+                                    bottom: 10,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      ClipOval(
+                                        child: CachedNetworkImage(
+                                          width: 40,
+                                          height: 40,
+                                          imageUrl:
+                                              widget.item.data.author.icon,
+                                          placeholder: (context, url) =>
+                                              CircularProgressIndicator(
+                                            strokeWidth: 2.5,
+                                            backgroundColor:
+                                                Colors.deepPurple[600],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 10),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                widget.item.data.author.name,
                                                 style: TextStyle(
-                                                  fontSize: 12,
+                                                  fontSize: 14,
                                                   color: Colors.white,
                                                 ),
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      child: Container(
-                                        padding: EdgeInsets.all(5),
-                                        child: Text(
-                                          '+ 关注',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.black,
+                                              Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 3),
+                                                child: Text(
+                                                  widget.item.data.author
+                                                      .description,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFF4F4F4),
-                                          borderRadius:
-                                              BorderRadius.circular(2),
-                                        ),
                                       ),
-                                      onTap: (() {
-                                        print('点击关注');
-                                      }),
-                                    ),
-                                  ],
+                                      GestureDetector(
+                                        child: Container(
+                                          padding: EdgeInsets.all(5),
+                                          child: Text(
+                                            '+ 关注',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFF4F4F4),
+                                            borderRadius:
+                                                BorderRadius.circular(2),
+                                          ),
+                                        ),
+                                        onTap: (() {
+                                          print('点击关注');
+                                        }),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
 
