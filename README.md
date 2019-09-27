@@ -6,7 +6,7 @@
 
 从 Google 在 2018.02 的世界移动大会上正式推出首个 Flutter Beta 版，到 2018.12 的 Flutter Live 2018 上，发布 1.0 稳定版，再到现在，也差不多有 18 个月的时间了。Flutter 在 Github 上的 star、fork 量也是一路飙升，可以说，出自 Google 的 Flutter，除了自带光环，再加上它本身的众多优势，受到了众多开发者的追捧，热度只增不减。
 
-作为一名不干寂寞的小开发，我也在去年 7 月份，果断入坑，开始 Flutter 的学习。也是略有斩获，并输出了一篇关于原生与 flutter 混合开发的文章：[Kotlin + MVP + Flutter ，让你可以在自己的项目中集成 Flutter 并使用](https://juejin.im/post/5b75491ef265da283719d0e7)。反响也还不错，当然也有很多考虑不足的地方。
+作为一名不干寂寞的小开发，我也在去年 7 月份，果断入坑，开始 Flutter 的学习。也是略有斩获，并输出了一篇关于原生与 flutter 混合开发的文章：[Kotlin + MVP + Flutter ，让你可以在自己的项目中集成 Flutter 并使用](https://juejin.im/post/5b7cf52e51882542c963f0f1)。反响也还不错，当然也有很多考虑不足的地方。
 
 之后的很长一段时间，我也因为工作上的变动以及一些个人原因，搁置了 flutter 的学习计划。这段时间，工作生活状态逐渐稳定之后，也继续开始了我的 flutter 学习之路。所以有了今天的主角 [仿开眼视频-flutter实现版](https://github.com/JD-CP/flutter_eyepetizer)。其实整个 App，现阶段并没有多么复杂的东西，基本用的都是 flutter 自带的 Widget，设计风格遵循 MD 规范，所以非常适合初学者学习。
 
@@ -108,6 +108,12 @@ flutter run
 - [provider](https://github.com/rrousselGit/provider) 非常好用的状态管理框架，会让你的代码清爽很多。
 
 ### 版本更新
+
+- 1.0.4 - 2019.09.27
+```
+1. 部分页面视频播放无效问题解决。
+2. 作者详情页UI展示优化，增加作者信息展示。
+```
 
 - 1.0.3 - 2019.09.14
 ```

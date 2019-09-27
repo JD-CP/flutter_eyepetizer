@@ -36,12 +36,12 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
   /// 获取视频播放地址，并播放，默认播放高清视频
   void getVideoUrl() {
     List<PlayInfo> playInfoList = widget.item.data.playInfo;
-    if (playInfoList.length > 1) {
+    if (playInfoList.length >= 1) {
       for (var playInfo in playInfoList) {
         if (playInfo.type == 'high') {
           videoUrl = playInfo.url;
           _controller.setNetworkDataSource(
-            playInfo.url,
+            videoUrl,
             autoPlay: true,
           );
         }
