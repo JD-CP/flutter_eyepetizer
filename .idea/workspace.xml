@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dfb87f-a8fc-4cd0-b3dd-54e56cf02c89" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/images/bg_title.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/author/author_details_page__.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/widget/extended_nested_scroll_view.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/widget/nested_scroll_view_inner_scroll_position_key_widget.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/widget/util.dart" afterDir="false" />
@@ -21,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/author/author_details_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/author_details_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" afterDir="false" />
@@ -49,22 +49,22 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="RJC5T17608008771" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page__.dart">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
+            <state relative-caret-position="3072">
+              <caret line="224" column="56" selection-start-line="224" selection-start-column="56" selection-end-line="224" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="99">
+              <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,6 +224,27 @@
               <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="discovery" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_eyepetizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_eyepetizer" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="discovery" type="462c0819:PsiDirectoryNode" />
+              <item name="follow" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -316,8 +337,8 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" sideWeight="0.8679625" weight="0.77034885" />
       <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.7593834" weight="0.51594204" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.905496" visible="true" weight="0.31014493" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09450402" side_tool="true" visible="true" weight="0.31014493" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.905496" visible="true" weight="0.04347826" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.09450402" side_tool="true" visible="true" weight="0.04347826" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" sideWeight="0.50067025" side_tool="true" weight="0.4710145" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.769437" weight="0.6115942" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="10" />
@@ -658,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -698,16 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -725,10 +726,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page__.dart">
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
+        <state relative-caret-position="209">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/author/author_details_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3072">
+          <caret line="224" column="56" selection-start-line="224" selection-start-column="56" selection-end-line="224" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
