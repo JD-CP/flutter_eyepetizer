@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_eyepetizer/pages/discovery/discovery_page.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page.dart';
 import 'package:flutter_eyepetizer/pages/hot/hot_page.dart';
@@ -10,6 +11,9 @@ void main() {
   runApp(
     MyApp(),
   );
+  SystemUiOverlayStyle systemUiOverlayStyle =
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
 class MyApp extends StatefulWidget {

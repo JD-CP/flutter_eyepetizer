@@ -82,6 +82,7 @@ flutter:
     - images/icon_no_data.png
     - images/icon_default_avatar.png
     - images/icon_share_grey.png
+    - images/bg_title.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

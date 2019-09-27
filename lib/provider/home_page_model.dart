@@ -20,7 +20,7 @@ class HomePageModel extends ChangeNotifier {
   /// 初始化
   init() async {
     initPage(true);
-    await loadBanner();
+    await loadData(url: Constant.homePageUrl);
   }
 
   void initPage(bool isInit) {
@@ -88,7 +88,7 @@ class HomePageModel extends ChangeNotifier {
   /// 下拉刷新
   Future<List<Item>> onRefresh() async {
     isRefresh = true;
-    return await loadBanner();
+    return await loadData(url: Constant.homePageUrl);
   }
 
   /// 上拉加载

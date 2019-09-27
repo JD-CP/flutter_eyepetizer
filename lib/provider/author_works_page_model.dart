@@ -48,6 +48,8 @@ class AuthorWorksModel extends ChangeNotifier {
               list.add(DataSource.network(playInfo.url));
             }
           }
+        } else {
+          list.add(DataSource.network(item.data.playUrl));
         }
       }
       if (isInit) {

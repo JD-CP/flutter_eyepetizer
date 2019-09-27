@@ -33,15 +33,7 @@ class AuthorMainPageState extends State<AuthorMainPage>
         if (model.isInit) {
           return LoadingWidget();
         }
-        return EasyRefresh.custom(
-          slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: Container(
-                child: AuthorMainPageWidget(),
-              ),
-            ),
-          ],
-        );
+        return AuthorMainPageWidget();
       },
     );
   }
@@ -55,8 +47,7 @@ class AuthorMainPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthorMainPageModel model = Provider.of(context);
     return ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
+      physics: ClampingScrollPhysics(),
       itemBuilder: (context, index) {
         var item = model.itemList[index];
         if (item.type == 'videoCollectionOfHorizontalScrollCard') {
