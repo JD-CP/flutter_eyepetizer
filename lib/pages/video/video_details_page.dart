@@ -46,6 +46,12 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
           );
         }
       }
+    } else {
+      videoUrl = widget.item.data.playUrl;
+      _controller.setNetworkDataSource(
+        videoUrl,
+        autoPlay: true,
+      );
     }
   }
 

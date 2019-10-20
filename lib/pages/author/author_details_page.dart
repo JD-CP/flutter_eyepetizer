@@ -100,7 +100,9 @@ class AuthorDetailsPageState extends State<AuthorDetailsPage>
                                   children: <Widget>[
                                     ClipOval(
                                       child: Image.network(
-                                        data.author == null ? data.header.icon : data.author.icon,
+                                        data.author == null
+                                            ? data.header.icon
+                                            : data.author.icon,
                                         width: 45,
                                         height: 45,
                                       ),
@@ -108,29 +110,34 @@ class AuthorDetailsPageState extends State<AuthorDetailsPage>
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          model.info.description,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.white,
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            model.info.description,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          model.info.brief,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.white70,
+                                          SizedBox(
+                                            height: 5,
                                           ),
-                                        ),
-                                      ],
-                                    )
+                                          Text(
+                                            model.info.brief,
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white70,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      flex: 1,
+                                    ),
                                   ],
                                 ),
                               ),

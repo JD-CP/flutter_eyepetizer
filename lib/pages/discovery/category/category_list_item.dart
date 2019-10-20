@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -86,14 +87,26 @@ class CategoryListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: item.data.author.icon,
-                    width: 40,
-                    height: 40,
-                    placeholder: (context, url) => CircularProgressIndicator(
-                      strokeWidth: 2.5,
-                      backgroundColor: Colors.deepPurple[600],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AuthorDetailsPage(
+                          item: item,
+                        ),
+                      ),
+                    );
+                  },
+                  child: ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: item.data.author.icon,
+                      width: 40,
+                      height: 40,
+                      placeholder: (context, url) => CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        backgroundColor: Colors.deepPurple[600],
+                      ),
                     ),
                   ),
                 ),

@@ -12,7 +12,7 @@ class CollectionCard extends StatelessWidget {
 
   CollectionCard({Key key, this.item, this.childIndex});
 
-  Widget _renderWidget(index) {
+  Widget _renderWidget(index, context) {
     if ((index + 1) % 2 == 0) {
       return Padding(
         padding: EdgeInsets.only(left: 6, right: 6),
@@ -133,7 +133,8 @@ class CollectionCard extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
+        Container(
+          width: 300,
           padding: EdgeInsets.only(right: 10, top: 5, bottom: 5),
           child: Text(
             item.data.itemList[index].data.title,
@@ -188,7 +189,7 @@ class CollectionCard extends StatelessWidget {
             padding: EdgeInsets.only(left: 10),
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return _renderWidget(index);
+                return _renderWidget(index, context);
               },
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
