@@ -31,14 +31,14 @@ dev_dependencies:
   # 网络请求
   dio: 2.1.13
   # 图片加载
-  cached_network_image: 1.1.1
+  cached_network_image: 2.0.0-rc
   # 吐司
   fluttertoast: 3.1.0
   # 工具类
   flustars: 0.2.6+1
   device_info: 0.4.0+2
   # 视频播放
-  flutter_ijkplayer: 0.3.3
+  flutter_ijkplayer: 0.3.5+1
   # 下拉刷新、上拉加载
   flutter_easyrefresh: ^2.0.4
   shimmer: 1.0.0
