@@ -46,6 +46,8 @@ dev_dependencies:
   # 状态管理
   provider: ^3.0.0+1
 
+  oktoast: ^2.1.7
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
