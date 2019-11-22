@@ -3,15 +3,16 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/data/entity/category_entity.dart';
 import 'package:flutter_eyepetizer/pages/discovery/category/category_list_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
 
 import 'category_list_item.dart';
 
 /// 分类列表
 class CategoryListPage extends StatefulWidget {
-  final CategoryEntity item;
+  final String itemJson;
 
-  CategoryListPage({Key key, this.item}) : super(key: key);
+  CategoryListPage({Key key, this.itemJson}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => CategoryListPageState();
@@ -34,10 +35,13 @@ class CategoryListPageState extends State<CategoryListPage> {
 
   @override
   Widget build(BuildContext context) {
+    CategoryEntity item =
+        CategoryEntity.fromJson(FluroConvertUtils.string2map(widget.itemJson));
+
     return ProviderWidget<CategoryListModel>(
       model: CategoryListModel(),
       onModelInitial: (model) {
-        model.init(widget.item.id);
+        model.init(item.id);
       },
       builder: (context, model, child) {
         return Scaffold(
@@ -60,9 +64,9 @@ class CategoryListPageState extends State<CategoryListPage> {
                   backgroundColor: Colors.white,
                   flexibleSpace: FlexibleSpaceBar(
                     centerTitle: false,
-                    title: Text(widget.item.name),
+                    title: Text(item.name),
                     background: Image.network(
-                      widget.item.bgPicture,
+                      item.bgPicture,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -72,7 +76,7 @@ class CategoryListPageState extends State<CategoryListPage> {
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
-                        (context, index) {
+                    (context, index) {
                       var i = index;
                       i -= 1;
                       if (i.isOdd) {

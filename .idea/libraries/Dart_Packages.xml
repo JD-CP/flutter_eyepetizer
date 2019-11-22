@@ -107,6 +107,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fluro">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/fluro-1.5.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flustars">
           <value>
             <list>
@@ -146,13 +153,6 @@
           <value>
             <list>
               <option value="$USER_HOME$/flutter-sdk/flutter/packages/flutter_test/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="fluttertoast">
-          <value>
-            <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-3.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -377,11 +377,11 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/decimal-0.3.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.0+2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/dio-2.1.13/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/fluro-1.5.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flustars-0.2.6+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flutter_cache_manager-1.1.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flutter_easyrefresh-2.0.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flutter_ijkplayer-0.3.5+1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-3.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/http-0.12.0+2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/http_parser-3.1.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/image-2.1.4/lib" />

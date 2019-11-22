@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/pages/discovery/follow/follow_item_list_widget.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 import '../author_details_page.dart';
 
@@ -23,13 +25,10 @@ class IssueItemWidget extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  String itemJson = FluroConvertUtils.object2string(item);
+                  RouterManager.router.navigateTo(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => AuthorDetailsPage(
-                        item: this.item,
-                      ),
-                    ),
+                    RouterManager.author + "?itemJson=$itemJson",
                   );
                 },
                 child: ClipOval(

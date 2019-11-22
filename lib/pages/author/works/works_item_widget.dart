@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 
 import '../author_details_page.dart';
@@ -49,13 +51,11 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  String itemJson =
+                      FluroConvertUtils.object2string(widget.item);
+                  RouterManager.router.navigateTo(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => AuthorDetailsPage(
-                        item: widget.item,
-                      ),
-                    ),
+                    RouterManager.author + "?itemJson=$itemJson",
                   );
                 },
                 child: ClipOval(

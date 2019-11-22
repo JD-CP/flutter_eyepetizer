@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 class HomePageItem extends StatelessWidget {
   final Item item;
@@ -137,13 +137,18 @@ class HomePageItem extends StatelessWidget {
                 ClipOval(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      /*Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => AuthorDetailsPage(
                             item: this.item,
                           ),
                         ),
+                      );*/
+                      String itemJson = FluroConvertUtils.object2string(item);
+                      RouterManager.router.navigateTo(
+                        context,
+                        RouterManager.author + "?itemJson=$itemJson",
                       );
                     },
                     child: CachedNetworkImage(
@@ -207,12 +212,12 @@ class HomePageItem extends StatelessWidget {
                       width: 25, height: 25),
 
                   /// TODO 从底部弹出分享框
-                  onTap: () => Fluttertoast.showToast(
+                  /*onTap: () => Fluttertoast.showToast(
                     msg: '分享',
                     fontSize: 15,
                     textColor: Colors.black,
                     backgroundColor: Colors.white,
-                  ),
+                  ),*/
                 ),
               ],
             ),

@@ -16,12 +16,6 @@
 @import flutter_ijkplayer;
 #endif
 
-#if __has_include(<fluttertoast/FluttertoastPlugin.h>)
-#import <fluttertoast/FluttertoastPlugin.h>
-#else
-@import fluttertoast;
-#endif
-
 #if __has_include(<path_provider/PathProviderPlugin.h>)
 #import <path_provider/PathProviderPlugin.h>
 #else
@@ -45,7 +39,6 @@
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FLTDeviceInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTDeviceInfoPlugin"]];
   [IjkplayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"IjkplayerPlugin"]];
-  [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];

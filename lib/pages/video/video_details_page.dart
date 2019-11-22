@@ -6,6 +6,8 @@ import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 
 import 'video_related_page.dart';
@@ -234,13 +236,10 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                               /// 作者信息
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(
+                                  String itemJson = FluroConvertUtils.object2string(widget.item);
+                                  RouterManager.router.navigateTo(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => AuthorDetailsPage(
-                                        item: widget.item,
-                                      ),
-                                    ),
+                                    RouterManager.author + "?itemJson=$itemJson",
                                   );
                                 },
                                 child: Container(

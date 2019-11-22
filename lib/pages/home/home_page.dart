@@ -30,6 +30,7 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
+
             title: Text('每日精选', style: TextStyle(color: Colors.black)),
             centerTitle: true,
             backgroundColor: Colors.white,

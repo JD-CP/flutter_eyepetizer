@@ -1,17 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart' hide NestedScrollView;
-import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/provider/author_details_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'package:flutter_eyepetizer/widget/extended_nested_scroll_view.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 
 class AuthorDetailsPage extends StatefulWidget {
-  final Item item;
+  final String itemJson;
 
-  AuthorDetailsPage({Key key, this.item});
+  AuthorDetailsPage({Key key, this.itemJson});
 
   @override
   State<StatefulWidget> createState() => AuthorDetailsPageState();
@@ -21,17 +21,17 @@ class AuthorDetailsPageState extends State<AuthorDetailsPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    Item item = Item.fromJson(FluroConvertUtils.string2map(widget.itemJson));
+
     return ProviderWidget<AuthorDetailsModel>(
       model: AuthorDetailsModel(vsync: this),
       onModelInitial: (model) {
         model.init(
-          widget.item.data.author == null
-              ? widget.item.data.header.id
-              : widget.item.data.author.id,
+          item.data.author == null ? item.data.header.id : item.data.author.id,
         );
       },
       builder: (context, model, child) {
-        var data = widget.item.data;
+        var data = item.data;
         if (model.isInit) {
           return Scaffold(
             appBar: AppBar(
