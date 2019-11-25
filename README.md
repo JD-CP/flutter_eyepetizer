@@ -14,7 +14,7 @@
 
 - 手机扫描下方二维码，即可下载。
 
-![](https://user-gold-cdn.xitu.io/2019/8/23/16cbca072afa5b81?w=234&h=234&f=png&s=3800)
+![](https://user-gold-cdn.xitu.io/2019/11/25/16ea0aab1e3daecd?imageView2/2/w/480/h/480/q/85/interlace/1)
 
 ### 目前实现的功能
 

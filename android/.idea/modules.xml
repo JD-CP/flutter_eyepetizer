@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.0+2/android/device_info.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.0+2/android/device_info.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flutter_ijkplayer-0.3.5+1/android/flutter_ijkplayer.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/flutter_ijkplayer-0.3.5+1/android/flutter_ijkplayer.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.4.4/android/path_provider.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.4.4/android/path_provider.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.4+5/android/shared_preferences.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.4+5/android/shared_preferences.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.7+2/android/sqflite.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.7+2/android/sqflite.iml" />
+    </modules>
+  </component>
+</project>
