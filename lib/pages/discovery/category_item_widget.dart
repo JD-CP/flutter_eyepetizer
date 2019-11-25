@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/category_entity.dart';
-
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
@@ -34,7 +34,10 @@ class CategoryItemWidget extends StatelessWidget {
       onTap: () {
         String itemJson = FluroConvertUtils.object2string(item);
         RouterManager.router.navigateTo(
-            context, RouterManager.category + "?itemJson=$itemJson");
+          context,
+          RouterManager.category + "?itemJson=$itemJson",
+          transition: TransitionType.inFromRight,
+        );
       },
     );
   }

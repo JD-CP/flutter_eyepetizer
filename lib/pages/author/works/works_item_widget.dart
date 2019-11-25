@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
-
-import '../author_details_page.dart';
 
 class WorksItemWidget extends StatefulWidget {
   final Item item;
@@ -56,6 +55,7 @@ class WorksItemWidgetState extends State<WorksItemWidget> {
                   RouterManager.router.navigateTo(
                     context,
                     RouterManager.author + "?itemJson=$itemJson",
+                    transition: TransitionType.inFromRight,
                   );
                 },
                 child: ClipOval(

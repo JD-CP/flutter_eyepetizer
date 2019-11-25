@@ -29,6 +29,12 @@ class RouterManager {
   static const String author = "/author";
 
   static void configureRouter(Router router) {
+    router.notFoundHandler = new Handler(
+        // ignore: missing_return
+        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      print("ROUTE WAS NOT FOUND !!!");
+    });
+
     router.define(splash, handler: new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return SplashPage();
@@ -39,7 +45,10 @@ class RouterManager {
     }));
     router.define(video, handler: new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return VideoDetailsPage();
+      String itemJson = params['itemJson']?.first;
+      return VideoDetailsPage(
+        itemJson: itemJson,
+      );
     }));
     router.define(category, handler: new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {

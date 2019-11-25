@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flustars/flustars.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
 import 'package:flutter_eyepetizer/pages/video/video_details_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
@@ -14,9 +14,9 @@ import 'video_related_page.dart';
 
 /// 视频详情页
 class VideoDetailsPage extends StatefulWidget {
-  final Item item;
+  final String itemJson;
 
-  VideoDetailsPage({Key key, this.item}) : super(key: key);
+  VideoDetailsPage({Key key, this.itemJson}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => VideoDetailsPageState();
@@ -26,10 +26,12 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
     with WidgetsBindingObserver {
   IjkMediaController _controller = IjkMediaController();
 
+  Item item;
   String videoUrl;
 
   @override
   void initState() {
+    item = Item.fromJson(FluroConvertUtils.string2map(widget.itemJson));
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     getVideoUrl();
@@ -37,7 +39,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
 
   /// 获取视频播放地址，并播放，默认播放高清视频
   void getVideoUrl() {
-    List<PlayInfo> playInfoList = widget.item.data.playInfo;
+    List<PlayInfo> playInfoList = item.data.playInfo;
     if (playInfoList.length >= 1) {
       for (var playInfo in playInfoList) {
         if (playInfo.type == 'high') {
@@ -49,7 +51,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
         }
       }
     } else {
-      videoUrl = widget.item.data.playUrl;
+      videoUrl = item.data.playUrl;
       _controller.setNetworkDataSource(
         videoUrl,
         autoPlay: true,
@@ -83,7 +85,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
     return ProviderWidget<VideoDetailsModel>(
       model: VideoDetailsModel(),
       onModelInitial: (model) {
-        model.init(widget.item.data.id);
+        model.init(item.data.id);
       },
       builder: (context, model, child) {
         return Scaffold(
@@ -93,7 +95,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: CachedNetworkImageProvider(
-                  '${widget.item.data.cover.blurred}/thumbnail/${ScreenUtil.getScreenH(context)}x${ScreenUtil.getScreenW(context)}',
+                  '${item.data.cover.blurred}/thumbnail/${ScreenUtil.getScreenH(context)}x${ScreenUtil.getScreenW(context)}',
                 ),
               ),
             ),
@@ -122,7 +124,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                   bottom: 5,
                                 ),
                                 child: Text(
-                                  widget.item.data.title,
+                                  item.data.title,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -134,7 +136,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                               Padding(
                                 padding: EdgeInsets.only(left: 15),
                                 child: Text(
-                                  '#${widget.item.data.category} / ${DateUtil.formatDateMs(widget.item.data.author.latestReleaseTime, format: 'yyyy/MM/dd HH:mm')}',
+                                  '#${item.data.category} / ${DateUtil.formatDateMs(item.data.author.latestReleaseTime, format: 'yyyy/MM/dd HH:mm')}',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.white,
@@ -147,7 +149,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                 padding: EdgeInsets.only(
                                     left: 15, right: 15, top: 10, bottom: 10),
                                 child: Text(
-                                  widget.item.data.description,
+                                  item.data.description,
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.white,
@@ -170,7 +172,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                         Padding(
                                           padding: EdgeInsets.only(left: 3),
                                           child: Text(
-                                            '${widget.item.data.consumption.collectionCount}',
+                                            '${item.data.consumption.collectionCount}',
                                             style: TextStyle(
                                               fontSize: 13,
                                               color: Colors.white,
@@ -192,7 +194,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                           Padding(
                                             padding: EdgeInsets.only(left: 3),
                                             child: Text(
-                                              '${widget.item.data.consumption.shareCount}',
+                                              '${item.data.consumption.shareCount}',
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.white,
@@ -212,7 +214,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                         Padding(
                                           padding: EdgeInsets.only(left: 3),
                                           child: Text(
-                                            '${widget.item.data.consumption.replyCount}',
+                                            '${item.data.consumption.replyCount}',
                                             style: TextStyle(
                                               fontSize: 13,
                                               color: Colors.white,
@@ -236,10 +238,14 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                               /// 作者信息
                               InkWell(
                                 onTap: () {
-                                  String itemJson = FluroConvertUtils.object2string(widget.item);
+                                  String itemJson =
+                                      FluroConvertUtils.object2string(
+                                          item);
                                   RouterManager.router.navigateTo(
                                     context,
-                                    RouterManager.author + "?itemJson=$itemJson",
+                                    RouterManager.author +
+                                        "?itemJson=$itemJson",
+                                    transition: TransitionType.inFromRight,
                                   );
                                 },
                                 child: Container(
@@ -259,7 +265,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                           width: 40,
                                           height: 40,
                                           imageUrl:
-                                              widget.item.data.author.icon,
+                                              item.data.author.icon,
                                           placeholder: (context, url) =>
                                               CircularProgressIndicator(
                                             strokeWidth: 2.5,
@@ -279,7 +285,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                                 CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Text(
-                                                widget.item.data.author.name,
+                                                item.data.author.name,
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   color: Colors.white,
@@ -289,7 +295,7 @@ class VideoDetailsPageState extends State<VideoDetailsPage>
                                                 padding:
                                                     EdgeInsets.only(top: 3),
                                                 child: Text(
-                                                  widget.item.data.author
+                                                  item.data.author
                                                       .description,
                                                   maxLines: 1,
                                                   overflow:

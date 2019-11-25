@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluro/fluro.dart';
-import 'package:flutter_eyepetizer/pages/splash/splash_page.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 
 // 主入口
@@ -14,6 +13,7 @@ void main() {
   runApp(
     MyApp(),
   );
+
   SystemUiOverlayStyle systemUiOverlayStyle =
       SystemUiOverlayStyle(statusBarColor: Colors.transparent);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);

@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 class FollowItemListWidget extends StatelessWidget {
   final Item item;
@@ -62,12 +64,12 @@ class FollowItemListWidget extends StatelessWidget {
                       Image.asset('images/img_load_fail'),
                 ),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VideoDetailsPage(
-                                item: item,
-                              )));
+                  String itemJson = FluroConvertUtils.object2string(this.item);
+                  RouterManager.router.navigateTo(
+                    context,
+                    RouterManager.video + "?itemJson=$itemJson",
+                    transition: TransitionType.inFromRight,
+                  );
                 },
               ),
               Positioned(

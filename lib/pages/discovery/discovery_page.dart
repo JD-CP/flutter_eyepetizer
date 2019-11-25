@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_eyepetizer/pages/discovery/follow/follow_list_page.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/provider/discovery_follow_model.dart';
 import 'package:flutter_eyepetizer/provider/discovery_category_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
-import 'package:flutter_eyepetizer/widget/loading_widget.dart';
 import 'package:provider/provider.dart';
 
 import 'category_item_widget.dart';
@@ -47,8 +46,11 @@ class DiscoveryPageState extends State<DiscoveryPage>
                   ),
                   onTap: () {
                     /// 跳转热门关注列表页
-                    RouterManager.router
-                        .navigateTo(context, RouterManager.follow);
+                    RouterManager.router.navigateTo(
+                      context,
+                      RouterManager.follow,
+                      transition: TransitionType.inFromRight,
+                    );
                   },
                 ),
               ],

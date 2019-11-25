@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
+import 'package:fluro/fluro.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 class SearchPageItem extends StatelessWidget {
   final Item item;
@@ -45,13 +47,11 @@ class SearchPageItem extends StatelessWidget {
             ),
             onTap: () {
               /// 点击图片跳转至视频详情页
-              Navigator.push(
+              String itemJson = FluroConvertUtils.object2string(this.item);
+              RouterManager.router.navigateTo(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => VideoDetailsPage(
-                    item: this.item,
-                  ),
-                ),
+                RouterManager.video + "?itemJson=$itemJson",
+                transition: TransitionType.inFromRight,
               );
             },
           ),

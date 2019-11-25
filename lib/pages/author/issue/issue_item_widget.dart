@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/pages/discovery/follow/follow_item_list_widget.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
@@ -29,6 +30,7 @@ class IssueItemWidget extends StatelessWidget {
                   RouterManager.router.navigateTo(
                     context,
                     RouterManager.author + "?itemJson=$itemJson",
+                    transition: TransitionType.inFromRight,
                   );
                 },
                 child: ClipOval(

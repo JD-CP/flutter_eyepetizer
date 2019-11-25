@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 class VideoRelatedPage extends StatelessWidget {
   final Item item;
@@ -34,13 +36,11 @@ class VideoRelatedPage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         this.callback();
-        Navigator.push(
+        String itemJson = FluroConvertUtils.object2string(this.item);
+        RouterManager.router.navigateTo(
           context,
-          MaterialPageRoute(
-            builder: (context) => VideoDetailsPage(
-              item: this.item,
-            ),
-          ),
+          RouterManager.video + "?itemJson=$itemJson",
+          transition: TransitionType.inFromRight,
         );
       },
       child: Container(
@@ -81,15 +81,6 @@ class VideoRelatedPage extends StatelessWidget {
                   )
                 ],
               ),
-
-              /*ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: CachedNetworkImage(
-                width: 135,
-                height: 80,
-                imageUrl: item.data.cover.detail,
-              ),
-            )*/
             ),
             Expanded(
               flex: 1,

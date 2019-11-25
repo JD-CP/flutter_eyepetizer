@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
-import 'package:path/path.dart';
+import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
 class CollectionCard extends StatelessWidget {
   final Item item;
@@ -62,13 +63,11 @@ class CollectionCard extends StatelessWidget {
                       Image.asset('images/img_load_fail'),
                 ),
                 onTap: () {
-                  Navigator.push(
+                  String itemJson = FluroConvertUtils.object2string(item.data.itemList[index]);
+                  RouterManager.router.navigateTo(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => VideoDetailsPage(
-                        item: item.data.itemList[index],
-                      ),
-                    ),
+                    RouterManager.video + "?itemJson=$itemJson",
+                    transition: TransitionType.inFromRight,
                   );
                 },
               ),

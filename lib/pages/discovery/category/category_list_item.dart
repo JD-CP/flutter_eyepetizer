@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
-import 'package:flutter_eyepetizer/pages/video/video_details_page.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
@@ -51,13 +50,11 @@ class CategoryListItem extends StatelessWidget {
                         Image.asset('images/img_load_fail'),
                   ),
                   onTap: () {
-                    Navigator.push(
+                    String itemJson = FluroConvertUtils.object2string(this.item);
+                    RouterManager.router.navigateTo(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => VideoDetailsPage(
-                          item: this.item,
-                        ),
-                      ),
+                      RouterManager.video + "?itemJson=$itemJson",
+                      transition: TransitionType.inFromRight,
                     );
                   },
                 ),
@@ -94,6 +91,7 @@ class CategoryListItem extends StatelessWidget {
                     RouterManager.router.navigateTo(
                       context,
                       RouterManager.author + "?itemJson=$itemJson",
+                      transition: TransitionType.inFromRight,
                     );
                   },
                   child: ClipOval(
