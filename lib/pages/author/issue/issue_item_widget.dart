@@ -6,8 +6,6 @@ import 'package:flutter_eyepetizer/pages/discovery/follow/follow_item_list_widge
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 
-import '../author_details_page.dart';
-
 class IssueItemWidget extends StatelessWidget {
   final Item item;
 

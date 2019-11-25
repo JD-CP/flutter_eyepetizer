@@ -54,6 +54,9 @@ dev_dependencies:
   # 路由管理
   fluro: ^1.5.1
 
+  # 屏幕适配
+#  flutter_screenutil: ^0.5.3
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

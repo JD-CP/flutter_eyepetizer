@@ -13,11 +13,7 @@ class FollowItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        /*String itemJson = FluroConvertUtils.object2string(item);
-        RouterManager.router.navigateTo(
-          context,
-          RouterManager.author + "?itemJson=$itemJson",
-        );*/
+
       },
       child: Container(
         color: Colors.white,

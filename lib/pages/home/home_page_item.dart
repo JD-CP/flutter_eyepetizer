@@ -4,31 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
+import 'package:flutter_eyepetizer/util/time_util.dart';
 
 class HomePageItem extends StatelessWidget {
   final Item item;
 
   HomePageItem({Key key, this.item}) : super(key: key);
-
-  String formatDuration(duration) {
-    var minute = duration ~/ 60;
-    var second = duration % 60;
-    var str;
-    if (minute <= 9) {
-      if (second <= 9) {
-        str = "0$minute:0$second";
-      } else {
-        str = "0$minute:$second";
-      }
-    } else {
-      if (second <= 9) {
-        str = "$minute:0$second";
-      } else {
-        str = "$minute:$second";
-      }
-    }
-    return str;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +18,9 @@ class HomePageItem extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+            padding: EdgeInsets.only(
+                left: 15, right: 15, top: 10),
             child: Stack(
-              // alignment: FractionalOffset(0.95, 0.5),
               children: <Widget>[
                 GestureDetector(
                   child: CachedNetworkImage(
@@ -51,8 +32,8 @@ class HomePageItem extends StatelessWidget {
                         Image.asset('images/img_load_fail.png'),
                   ),
                   onTap: () {
-                    /// 点击图片跳转至视频详情页
-                    String itemJson = FluroConvertUtils.object2string(this.item);
+                    String itemJson =
+                        FluroConvertUtils.object2string(this.item);
                     RouterManager.router.navigateTo(
                       context,
                       RouterManager.video + "?itemJson=$itemJson",
@@ -63,7 +44,11 @@ class HomePageItem extends StatelessWidget {
                 Positioned(
                   child: Container(
                     padding: EdgeInsets.only(
-                        left: 15, top: 10, bottom: 10, right: 15),
+                      left: 15,
+                      top: 10,
+                      bottom: 10,
+                      right: 15,
+                    ),
                     height: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,7 +90,7 @@ class HomePageItem extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.all(3),
                                 child: Text(
-                                  formatDuration(item.data.duration),
+                                  TimeUtil.formatDuration(item.data.duration),
                                   style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white,
@@ -135,14 +120,6 @@ class HomePageItem extends StatelessWidget {
                 ClipOval(
                   child: GestureDetector(
                     onTap: () {
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AuthorDetailsPage(
-                            item: this.item,
-                          ),
-                        ),
-                      );*/
                       String itemJson = FluroConvertUtils.object2string(item);
                       RouterManager.router.navigateTo(
                         context,
@@ -164,7 +141,11 @@ class HomePageItem extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: 10, right: 15, top: 10, bottom: 10),
+                      left: 10,
+                      right: 15,
+                      top: 10,
+                      bottom: 10,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -188,17 +169,6 @@ class HomePageItem extends StatelessWidget {
                                 fontSize: 12,
                               ),
                             ),
-                            /*Expanded(
-                            child: Text(''),
-                            flex: 1,
-                          ),
-                          Text(
-                            DateUtil.formatDateMs(
-                                item.data.author.latestReleaseTime,
-                                format: 'yyyy/MM/dd'),
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 12),
-                          ),*/
                           ],
                         )
                       ],
@@ -207,16 +177,11 @@ class HomePageItem extends StatelessWidget {
                   flex: 1,
                 ),
                 GestureDetector(
-                  child: Image.asset('images/icon_share.png',
-                      width: 25, height: 25),
-
-                  /// TODO 从底部弹出分享框
-                  /*onTap: () => Fluttertoast.showToast(
-                    msg: '分享',
-                    fontSize: 15,
-                    textColor: Colors.black,
-                    backgroundColor: Colors.white,
-                  ),*/
+                  child: Image.asset(
+                    'images/icon_share.png',
+                    width: 25,
+                    height: 25,
+                  ),
                 ),
               ],
             ),

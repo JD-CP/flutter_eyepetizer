@@ -4,31 +4,12 @@ import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
+import 'package:flutter_eyepetizer/util/time_util.dart';
 
 class SearchPageItem extends StatelessWidget {
   final Item item;
 
   SearchPageItem({Key key, this.item});
-
-  String formatDuration(duration) {
-    var minute = duration ~/ 60;
-    var second = duration % 60;
-    var str;
-    if (minute <= 9) {
-      if (second <= 9) {
-        str = "0$minute:0$second";
-      } else {
-        str = "0$minute:$second";
-      }
-    } else {
-      if (second <= 9) {
-        str = "$minute:0$second";
-      } else {
-        str = "$minute:$second";
-      }
-    }
-    return str;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +53,7 @@ class SearchPageItem extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(5),
                     child: Text(
-                      formatDuration(item.data.duration),
+                      TimeUtil.formatDuration(item.data.duration),
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,

@@ -4,31 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/router/router_manager.dart';
 import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
+import 'package:flutter_eyepetizer/util/time_util.dart';
 
 class VideoWelcomePage extends StatelessWidget {
   final Item item;
 
   VideoWelcomePage({Key key, this.item}) : super(key: key);
-
-  String formatDuration(duration) {
-    var minute = duration ~/ 60;
-    var second = duration % 60;
-    var str;
-    if (minute <= 9) {
-      if (second <= 9) {
-        str = "0$minute:0$second";
-      } else {
-        str = "0$minute:$second";
-      }
-    } else {
-      if (second <= 9) {
-        str = "$minute:0$second";
-      } else {
-        str = "$minute:$second";
-      }
-    }
-    return str;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +46,7 @@ class VideoWelcomePage extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(3),
                         child: Text(
-                          formatDuration(item.data.duration),
+                          TimeUtil.formatDuration(item.data.duration),
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.white,

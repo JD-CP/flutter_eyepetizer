@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/pages/author/author_details_page.dart';
-import 'package:flutter_eyepetizer/router/router_manager.dart';
-import 'package:flutter_eyepetizer/util/fluro_convert_util.dart';
 import 'follow_item_list_widget.dart';
 
 class FollowItemDetailsWidget extends StatelessWidget {
@@ -24,11 +21,7 @@ class FollowItemDetailsWidget extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  /*String itemJson = FluroConvertUtils.object2string(item);
-                  RouterManager.router.navigateTo(
-                    context,
-                    RouterManager.author + "?itemJson=$itemJson",
-                  );*/
+
                 },
                 child: ClipOval(
                   child: CachedNetworkImage(
