@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/pages/home/home_page_item.dart';
 import 'package:flutter_eyepetizer/provider/rank_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
-import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:provider/provider.dart';
 
 /// 热门排行
@@ -22,14 +21,33 @@ class RankPageState extends State<RankPage> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
     return ProviderWidget<RankPageModel>(
-      model: RankPageModel(),
+      model: RankPageModel(widget.pageUrl),
       onModelInitial: (model) {
-        model.init(widget.pageUrl);
+        model.init();
       },
       builder: (context, model, child) {
         return Container(
           color: Color(0xFFF4F4F4),
-          child: EasyRefresh.custom(
+          child: RefreshConfiguration(
+            enableLoadingWhenNoData: false,
+            child: SmartRefresher(
+              header: WaterDropHeader(),
+              footer: ClassicFooter(
+                height: 50,
+                textStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
+                ),
+                noDataText: "——— 我是有底线的 ———",
+              ),
+              enablePullUp: true,
+              controller: model.refreshController,
+              onRefresh: model.onRefresh,
+              child: Container(
+                child: RankPageWidget(),
+              ),
+            ),
+          ) /*EasyRefresh.custom(
             enableControlFinishRefresh: true,
             header: MyClassicalHeader(
               enableInfiniteRefresh: false,
@@ -44,7 +62,8 @@ class RankPageState extends State<RankPage> with AutomaticKeepAliveClientMixin {
                 ),
               ),
             ],
-          ),
+          )*/
+          ,
         );
       },
     );
@@ -65,7 +84,7 @@ class RankPageWidget extends StatelessWidget {
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        return HomePageItem(item: model.itemList[index]);
+        return HomePageItem(item: model.dataList[index]);
       },
       separatorBuilder: (context, index) {
         return Divider(
@@ -73,7 +92,7 @@ class RankPageWidget extends StatelessWidget {
           color: Color(0xFFF4F4F4),
         );
       },
-      itemCount: model.itemList.length,
+      itemCount: model.dataList.length,
     );
   }
 }

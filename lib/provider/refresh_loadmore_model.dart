@@ -37,11 +37,11 @@ abstract class RefreshLoadMoreModel<T> extends BaseModel {
           dataList.clear();
         }
         refreshController.refreshCompleted();
-        if (nextPageUrl.isNotEmpty) {
+        if (null != nextPageUrl && nextPageUrl.isNotEmpty) {
           refreshController.loadComplete();
         }
       } else {
-        if (nextPageUrl.isNotEmpty) {
+        if (null != nextPageUrl && nextPageUrl.isNotEmpty) {
           refreshController.loadComplete();
         } else {
           refreshController.loadNoData();
