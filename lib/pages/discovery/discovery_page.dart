@@ -18,49 +18,6 @@ class DiscoveryPage extends StatefulWidget {
 
 class DiscoveryPageState extends State<DiscoveryPage>
     with AutomaticKeepAliveClientMixin {
-  /// 推荐关注标题
-  Widget renderFollowTitleWidget(context) {
-    return Container(
-      padding: EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 5),
-      child: Row(
-        children: <Widget>[
-          Text(
-            '推荐关注',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.black,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                GestureDetector(
-                  child: Text(
-                    '查看更多 >>',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  onTap: () {
-                    /// 跳转热门关注列表页
-                    RouterManager.router.navigateTo(
-                      context,
-                      RouterManager.follow,
-                      transition: TransitionType.inFromRight,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -74,7 +31,10 @@ class DiscoveryPageState extends State<DiscoveryPage>
       builder: (context, model1, model2, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('发现', style: TextStyle(color: Colors.black)),
+            title: Text(
+              '发现',
+              style: TextStyle(color: Colors.black),
+            ),
             centerTitle: true,
             elevation: 0,
           ),
@@ -92,7 +52,11 @@ class DiscoveryPageState extends State<DiscoveryPage>
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: 15, right: 15, top: 13, bottom: 13),
+                      left: 15,
+                      right: 15,
+                      top: 13,
+                      bottom: 13,
+                    ),
                     child: Text(
                       '热门分类',
                       style: TextStyle(
@@ -104,7 +68,11 @@ class DiscoveryPageState extends State<DiscoveryPage>
                 ),
                 SliverToBoxAdapter(
                   child: Container(
-                    padding: EdgeInsets.only(left: 15, right: 15, bottom: 12),
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      right: 15,
+                      bottom: 12,
+                    ),
                     child: Consumer<DiscoveryPageModel>(
                       builder: (context, model, child) {
                         return GridView.builder(
@@ -141,15 +109,17 @@ class DiscoveryPageState extends State<DiscoveryPage>
                   child: Container(
                     child: Consumer<DiscoveryFollowModel>(
                       builder: (context, model, child) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: model.followItemList.length,
-                          itemBuilder: (context, index) {
-                            return FollowItemWidget(
-                              item: model.followItemList[index],
-                            );
-                          },
+                        return Container(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: model.followItemList.length,
+                            itemBuilder: (context, index) {
+                              return FollowItemWidget(
+                                item: model.followItemList[index],
+                              );
+                            },
+                          ),
                         );
                       },
                     ),
@@ -199,11 +169,47 @@ class DiscoveryPageState extends State<DiscoveryPage>
 
   @override
   bool get wantKeepAlive => true;
-}
 
-class CategoryWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return null;
+  /// 推荐关注标题
+  Widget renderFollowTitleWidget(context) {
+    return Container(
+      padding: EdgeInsets.only(left: 15, right: 15, top: 13, bottom: 5),
+      child: Row(
+        children: <Widget>[
+          Text(
+            '推荐关注',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                GestureDetector(
+                  child: Text(
+                    '查看更多 >>',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  onTap: () {
+                    /// 跳转热门关注列表页
+                    RouterManager.router.navigateTo(
+                      context,
+                      RouterManager.follow,
+                      transition: TransitionType.inFromRight,
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

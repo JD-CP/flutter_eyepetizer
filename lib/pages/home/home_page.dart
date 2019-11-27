@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/pages/search/search_page.dart';
-import 'package:flutter_eyepetizer/provider/home_page_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
-import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
-import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
 import 'package:flutter_eyepetizer/widget/search/search_bar.dart' as search_bar;
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:provider/provider.dart';
 
 import 'home_page_item.dart';
+import '../../provider/home_page_model.dart';
 import 'time_title_item.dart';
 
 /// 首页
@@ -19,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -30,7 +29,6 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
-
             title: Text('每日精选', style: TextStyle(color: Colors.black)),
             centerTitle: true,
             backgroundColor: Colors.white,
@@ -44,31 +42,31 @@ class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   color: Colors.black87,
                 ),
                 onPressed: () {
-                  // showSearch(context: context, delegate: SearchBarDelegate());
-                  search_bar.showSearch(context: context, delegate: SearchBarDelegate(hintText: "请输入关键词"));
+                  search_bar.showSearch(
+                    context: context,
+                    delegate: SearchBarDelegate(),
+                  );
                 },
               ),
             ],
           ),
           body: Container(
             color: Color(0xFFF4F4F4),
-            child: EasyRefresh.custom(
-              enableControlFinishRefresh: true,
-              enableControlFinishLoad: true,
-              taskIndependence: true,
-              header: MyClassicalHeader(enableInfiniteRefresh: false),
-              footer: MyClassicalFooter(enableInfiniteLoad: false),
-              controller: model.controller,
-              scrollController: model.scrollController,
-              onRefresh: model.onRefresh,
-              onLoad: model.onLoadMore,
-              slivers: <Widget>[
-                SliverToBoxAdapter(
-                  child: Container(
-                    child: HomePageListWidget(),
-                  ),
+            child: RefreshConfiguration(
+              enableLoadingWhenNoData: false,
+              child: SmartRefresher(
+                header: WaterDropHeader(),
+                footer: ClassicFooter(
+                  loadStyle: LoadStyle.ShowAlways,
                 ),
-              ],
+                enablePullUp: true,
+                controller: model.refreshController,
+                onRefresh: model.onRefresh,
+                onLoading: model.onLoadMore,
+                child: Container(
+                  child: HomePageListWidget(),
+                ),
+              ),
             ),
           ),
         );
@@ -91,15 +89,15 @@ class HomePageListWidget extends StatelessWidget {
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        var item = model.itemList[index];
+        var item = model.dataList[index];
         if (item.type == 'textHeader') {
           return TimeTitleItem(timeTitle: item.data.text);
         }
         return HomePageItem(item: item);
       },
       separatorBuilder: (context, index) {
-        var item = model.itemList[index];
-        var itemNext = model.itemList[index + 1];
+        var item = model.dataList[index];
+        var itemNext = model.dataList[index + 1];
         if (item.type == 'textHeader' || itemNext.type == 'textHeader') {
           return Divider(
             height: 0,
@@ -115,7 +113,7 @@ class HomePageListWidget extends StatelessWidget {
           /// indent: 前间距, endIndent: 后间距
         );
       },
-      itemCount: model.itemList.length,
+      itemCount: model.dataList.length,
     );
   }
 }

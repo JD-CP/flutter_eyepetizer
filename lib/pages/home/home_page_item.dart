@@ -19,7 +19,10 @@ class HomePageItem extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(
-                left: 15, right: 15, top: 10),
+              left: 10,
+              right: 10,
+              top: 10,
+            ),
             child: Stack(
               children: <Widget>[
                 GestureDetector(
@@ -153,9 +156,17 @@ class HomePageItem extends StatelessWidget {
                           item.data.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(color: Colors.black, fontSize: 14),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
                         ),
-                        Padding(padding: EdgeInsets.only(top: 2, bottom: 2)),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 2,
+                            bottom: 2,
+                          ),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,

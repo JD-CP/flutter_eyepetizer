@@ -1,34 +1,41 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
 import 'package:flutter_eyepetizer/data/eyepetizer_repository.dart';
+import 'package:flutter_eyepetizer/provider/refresh_loadmore_model.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/util/logger_util.dart';
 
-class HomePageModel extends ChangeNotifier {
-  EasyRefreshController controller = EasyRefreshController();
-  ScrollController scrollController = ScrollController();
+class HomePageModel<Item> extends RefreshLoadMoreModel {
 
-  String nextPageUrl;
-  bool isRefresh = true;
-  List<Item> itemList = [];
-  List<Item> bannerList = [];
-
-  bool isInit;
-
-  /// 初始化
-  init() async {
-    initPage(true);
-    await loadData(url: Constant.homePageUrl);
+  @override
+  Future<List> loadData() async {
+    LoggerUtil.instance().d("HomePageModel start http ---> ${isRefresh ? Constant.homePageUrl : nextPageUrl}");
+    var response = await EptRepository.getHomePageList(
+        isRefresh ? Constant.homePageUrl : nextPageUrl);
+    Map map = json.decode(response.toString());
+    var issueEntity = IssueEntity.fromJson(map);
+    nextPageUrl = issueEntity.nextPageUrl;
+    var list = issueEntity.issueList[0].itemList;
+    list.removeWhere((item) {
+      return item.type == 'banner2';
+    });
+    LoggerUtil.instance().v("HomePageModel http success ---> ${map.toString()}");
+    return list;
   }
 
-  void initPage(bool isInit) {
-    this.isInit = isInit;
-    notifyListeners();
+  @override
+  Future<List> onRefresh() {
+    isRefresh = true;
+    return loadRemoteData();
   }
 
-  Future<List<Item>> loadBanner() async {
+  @override
+  Future<List> onLoadMore() {
+    isRefresh = false;
+    return loadRemoteData();
+  }
+
+  /*Future<List<Item>> loadBanner() async {
     try {
       var response = await EptRepository.getHomePageList(Constant.homePageUrl);
       Map map = json.decode(response.toString());
@@ -45,55 +52,6 @@ class HomePageModel extends ChangeNotifier {
     } catch (e, s) {
       return null;
     }
-  }
+  }*/
 
-  /// 加载数据
-  Future<List<Item>> loadData({String url}) async {
-    try {
-      var response = await EptRepository.getHomePageList(url);
-      Map map = json.decode(response.toString());
-      var issueEntity = IssueEntity.fromJson(map);
-      nextPageUrl = issueEntity.nextPageUrl;
-      var list = issueEntity.issueList[0].itemList;
-      list.removeWhere((item) {
-        return item.type == 'banner2';
-      });
-      if (isInit) {
-        initPage(false);
-      }
-      if (isRefresh) {
-        itemList.clear();
-        itemList.addAll(list);
-        controller.resetLoadState();
-        controller.finishRefresh();
-      } else {
-        itemList.addAll(list);
-        controller.finishLoad();
-      }
-      notifyListeners();
-      return itemList;
-    } catch (e, s) {
-      if (isRefresh) {
-        controller.resetLoadState();
-        controller.finishRefresh(
-          success: false,
-        );
-      } else {
-        controller.finishLoad();
-      }
-      return null;
-    }
-  }
-
-  /// 下拉刷新
-  Future<List<Item>> onRefresh() async {
-    isRefresh = true;
-    return await loadData(url: Constant.homePageUrl);
-  }
-
-  /// 上拉加载
-  Future<List<Item>> onLoadMore() async {
-    isRefresh = false;
-    return await loadData(url: nextPageUrl);
-  }
 }

@@ -43,6 +43,7 @@ dev_dependencies:
 
   # 下拉刷新、上拉加载
   flutter_easyrefresh: ^2.0.4
+  pull_to_refresh: ^1.5.7
   shimmer: 1.0.0
 
   # 状态管理
@@ -53,6 +54,9 @@ dev_dependencies:
 
   # 路由管理
   fluro: ^1.5.1
+
+  # 日志打印
+  logger: ^0.7.0+2
 
   # 屏幕适配
 #  flutter_screenutil: ^0.5.3

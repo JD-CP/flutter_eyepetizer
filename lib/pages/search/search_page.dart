@@ -24,7 +24,7 @@ class SearchBarDelegate extends MySearchDelegate {
         );
   }
 
-  SearchBarDelegate({String hintText})
+  SearchBarDelegate({String hintText = "请输入关键词"})
       : super(
           searchFieldLabel: hintText,
           keyboardType: TextInputType.text,
