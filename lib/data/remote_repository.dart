@@ -2,7 +2,7 @@ import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_eyepetizer/http/http.dart';
 
-class EptRepository {
+class Repository {
   static Future getHomePageList(url) async {
     var response = await HttpUtil.buildDio().get(
       url,

@@ -4,76 +4,36 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/data/eyepetizer_repository.dart';
+import 'package:flutter_eyepetizer/data/remote_repository.dart';
+import 'package:flutter_eyepetizer/provider/refresh_loadmore_model.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
+import 'package:flutter_eyepetizer/util/logger_util.dart';
 
-class FollowListModel extends ChangeNotifier {
-  EasyRefreshController controller = EasyRefreshController();
-  ScrollController scrollController = ScrollController();
-
-  String nextPageUrl;
-  bool isRefresh = true;
-  List<Item> itemList = [];
-
-  bool isInit;
-
-  /// 初始化
-  init() async {
-    initPage(true);
-    await loadData(url: Constant.followUrl);
+class FollowListModel<Item> extends RefreshLoadMoreModel {
+  @override
+  Future<List> loadData() async {
+    LoggerUtil.instance().d("FollowListModel start http ---> ${isRefresh ? Constant.homePageUrl : nextPageUrl}");
+    var response = await Repository.getHomePageList(
+      isRefresh ? Constant.followUrl : nextPageUrl,
+    );
+    Map map = json.decode(response.toString());
+    var followEntity = Issue.fromJson(map);
+    var list = followEntity.itemList;
+    this.nextPageUrl = followEntity.nextPageUrl;
+    LoggerUtil.instance().v("FollowListModel http success ---> ${map.toString()}");
+    return list;
   }
 
-  void initPage(bool isInit) {
-    this.isInit = isInit;
-    notifyListeners();
-  }
-
-  /// 加载数据
-  Future<List<Item>> loadData({String url}) async {
-    try {
-      var response = await EptRepository.getHomePageList(
-        isRefresh ? Constant.followUrl : nextPageUrl,
-      );
-      Map map = json.decode(response.toString());
-      var followEntity = Issue.fromJson(map);
-      var list = followEntity.itemList;
-      this.nextPageUrl = followEntity.nextPageUrl;
-      if (isInit) {
-        initPage(false);
-      }
-      if (isRefresh) {
-        itemList.clear();
-        itemList.addAll(list);
-        controller.resetLoadState();
-        controller.finishRefresh();
-      } else {
-        itemList.addAll(list);
-        controller.finishLoad();
-      }
-      notifyListeners();
-      return itemList;
-    } catch (e, s) {
-      if (isRefresh) {
-        controller.resetLoadState();
-        controller.finishRefresh(
-          success: false,
-        );
-      } else {
-        controller.finishLoad();
-      }
-      return null;
-    }
-  }
-
-  /// 下拉刷新
-  Future<List<Item>> onRefresh() async {
+  @override
+  Future<List> onRefresh() {
     isRefresh = true;
-    return await loadData();
+    return loadRemoteData();
   }
 
-  /// 上拉加载
-  Future<List<Item>> onLoadMore() async {
+  @override
+  Future<List> onLoadMore() {
     isRefresh = false;
-    return await loadData();
+    return loadRemoteData();
   }
+
 }

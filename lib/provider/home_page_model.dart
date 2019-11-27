@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/data/eyepetizer_repository.dart';
+import 'package:flutter_eyepetizer/data/remote_repository.dart';
 import 'package:flutter_eyepetizer/provider/refresh_loadmore_model.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 import 'package:flutter_eyepetizer/util/logger_util.dart';
@@ -10,7 +10,7 @@ class HomePageModel<Item> extends RefreshLoadMoreModel {
   @override
   Future<List> loadData() async {
     LoggerUtil.instance().d("HomePageModel start http ---> ${isRefresh ? Constant.homePageUrl : nextPageUrl}");
-    var response = await EptRepository.getHomePageList(
+    var response = await Repository.getHomePageList(
         isRefresh ? Constant.homePageUrl : nextPageUrl);
     Map map = json.decode(response.toString());
     var issueEntity = IssueEntity.fromJson(map);

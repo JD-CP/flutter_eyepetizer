@@ -1,77 +1,37 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/data/entity/issue_entity.dart';
-import 'package:flutter_eyepetizer/data/eyepetizer_repository.dart';
+import 'package:flutter_eyepetizer/data/remote_repository.dart';
+import 'package:flutter_eyepetizer/provider/refresh_loadmore_model.dart';
 import 'package:flutter_eyepetizer/util/constant.dart';
 
-class CategoryListModel extends ChangeNotifier {
-  EasyRefreshController controller = EasyRefreshController();
-  ScrollController scrollController = ScrollController();
+class CategoryListModel<Item> extends RefreshLoadMoreModel {
 
-  int id;
-  String nextPageUrl;
-  List<Item> itemList = [];
+  final int id;
 
-  bool isInit;
-  bool isRefresh = true;
+  CategoryListModel(this.id);
 
-  /// 初始化
-  init(id) async {
-    this.id = id;
-    initPage(true);
-    await loadData();
+  @override
+  Future<List> loadData() async {
+    var response = await Repository.getCategoryList(
+        isRefresh ? Constant.categoryDetailsUrl : nextPageUrl, id);
+    Map map = json.decode(response.toString());
+    var issueEntity = Issue.fromJson(map);
+    nextPageUrl = issueEntity.nextPageUrl;
+    var list = issueEntity.itemList;
+    return list;
   }
 
-  void initPage(bool isInit) {
-    this.isInit = isInit;
-    notifyListeners();
-  }
-
-  /// 加载数据
-  Future<List<Item>> loadData({String url}) async {
-    try {
-      var response = await EptRepository.getCategoryList(
-          isRefresh ? Constant.categoryDetailsUrl : nextPageUrl, id);
-      Map map = json.decode(response.toString());
-      var issueEntity = Issue.fromJson(map);
-      nextPageUrl = issueEntity.nextPageUrl;
-      var list = issueEntity.itemList;
-      if (isInit) {
-        initPage(false);
-      }
-      if(isRefresh){
-        itemList.clear();
-        controller.resetRefreshState();
-        controller.finishRefresh();
-      } else {
-        controller.finishLoad();
-      }
-      itemList.addAll(list);
-      notifyListeners();
-      return itemList;
-    } catch (e, s) {
-      if(isRefresh){
-        controller.resetRefreshState();
-        controller.finishRefresh();
-      } else {
-        controller.finishLoad();
-      }
-      return null;
-    }
-  }
-
-  /// 上拉加载
-  Future<List<Item>> onRefresh() async {
+  @override
+  Future<List> onRefresh() {
     isRefresh = true;
-    return await loadData();
+    return loadRemoteData();
   }
 
-  /// 上拉加载
-  Future<List<Item>> onLoadMore() async {
+  @override
+  Future<List> onLoadMore() {
     isRefresh = false;
-    return await loadData();
+    return loadRemoteData();
   }
+
 }

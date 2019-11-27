@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_eyepetizer/provider/follow_list_model.dart';
 import 'package:flutter_eyepetizer/provider/provider_widget.dart';
 import 'package:flutter_eyepetizer/widget/loading_widget.dart';
-import 'package:flutter_eyepetizer/widget/refresh/load_more_footer.dart';
-import 'package:flutter_eyepetizer/widget/refresh/refresh_header.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:provider/provider.dart';
 
 import 'follow_item_details_widget.dart';
@@ -30,23 +28,18 @@ class FollowListPageState extends State<FollowListPage> {
             title: Text('热门关注'),
             elevation: 0,
           ),
-          body: EasyRefresh.custom(
-            enableControlFinishRefresh: true,
-            enableControlFinishLoad: true,
-            taskIndependence: true,
-            header: MyClassicalHeader(enableInfiniteRefresh: false),
-            footer: MyClassicalFooter(enableInfiniteLoad: false),
-            controller: model.controller,
-            scrollController: model.scrollController,
+          body: SmartRefresher(
+            header: WaterDropHeader(),
+            footer: ClassicFooter(
+              loadStyle: LoadStyle.ShowAlways,
+            ),
+            enablePullUp: true,
+            controller: model.refreshController,
             onRefresh: model.onRefresh,
-            onLoad: model.onLoadMore,
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: Container(
-                  child: FollowListWidget(),
-                ),
-              ),
-            ],
+            onLoading: model.onLoadMore,
+            child: Container(
+              child: FollowListWidget(),
+            ),
           ),
         );
       },
@@ -65,14 +58,14 @@ class FollowListWidget extends StatelessWidget {
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        return FollowItemDetailsWidget(item: model.itemList[index]);
+        return FollowItemDetailsWidget(item: model.dataList[index]);
       },
       separatorBuilder: (context, index) {
         return Divider(
           height: .5,
         );
       },
-      itemCount: model.itemList.length,
+      itemCount: model.dataList.length,
     );
   }
 }
