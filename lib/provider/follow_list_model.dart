@@ -12,7 +12,8 @@ import 'package:flutter_eyepetizer/util/logger_util.dart';
 class FollowListModel<Item> extends RefreshLoadMoreModel {
   @override
   Future<List> loadData() async {
-    LoggerUtil.instance().d("FollowListModel start http ---> ${isRefresh ? Constant.homePageUrl : nextPageUrl}");
+    LoggerUtil.instance().d(
+        "FollowListModel start http ---> ${isRefresh ? Constant.homePageUrl : nextPageUrl}");
     var response = await Repository.getHomePageList(
       isRefresh ? Constant.followUrl : nextPageUrl,
     );
@@ -20,7 +21,8 @@ class FollowListModel<Item> extends RefreshLoadMoreModel {
     var followEntity = Issue.fromJson(map);
     var list = followEntity.itemList;
     this.nextPageUrl = followEntity.nextPageUrl;
-    LoggerUtil.instance().v("FollowListModel http success ---> ${map.toString()}");
+    LoggerUtil.instance()
+        .v("FollowListModel http success ---> ${map.toString()}");
     return list;
   }
 
@@ -35,5 +37,4 @@ class FollowListModel<Item> extends RefreshLoadMoreModel {
     isRefresh = false;
     return loadRemoteData();
   }
-
 }
