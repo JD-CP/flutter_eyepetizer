@@ -1,41 +1,47 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluro/fluro.dart';
-import 'package:oktoast/oktoast.dart';
-import 'package:flutter_eyepetizer/router/router_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_eyepetizer/global/bloc/bloc.dart';
+import 'package:flutter_eyepetizer/modules/splash.dart';
+import 'package:flutter_eyepetizer/router/app_router.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 // 主入口
 void main() {
-  Router router = new Router();
-  RouterManager.configureRouter(router);
-  RouterManager.router = router;
-
   runApp(
-    MyApp(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GlobalBloc(ThemeMode.light),
+        ),
+      ],
+      child: AppRouter(
+        child: MyApp(),
+      ),
+    ),
   );
-
-  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  );
-  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return OKToast(
-      child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: Color(0xFFFFFFFF),
-        ),
-        onGenerateRoute: RouterManager.router.generator,
-      ),
+    return BlocBuilder<GlobalBloc, GlobalState>(
+      builder: (context, state) {
+        return MaterialApp(
+          themeMode: state.themeMode,
+          theme: ThemeData.light(),
+          darkTheme: ThemeData.dark(),
+          onGenerateRoute: AppRouter.of(context).generator,
+          home: SplashPage(),
+          builder: (context, child) {
+            ScreenUtil.init(context, width: 375, height: 667);
+            return Theme(
+              data: ThemeData.light(),
+              child: child,
+            );
+          },
+        );
+      },
     );
   }
 }

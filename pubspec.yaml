@@ -28,38 +28,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # 网络请求
-  dio: 2.1.13
+  dio: ^3.0.9
 
-  # 图片加载
-  cached_network_image: 2.0.0-rc
+  bloc: ^4.0.0
+  flutter_bloc: ^4.0.0
+  equatable: ^1.1.1
 
-  # 工具类
-  flustars: 0.2.6+1
-  device_info: 0.4.0+2
+  fluro: ^1.6.3
 
-  # 视频播放
-  flutter_ijkplayer: 0.3.5+1
+  shared_preferences: ^0.5.6+1
 
-  # 下拉刷新、上拉加载
-  flutter_easyrefresh: ^2.0.4
-  pull_to_refresh: ^1.5.7
-  shimmer: 1.0.0
+  flutter_screenutil: ^1.0.2
 
-  # 状态管理
-  provider: ^3.0.0+1
-
-  # 吐司
-  oktoast: ^2.1.7
-
-  # 路由管理
-  fluro: ^1.5.1
-
-  # 日志打印
   logger: ^0.7.0+2
-
-  # 屏幕适配
-#  flutter_screenutil: ^0.5.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
