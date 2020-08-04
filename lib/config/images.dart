@@ -32,7 +32,7 @@ class Images {
     height: Dimens.gap_dp2 * 11,
   );
   static final tabHotSelected = Image.asset(
-    'images/ic_hot_normal.png',
+    'images/ic_hot_selected.png',
     width: Dimens.gap_dp2 * 11,
     height: Dimens.gap_dp2 * 11,
   );

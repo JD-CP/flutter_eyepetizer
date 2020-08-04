@@ -6,100 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dfb87f-a8fc-4cd0-b3dd-54e56cf02c89" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/config/dimens.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/config/gaps.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/config/images.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/bloc/bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/bloc/global_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/bloc/global_event.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/bloc/global_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/repository/global_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/global/repository/local_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/bottom_navigator.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/discovery/page/discovery.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/home/page/home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/hot/page/hot.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/mine/page/mine.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/splash.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/router/navigator_router.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/router/router_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/themes/default_theme_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/mac.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/mac.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entity/author_info_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entity/category_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entity/issue_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entity/tab_info_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/remote_repository.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/i18n.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/http/http.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/author_details_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/issue/author_issue_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/issue/issue_item_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/author_main_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/collection_card.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/main/video_welcom_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/works/author_works_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/author/works/works_item_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/bottom_navigator.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_item.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category/category_list_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/category_item_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/discovery_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_details_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_item_list_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow/follow_list_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/discovery/follow_item_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page_item.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/time_title_item.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/hot/hot_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/hot/rank_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/mine/mine_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/keyword_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search_page_item.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search_result_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/splash/splash_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_details_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_details_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/video/video_related_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/author_details_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/author_issue_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/author_main_page_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/author_works_page_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/base_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/discovery_category_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/discovery_follow_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/follow_list_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/home_page_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/hot_page_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/provider_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/rank_page_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/provider/refresh_loadmore_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router/router_manager.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/constant.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/fluro_convert_util.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/global.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/logger_util.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/time_util.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/empty_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/extended_nested_scroll_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/load_more_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/loading_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/nested_scroll_view_inner_scroll_position_key_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/no_data_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/refresh/load_more_footer.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/refresh/refresh_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/search/search_bar.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/util.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +103,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="280" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="280" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="279" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />

@@ -1,13 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_eyepetizer/global/bloc/bloc.dart';
 import 'package:flutter_eyepetizer/modules/splash.dart';
 import 'package:flutter_eyepetizer/router/app_router.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
-// 主入口
+/// 主入口
 void main() {
+  if (Platform.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+      ),
+    );
+  }
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -36,7 +48,10 @@ class MyApp extends StatelessWidget {
           builder: (context, child) {
             ScreenUtil.init(context, width: 375, height: 667);
             return Theme(
-              data: ThemeData.light(),
+              data: ThemeData.light().copyWith(
+                  textTheme: Theme.of(context)
+                      .textTheme
+                      .merge(ThemeData.light().textTheme)),
               child: child,
             );
           },
